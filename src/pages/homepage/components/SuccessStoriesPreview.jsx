@@ -163,7 +163,7 @@ const SuccessStoriesPreview = () => {
         </div>
 
         {/* Story Navigation */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Story Thumbnails */}
           <div className="flex space-x-4 overflow-x-auto pb-2">
             {successStories?.map((story, index) => (

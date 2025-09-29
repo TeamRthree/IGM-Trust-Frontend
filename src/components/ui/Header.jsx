@@ -39,13 +39,11 @@ const Header = () => {
 
   return (
     <header 
-      className="fixed top-0 left-0 right-0 z-50 transition-warm 
-          shadow-warm border-b 
-        bg-white
-      "
+      className="fixed top-0 left-0  z-50 transition-warm 
+          shadow-warm border-b w-full bg-white"
     >
-      <div className="w-full px-6 md:px-8 xl:px-48">
-        <div className="flex items-center justify-between h-20 ">
+      <div className="w-full px-2 md:px-8 xl:px-48">
+        <div className="flex  items-center justify-between h-20 ">
           {/* Logo */}
           <Link 
             to="/homepage" 
@@ -53,7 +51,7 @@ const Header = () => {
             onClick={closeMenu}
           >
             <div className="flex items-center justify-center w-10 h-10 bg-gradient-trust rounded-lg shadow-button">
-              <Icon name="Heart" size={24} color="white" strokeWidth={2.5} />
+              <Icon name="Heart" size={24} className='text-secondary' strokeWidth={2.5} />
             </div>
             <div className="flex flex-col">
               <span className="font-heading font-bold text-lg text-foreground leading-none">

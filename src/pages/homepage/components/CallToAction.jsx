@@ -239,7 +239,7 @@ const CallToAction = () => {
 
         {/* Main CTA Card */}
         <div className="bg-card rounded-3xl shadow-warm-hover border border-border overflow-hidden">
-          <div className="grid lg:grid-cols-2 h-[100vh]">
+          <div className="grid lg:grid-cols-2 md:h-[100vh]">
             {/* Image Side */}
             <div className="relative h-64 lg:h-auto">
               <Image
