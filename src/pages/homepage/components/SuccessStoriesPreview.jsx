@@ -165,7 +165,7 @@ const SuccessStoriesPreview = () => {
         {/* Story Navigation */}
         <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Story Thumbnails */}
-          <div className="flex space-x-4 overflow-x-auto pb-2">
+          <div className="flex md:space-x-4 flex-col md:flex-row space-y-4 md:space-y-0 pb-2">
             {successStories?.map((story, index) => (
               <button
                 key={story?.id}
