@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Icon from '../../../components/AppIcon';
+import { Link } from 'react-router-dom';
 
 const ImpactCounters = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -133,7 +134,7 @@ const ImpactCounters = () => {
             <div
               key={item?.key}
               className={`relative group bg-card rounded-xl p-8 shadow-warm hover:shadow-warm-hover transition-all duration-300 border border-border hover:border-primary/20 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-8'
               }`}
               style={{
                 transitionDelay: `${impactData?.indexOf(item) * 100}ms`
@@ -141,16 +142,16 @@ const ImpactCounters = () => {
             >
               {/* Icon */}
               <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl ${item?.bgColor} mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <Icon name={item?.icon} size={28} className={item?.color} strokeWidth={2.5} />
+                <Icon name={item?.icon} size={28} className="text-primary" strokeWidth={2.5} />
               </div>
 
               {/* Counter */}
               <div className="space-y-2 mb-4">
                 <div className="flex items-baseline space-x-1">
-                  <span className={`font-heading font-bold text-4xl lg:text-5xl ${item?.color} tabular-nums`}>
+                  <span className={`font-heading font-bold text-4xl lg:text-5xl text-secondary tabular-nums`}>
                     {formatNumber(counters?.[item?.key])}
                   </span>
-                  <span className={`font-heading font-bold text-2xl ${item?.color}`}>
+                  <span className="font-heading font-bold text-2xl text-secondary">
                     {item?.suffix}
                   </span>
                 </div>
@@ -161,8 +162,7 @@ const ImpactCounters = () => {
                 {item?.label}
               </p>
 
-              {/* Hover Effect */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+            
             </div>
           ))}
         </div>
@@ -181,15 +181,19 @@ const ImpactCounters = () => {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
-                <button className="inline-flex items-center justify-center space-x-2 bg-conversion-orange hover:bg-conversion-orange/90 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-button">
+                <Link to="/donate" >
+                 <button className="inline-flex items-center justify-center space-x-2 bg-conversion-orange hover:bg-conversion-orange/90 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-button">
                   <Icon name="Heart" size={18} />
                   <span>Donate Now</span>
                 </button>
-                
+                </Link>
+               
+                <Link to="/donate" >
                 <button className="inline-flex items-center justify-center space-x-2 bg-transparent hover:bg-muted text-foreground border border-border px-6 py-3 rounded-lg font-medium transition-colors">
                   <Icon name="Users" size={18} />
                   <span>Volunteer</span>
                 </button>
+                </Link>
               </div>
             </div>
           </div>

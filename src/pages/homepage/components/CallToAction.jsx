@@ -13,14 +13,14 @@ const CallToAction = () => {
       title: 'Make a Donation',
       icon: 'Heart',
       description: 'Your contribution directly impacts a child\'s life',
-      color: 'conversion-orange'
+      color: 'secondary'
     },
     {
       id: 'sponsor',
       title: 'Sponsor a Child',
       icon: 'Users',
       description: 'Build a personal connection and watch them grow',
-      color: 'primary'
+      color: 'secondary'
     },
     {
       id: 'volunteer',
@@ -90,7 +90,7 @@ const CallToAction = () => {
               {donationOptions?.map((option, index) => (
                 <div key={index} className="bg-card rounded-xl p-6 border border-border hover:border-conversion-orange/50 transition-colors cursor-pointer group">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="font-heading font-bold text-2xl text-conversion-orange">{option?.amount}</span>
+                    <span className="font-heading font-bold text-2xl text-secondary">{option?.amount}</span>
                     <Icon name="Heart" size={20} className="text-conversion-orange group-hover:scale-110 transition-transform" />
                   </div>
                   <p className="font-body text-muted-foreground text-sm">{option?.impact}</p>
@@ -104,19 +104,21 @@ const CallToAction = () => {
                   fullWidth
                   iconName="Heart"
                   iconPosition="left"
-                  className="bg-conversion-orange hover:bg-conversion-orange/90 text-white shadow-button"
+                  className="bg-secondary hover:bg-conversion-orange/90 text-white shadow-button"
                 >
                   Donate Now
                 </Button>
               </Link>
+              <Link to="/donate" >
               <Button
                 variant="outline"
                 iconName="Calculator"
                 iconPosition="left"
-                className="border-conversion-orange text-conversion-orange hover:bg-conversion-orange/10"
+                className="border-secondary text-conversion-orange hover:bg-secondary"
               >
                 Custom Amount
               </Button>
+              </Link>
             </div>
           </div>
         );
@@ -132,13 +134,16 @@ const CallToAction = () => {
                       <h4 className="font-heading font-bold text-lg text-foreground">{level?.level}</h4>
                       <p className="font-body text-primary font-medium">{level?.amount}</p>
                     </div>
+                    <Link to="/donate" >
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-primary text-primary hover:bg-primary/10 mt-4 md:mt-0"
+                      className="border-primary text-primary hover:bg-primary mt-4 md:mt-0"
                     >
                       Choose Plan
                     </Button>
+                    </Link>
+                    
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                     {level?.features?.map((feature, featureIndex) => (
@@ -157,7 +162,7 @@ const CallToAction = () => {
                 fullWidth
                 iconName="Users"
                 iconPosition="left"
-                className="bg-primary hover:bg-primary/90 text-white shadow-button"
+                className="bg-primary mt-8 hover:bg-primary/90 text-white shadow-button"
               >
                 Start Sponsorship
               </Button>
@@ -194,14 +199,16 @@ const CallToAction = () => {
                   Apply to Volunteer
                 </Button>
               </Link>
+              <Link to="/contact" className="">
               <Button
                 variant="outline"
                 iconName="Calendar"
                 iconPosition="left"
-                className="border-secondary text-secondary hover:bg-secondary/10"
+                className="border-secondary text-secondary hover:bg-secondary"
               >
                 Schedule Visit
               </Button>
+              </Link>
             </div>
           </div>
         );
@@ -212,7 +219,7 @@ const CallToAction = () => {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-primary/5 via-background to-conversion-orange/5">
+    <section className="py-16 lg:py-24 bg-muted">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -232,36 +239,18 @@ const CallToAction = () => {
 
         {/* Main CTA Card */}
         <div className="bg-card rounded-3xl shadow-warm-hover border border-border overflow-hidden">
-          <div className="grid lg:grid-cols-2">
+          <div className="grid lg:grid-cols-2 h-[100vh]">
             {/* Image Side */}
             <div className="relative h-64 lg:h-auto">
               <Image
-                src="https://images.pexels.com/photos/8613264/pexels-photo-8613264.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="https://media.istockphoto.com/id/1092042232/photo/two-cute-asian-child-girls-making-heart-shape-with-hands-together-with-love.jpg?s=612x612&w=0&k=20&c=BYx43zNVQB4HLsDxLq-17o55JBgqlD2rpjGMlhZztOU="
                 alt="Children at IGM Homes"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-foreground/60 via-foreground/30 to-transparent lg:from-transparent lg:via-transparent lg:to-foreground/60"></div>
               
-              {/* Floating Stats */}
-              <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-warm">
-                <div className="flex items-center space-x-3">
-                  <Icon name="Heart" size={20} className="text-conversion-orange" />
-                  <div>
-                    <div className="font-heading font-bold text-lg text-foreground">1,200+</div>
-                    <div className="font-body text-xs text-muted-foreground">Children Supported</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-warm">
-                <div className="flex items-center space-x-3">
-                  <Icon name="Users" size={20} className="text-primary" />
-                  <div>
-                    <div className="font-heading font-bold text-lg text-foreground">500+</div>
-                    <div className="font-body text-xs text-muted-foreground">Active Volunteers</div>
-                  </div>
-                </div>
-              </div>
+             
+          
             </div>
 
             {/* Content Side */}
@@ -322,7 +311,7 @@ const CallToAction = () => {
                   variant="outline"
                   iconName="Phone"
                   iconPosition="left"
-                  className="border-primary text-primary hover:bg-primary/10"
+                  className="border-primary text-primary hover:bg-primary"
                 >
                   Call Us: +91 98765 43210
                 </Button>
@@ -333,7 +322,7 @@ const CallToAction = () => {
                   variant="ghost"
                   iconName="Info"
                   iconPosition="left"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="text-muted-foreground hover:text-white"
                 >
                   Learn More About IGM
                 </Button>

@@ -39,14 +39,13 @@ const Header = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-warm ${
-        isScrolled 
-          ? 'bg-background/95 backdrop-blur-md shadow-warm border-b border-border' 
-          : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-warm 
+          shadow-warm border-b 
+        bg-white
+      "
     >
-      <div className="w-full">
-        <div className="flex items-center justify-between h-16 px-6 lg:px-8">
+      <div className="w-full px-6 md:px-8 xl:px-48">
+        <div className="flex items-center justify-between h-20 ">
           {/* Logo */}
           <Link 
             to="/homepage" 

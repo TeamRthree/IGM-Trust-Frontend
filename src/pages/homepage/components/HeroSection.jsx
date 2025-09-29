@@ -83,8 +83,8 @@ const HeroSection = () => {
           <div className={`space-y-8 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <div className="space-y-4">
               <div className="inline-flex items-center space-x-2 bg-primary/10 backdrop-blur-sm rounded-full px-4 py-2 border border-primary/20">
-                <Icon name="Heart" size={16} className="text-primary" />
-                <span className="text-sm font-medium text-primary">Since 1975</span>
+                <Icon name="Heart" size={16} className="text-conversion-orange" />
+                <span className="text-sm font-medium text-conversion-orange">Since 1975</span>
               </div>
               
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-tight">

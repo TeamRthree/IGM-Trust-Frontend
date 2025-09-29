@@ -52,20 +52,15 @@ const Footer = () => {
     { name: "YouTube", icon: "Youtube", url: "https://youtube.com/igmchildrenhomes" }
   ];
 
-  const certifications = [
-    { name: "12A Registration", number: "12A/2023/IGM" },
-    { name: "80G Certification", number: "80G/2023/ITAT" },
-    { name: "FCRA License", number: "FCRA/2023/IGM001" },
-    { name: "NGO Darpan", number: "TN/2023/0123456" }
-  ];
+  
 
   return (
     <footer className="bg-foreground text-white">
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+      <div className=" mx-auto px-6 md:px-8 xl:px-48  py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-12">
           {/* Brand Section */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <Link to="/homepage" className="flex items-center space-x-3 mb-6">
               <div className="flex items-center justify-center w-12 h-12 bg-gradient-trust rounded-lg">
                 <Icon name="Heart" size={28} color="white" strokeWidth={2.5} />
@@ -131,51 +126,7 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Certifications */}
-        <div className="mt-16 pt-8 border-t border-white/20">
-          <h3 className="font-heading font-bold text-lg text-white mb-6 text-center">
-            Our Certifications & Registrations
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {certifications?.map((cert, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Icon name="Award" size={24} className="text-sky-blue" />
-                </div>
-                <div className="font-body text-sm text-white font-medium mb-1">
-                  {cert?.name}
-                </div>
-                <div className="font-body text-xs text-white/60">
-                  {cert?.number}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Newsletter Signup */}
-        <div className="mt-16 pt-8 border-t border-white/20">
-          <div className="bg-white/10 rounded-2xl p-8 text-center">
-            <h3 className="font-heading font-bold text-2xl text-white mb-4">
-              Stay Connected with Our Mission
-            </h3>
-            <p className="font-body text-white/80 mb-6 max-w-2xl mx-auto">
-              Get updates on our children's progress, upcoming events, and ways you can make a difference. Join our community of compassionate supporters.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-sky-blue focus:border-transparent"
-              />
-              <button className="bg-conversion-orange hover:bg-conversion-orange/90 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-button flex items-center justify-center space-x-2">
-                <Icon name="Send" size={16} />
-                <span>Subscribe</span>
-              </button>
-            </div>
-          </div>
-        </div>
+        
       </div>
       {/* Bottom Footer */}
       <div className="border-t border-white/20">

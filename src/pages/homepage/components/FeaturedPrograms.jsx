@@ -13,7 +13,7 @@ const FeaturedPrograms = () => {
       image: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800",
       icon: "BookOpen",
       stats: "1,200+ Students",
-      color: "primary",
+      color: "secondary",
       features: ["Primary & Secondary Education", "Vocational Training", "Computer Literacy", "Life Skills Development"]
     },
     {
@@ -23,14 +23,14 @@ const FeaturedPrograms = () => {
       image: "https://images.pexels.com/photos/6303773/pexels-photo-6303773.jpeg?auto=compress&cs=tinysrgb&w=800",
       icon: "Heart",
       stats: "24/7 Care",
-      color: "conversion-orange",
+      color: "secondary",
       features: ["Regular Health Check-ups", "Nutritious Meals", "Mental Health Support", "Emergency Medical Care"]
     },
     {
       id: 3,
       title: "Family Reunification",
       description: "Dedicated efforts to reunite children with their families when possible, providing counseling and support throughout the process.",
-      image: "https://images.pexels.com/photos/8613264/pexels-photo-8613264.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "https://media.istockphoto.com/id/1473468869/photo/group-of-happy-people-with-senior-citizens-at-park.jpg?s=612x612&w=0&k=20&c=xROHNPZDpatj3V_XaVwZjthyC0HhT0FVSevcXsmI_xo=",
       icon: "Users",
       stats: "85% Success Rate",
       color: "secondary",
@@ -63,7 +63,7 @@ const FeaturedPrograms = () => {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-background">
+    <section className="py-16 lg:py-24 bg-muted">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">

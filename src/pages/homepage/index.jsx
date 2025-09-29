@@ -52,8 +52,7 @@ const Homepage = () => {
           <CallToAction />
         </main>
 
-        {/* Footer */}
-        <Footer />
+        
       </div>
     </>
   );

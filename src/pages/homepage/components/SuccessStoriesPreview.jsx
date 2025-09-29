@@ -207,32 +207,7 @@ const SuccessStoriesPreview = () => {
           </div>
         </div>
 
-        {/* Bottom Stats */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <Icon name="GraduationCap" size={28} className="text-primary" />
-            </div>
-            <div className="font-heading font-bold text-3xl text-foreground mb-2">2,500+</div>
-            <div className="font-body text-muted-foreground">Success Stories Documented</div>
-          </div>
-          
-          <div className="text-center">
-            <div className="w-16 h-16 bg-conversion-orange/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <Icon name="Briefcase" size={28} className="text-conversion-orange" />
-            </div>
-            <div className="font-heading font-bold text-3xl text-foreground mb-2">85%</div>
-            <div className="font-body text-muted-foreground">Employment Rate</div>
-          </div>
-          
-          <div className="text-center">
-            <div className="w-16 h-16 bg-secondary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <Icon name="Heart" size={28} className="text-secondary" />
-            </div>
-            <div className="font-heading font-bold text-3xl text-foreground mb-2">100%</div>
-            <div className="font-body text-muted-foreground">Find Purpose & Hope</div>
-          </div>
-        </div>
+       
       </div>
     </section>
   );
