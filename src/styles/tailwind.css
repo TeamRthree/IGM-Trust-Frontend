@@ -7,54 +7,54 @@
 @layer base {
   :root {
     /* Core Colors */
-    --color-background: #FEFEFE; /* pure-white */
-    --color-foreground: #2D3748; /* charcoal */
-    --color-border: #E2E8F0; /* gray-200 */
+    --color-background: #F5F8FF; /* light-blue-white */
+    --color-foreground: #1E3A8A; /* deep-blue */
+    --color-border: #CBD5E1; /* gray-blue */
     --color-input: #FFFFFF; /* white */
-    --color-ring: #2C5F41; /* deep-forest-green */
+    --color-ring: #1D4ED8; /* bright-blue */
     
     /* Card Colors */
     --color-card: #FFFFFF; /* white */
-    --color-card-foreground: #2D3748; /* charcoal */
+    --color-card-foreground: #1E3A8A; /* deep-blue */
     --color-popover: #FFFFFF; /* white */
-    --color-popover-foreground: #2D3748; /* charcoal */
+    --color-popover-foreground: #1E3A8A; /* deep-blue */
     
     /* Muted Colors */
-    --color-muted: #F8F6F3; /* warm-white */
-    --color-muted-foreground: #718096; /* warm-gray */
+    --color-muted: #E0E7FF; /* soft-blue */
+    --color-muted-foreground: #64748B; /* grayish-blue */
     
     /* Brand Colors */
-    --color-primary: #2C5F41; /* deep-forest-green */
+    --color-primary: #1D4ED8; /* trust-blue */
     --color-primary-foreground: #FFFFFF; /* white */
-    --color-secondary: #F4A261; /* warm-amber */
-    --color-secondary-foreground: #2D3748; /* charcoal */
+    --color-secondary: #3B82F6; /* lighter-blue */
+    --color-secondary-foreground: #FFFFFF; /* white */
     
     /* Action Colors */
-    --color-destructive: #E53E3E; /* clear-red */
+    --color-destructive: #DC2626; /* red for destructive */
     --color-destructive-foreground: #FFFFFF; /* white */
-    --color-accent: #E76F51; /* compassionate-coral */
+    --color-accent: #2563EB; /* accent-blue */
     --color-accent-foreground: #FFFFFF; /* white */
     
     /* Status Colors */
-    --color-success: #38A169; /* natural-green */
+    --color-success: #16A34A; /* green success */
     --color-success-foreground: #FFFFFF; /* white */
-    --color-warning: #D69E2E; /* gentle-gold */
-    --color-warning-foreground: #2D3748; /* charcoal */
-    --color-error: #E53E3E; /* clear-red */
+    --color-warning: #F59E0B; /* yellow warning */
+    --color-warning-foreground: #1E3A8A; /* deep-blue */
+    --color-error: #DC2626; /* red error */
     --color-error-foreground: #FFFFFF; /* white */
     
     /* Additional Brand Colors */
-    --color-warm-foundation: #F5F1EB; /* warm-foundation */
-    --color-sky-blue: #87CEEB; /* sky-blue */
-    --color-conversion-orange: #FF6B35; /* warm-orange */
+    --color-warm-foundation: #EFF6FF; /* soft foundation blue */
+    --color-sky-blue: #93C5FD; /* sky-blue */
+    --color-conversion-orange: #60A5FA; /* calm-blue for gradients */
     
     /* Typography */
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Inter', sans-serif;
     
     /* Shadows */
-    --shadow-card: 0 4px 12px rgba(44, 95, 65, 0.08);
-    --shadow-card-hover: 0 8px 24px rgba(44, 95, 65, 0.12);
+    --shadow-card: 0 4px 12px rgba(29, 78, 216, 0.08);
+    --shadow-card-hover: 0 8px 24px rgba(29, 78, 216, 0.12);
     --shadow-button: 0 2px 8px rgba(0, 0, 0, 0.06);
     
     /* Border Radius */
