@@ -9,11 +9,11 @@ const LeadershipTeam = () => {
   const leadership = [
     {
       id: 1,
-      name: "Dr. Priya Sharma",
-      position: "Executive Director",
+      name: "Shanthi Williams",
+      position: "Chairman",
       tenure: "Since 1985",
       image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
-      bio: `Dr. Priya Sharma has been the driving force behind IGM Children Homes for nearly four decades. With a PhD in Child Psychology and extensive experience in social work, she has transformed the organization from a small shelter into a comprehensive child welfare institution.\n\nUnder her leadership, IGM has expanded to serve over 1,500 children and has achieved a 94% success rate in child rehabilitation and reintegration. Her vision of 'Transformative Compassion in Action' continues to guide the organization's mission.`,
+      bio: `Shanthi Williams has been the driving force behind IGM Children Homes for nearly four decades. With a PhD in Child Psychology and extensive experience in social work, she has transformed the organization from a small shelter into a comprehensive child welfare institution.\n\nUnder her leadership, IGM has expanded to serve over 1,500 children and has achieved a 94% success rate in child rehabilitation and reintegration. Her vision of 'Transformative Compassion in Action' continues to guide the organization's mission.`,
       achievements: [
         "Padma Shri Award for Social Service (2018)",
         "National Child Welfare Excellence Award (2015)",
@@ -26,11 +26,11 @@ const LeadershipTeam = () => {
     },
     {
       id: 2,
-      name: "Mr. Rajesh Kumar",
-      position: "Operations Director",
+      name: "Jehoshaphat P. Williams",
+      position: "CEO",
       tenure: "Since 1995",
       image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
-      bio: `Mr. Rajesh Kumar oversees the day-to-day operations of all IGM facilities. With an MBA in Non-Profit Management and 30 years of experience in organizational development, he ensures efficient resource allocation and program implementation.\n\nHis expertise in operational excellence has helped IGM maintain the highest standards of care while expanding services to reach more children in need. He is particularly passionate about educational programs and vocational training initiatives.`,
+      bio: `Jehoshaphat P. Williams oversees the day-to-day operations of all IGM facilities. With an MBA in Non-Profit Management and 30 years of experience in organizational development, he ensures efficient resource allocation and program implementation.\n\nHis expertise in operational excellence has helped IGM maintain the highest standards of care while expanding services to reach more children in need. He is particularly passionate about educational programs and vocational training initiatives.`,
       achievements: [
         "Excellence in Non-Profit Management Award (2020)",
         "Implemented digital transformation initiatives",
@@ -43,11 +43,11 @@ const LeadershipTeam = () => {
     },
     {
       id: 3,
-      name: "Dr. Meera Patel",
-      position: "Child Development Specialist",
+      name: "Pearlyn Williams Suganthamani",
+      position: "Administrator",
       tenure: "Since 2000",
       image: "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg",
-      bio: `Dr. Meera Patel leads our child development programs with expertise in developmental psychology and trauma-informed care. She holds a PhD in Child Development and has specialized training in working with vulnerable children.\n\nHer innovative approaches to healing and development have been instrumental in achieving our high success rates. She has developed several proprietary programs that are now used as models by other child welfare organizations.`,
+      bio: `Pearlyn Williams Suganthamani leads our child development programs with expertise in developmental psychology and trauma-informed care. She holds a PhD in Child Development and has specialized training in working with vulnerable children.\n\nHer innovative approaches to healing and development have been instrumental in achieving our high success rates. She has developed several proprietary programs that are now used as models by other child welfare organizations.`,
       achievements: [
         "Developed trauma-informed care protocols",
         "Published 15+ research papers on child development",
@@ -60,11 +60,11 @@ const LeadershipTeam = () => {
     },
     {
       id: 4,
-      name: "Mr. Arjun Singh",
-      position: "Community Outreach Director",
+      name: "Eunice Williams",
+      position: "Project Director",
       tenure: "Since 2005",
       image: "https://images.pexels.com/photos/3184460/pexels-photo-3184460.jpeg",
-      bio: `Mr. Arjun Singh manages our community engagement and partnership initiatives. With a background in social work and community development, he has built strong relationships with government agencies, corporate partners, and local communities.\n\nHis efforts have resulted in numerous successful partnerships that have expanded our reach and impact. He is particularly focused on creating sustainable community-based support systems for children and families.`,
+      bio: `Eunice Williams manages our community engagement and partnership initiatives. With a background in social work and community development, he has built strong relationships with government agencies, corporate partners, and local communities.\n\nHis efforts have resulted in numerous successful partnerships that have expanded our reach and impact. He is particularly focused on creating sustainable community-based support systems for children and families.`,
       achievements: [
         "Established partnerships with 50+ organizations",
         "Launched community volunteer program",
@@ -87,7 +87,7 @@ const LeadershipTeam = () => {
   ];
 
   return (
-    <section className="py-20 bg-warm-foundation">
+    <section className="py-20 bg-muted">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-4">
@@ -137,28 +137,7 @@ const LeadershipTeam = () => {
           </div>
         </div>
 
-        {/* Board of Directors */}
-        <div className="mb-16">
-          <h3 className="font-heading font-bold text-2xl text-foreground mb-8 text-center">
-            Board of Directors
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {boardMembers?.map((member, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-warm">
-                <div className="flex items-start space-x-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg">
-                    <Icon name="User" size={20} className="text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-bold text-foreground mb-1">{member?.name}</h4>
-                    <p className="text-sm text-primary mb-2">{member?.position}</p>
-                    <p className="text-xs text-muted-foreground">{member?.expertise}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        
 
         {/* Leadership Modal */}
         {selectedMember && (

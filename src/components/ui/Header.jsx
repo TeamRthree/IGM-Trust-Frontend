@@ -18,12 +18,13 @@ const Header = () => {
   }, []);
 
   const navigationItems = [
-    { name: 'Home', path: '/homepage', icon: 'Home' },
-    { name: 'About', path: '/about', icon: 'Users' },
-    { name: 'Projects', path: '/projects', icon: 'FolderOpen' },
-    { name: 'Success Stories', path: '/success-stories', icon: 'Heart' },
-    { name: 'Contact', path: '/contact', icon: 'Mail' }
-  ];
+  { name: 'Home', path: '/', icon: 'Home' },
+  { name: 'About', path: '/about', icon: 'Users' },
+  { name: 'Projects', path: '/projects', icon: 'FolderOpen' },
+  { name: 'Success Stories', path: '/success-stories', icon: 'Heart' },
+  { name: 'Contact', path: '/contact', icon: 'Mail' }
+];
+
 
   const isActivePath = (path) => {
     return location?.pathname === path;

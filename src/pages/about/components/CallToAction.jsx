@@ -13,7 +13,7 @@ const CallToAction = () => {
         text: "Donate Now",
         link: "/donate",
         variant: "default",
-        className: "bg-conversion-orange hover:bg-conversion-orange/90"
+        className: "bg-secondary hover:bg-secondary/90"
       },
       secondaryAction: {
         text: "Sponsor a Child",
@@ -33,7 +33,7 @@ const CallToAction = () => {
         text: "Join as Volunteer",
         link: "/contact",
         variant: "default",
-        className: "bg-primary hover:bg-primary/90"
+        className: "bg-secondary hover:bg-secondary/90"
       },
       secondaryAction: {
         text: "Learn More",
@@ -68,43 +68,43 @@ const CallToAction = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-warm text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-black/20"></div>
+    <section className="py-20 bg-muted text-white relative overflow-hidden">
+      <div className="absolute inset-0 "></div>
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="font-heading font-bold text-3xl lg:text-4xl mb-4">
+          <h2 className="font-heading font-bold text-3xl lg:text-4xl mb-4 text-foreground">
             Together, We Restore Broken Lives
           </h2>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Every child deserves a chance to dream. Your compassion creates lasting change. Join our mission of transformative compassion in action.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {actionCards?.map((card, index) => (
-            <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/15 transition-warm">
-              <div className="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-6 mx-auto">
-                <Icon name={card?.icon} size={32} color="white" />
+            <div key={index} className="bg-card shadow-warm hover:shadow-warm-hover transition-all duration-300 backdrop-blur-sm rounded-2xl p-8 ">
+              <div className="flex items-center justify-center w-16 h-16 bg-black/10 rounded-full mb-6 mx-auto">
+                <Icon name={card?.icon} size={32} className='text-primary' />
               </div>
               
-              <h3 className="font-heading font-bold text-2xl text-center mb-4">
+              <h3 className="font-heading font-bold text-2xl text-foreground text-center mb-4">
                 {card?.title}
               </h3>
               
-              <p className="text-white/90 text-center mb-6 leading-relaxed">
+              <p className=" text-center mb-6 leading-relaxed text-muted-foreground">
                 {card?.description}
               </p>
               
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {card?.stats?.map((stat, idx) => (
                   <div key={idx} className="text-center">
-                    <div className="text-2xl font-bold text-white">{stat?.value}</div>
-                    <div className="text-sm text-white/80">{stat?.label}</div>
+                    <div className="text-2xl font-bold text-muted-foreground">{stat?.value}</div>
+                    <div className="text-sm text-muted-foreground">{stat?.label}</div>
                   </div>
                 ))}
               </div>
               
-              <div className="space-y-3">
+              <div className="flex flex-col space-y-4">
                 <Link to={card?.primaryAction?.link}>
                   <Button
                     variant={card?.primaryAction?.variant}
@@ -118,7 +118,7 @@ const CallToAction = () => {
                   <Button
                     variant={card?.secondaryAction?.variant}
                     fullWidth
-                    className="border-white text-white hover:bg-white/10"
+                    className="border-secondary text-secondary bg-transparent hover:bg-transparent hover:text-primary hover:border-primary"
                   >
                     {card?.secondaryAction?.text}
                   </Button>
@@ -129,23 +129,23 @@ const CallToAction = () => {
         </div>
 
         {/* Contact Information */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
-          <h3 className="font-heading font-bold text-2xl mb-6">
+        <div className="bg-white backdrop-blur-sm rounded-2xl p-8 text-center">
+          <h3 className="font-heading text-foreground font-bold text-2xl mb-6">
             Ready to Make a Difference?
           </h3>
           
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="flex items-center justify-center space-x-3">
-              <Icon name="Phone" size={20} color="white" />
-              <span className="text-white/90">+91 98765 43210</span>
+              <Icon name="Phone" size={20} className='text-muted-foreground'/>
+              <span className="text-muted-foreground">+91 98765 43210</span>
             </div>
             <div className="flex items-center justify-center space-x-3">
-              <Icon name="Mail" size={20} color="white" />
-              <span className="text-white/90">info@igmhomes.org</span>
+              <Icon name="Mail" size={20} className='text-muted-foreground'/>
+              <span className="text-muted-foreground">info@igmhomes.org</span>
             </div>
             <div className="flex items-center justify-center space-x-3">
-              <Icon name="MapPin" size={20} color="white" />
-              <span className="text-white/90">Visit Our Centers</span>
+              <Icon name="MapPin" size={20} className='text-muted-foreground'/>
+              <span className="text-muted-foreground">Visit Our Centers</span>
             </div>
           </div>
           
@@ -155,7 +155,7 @@ const CallToAction = () => {
                 variant="default"
                 iconName="MessageCircle"
                 iconPosition="left"
-                className="bg-white text-primary hover:bg-white/90"
+                className="bg-secondary text-white "
               >
                 Get in Touch
               </Button>
@@ -165,7 +165,7 @@ const CallToAction = () => {
                 variant="outline"
                 iconName="Eye"
                 iconPosition="left"
-                className="border-white text-white hover:bg-white/10"
+                className="border-secondary text-secondary hover:text-secondary hover:bg-transparent"
               >
                 See Our Impact
               </Button>

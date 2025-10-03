@@ -96,7 +96,7 @@ const TrustVerification = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-gradient-to-br from-background via-warm-foundation to-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-4">
@@ -218,57 +218,7 @@ const TrustVerification = () => {
           </div>
         </div>
 
-        {/* Reports & Documents */}
-        <div className="bg-warm-foundation rounded-2xl p-8">
-          <h3 className="font-heading font-bold text-2xl text-foreground mb-8 text-center">
-            Reports & Documents
-          </h3>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {auditReports?.map((report, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-warm">
-                <div className="flex items-center justify-between mb-4">
-                  <h4 className="font-bold text-foreground">{report?.type}</h4>
-                  <span className="px-2 py-1 bg-success/10 text-success text-xs font-medium rounded-full">
-                    {report?.status}
-                  </span>
-                </div>
-                
-                <div className="text-2xl font-bold text-primary mb-4">{report?.year}</div>
-                
-                <div className="space-y-2 mb-6">
-                  {report?.highlights?.map((highlight, idx) => (
-                    <div key={idx} className="flex items-start space-x-2">
-                      <Icon name="CheckCircle" size={14} className="text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <Button
-                  variant="outline"
-                  size="sm"
-                  fullWidth
-                  iconName="Download"
-                  iconPosition="left"
-                >
-                  Download Report
-                </Button>
-              </div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-8">
-            <Button
-              variant="default"
-              iconName="FolderOpen"
-              iconPosition="left"
-              className="bg-primary hover:bg-primary/90"
-            >
-              View All Reports
-            </Button>
-          </div>
-        </div>
+       
       </div>
     </section>
   );
