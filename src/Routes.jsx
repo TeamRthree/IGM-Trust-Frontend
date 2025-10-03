@@ -28,7 +28,7 @@ const Routes = () => {
 
           {/* Other pages wrapped in BlockedPage */}
           <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<BlockedPage><Projects /></BlockedPage>} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/success-stories" element={<BlockedPage><SuccessStories /></BlockedPage>} />
           <Route path="/contact" element={<BlockedPage><ContactPage /></BlockedPage>} />
           <Route path="/donate" element={<BlockedPage><DonatePage /></BlockedPage>} />

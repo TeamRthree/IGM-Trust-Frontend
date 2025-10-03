@@ -57,18 +57,7 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
             </div>
             
-            {/* Floating Stats */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-6 shadow-warm-hover">
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-lg">
-                  <Icon name="Users" size={24} color="white" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-foreground">500K+</div>
-                  <div className="text-sm text-muted-foreground">Lives Transformed</div>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
