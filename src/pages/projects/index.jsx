@@ -493,7 +493,7 @@ const Projects = () => {
             <h2 className="font-heading font-bold text-3xl text-foreground mb-4">
               Can't Find the Right Project?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
               Every child's journey is unique. Contact us to learn about custom sponsorship opportunities 
               or to discuss how you can make a targeted impact in specific areas of need.
             </p>
