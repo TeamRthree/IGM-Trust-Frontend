@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
 import Icon from '../../components/AppIcon';
@@ -372,33 +373,55 @@ const Projects = () => {
         <meta name="description" content="Explore our 47+ active projects helping 12,500+ children across Tamil Nadu. From education and healthcare to emergency relief - see how your support creates lasting impact." />
         <meta name="keywords" content="children projects, education support, healthcare initiatives, emergency relief, child welfare, NGO projects, donation projects" />
       </Helmet>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background pt-16">
         <Header />
         
         {/* Hero Section */}
-        <section className="pt-24 pb-12 bg-gradient-warm">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 text-white text-sm font-medium mb-4 backdrop-blur-sm">
-                <Icon name="Target" size={16} className="mr-2" />
-                47 Active Projects
-              </div>
-              <h1 className="font-heading font-bold text-4xl lg:text-5xl text-white mb-4">
-                Impact Showcase Universe
-              </h1>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                Discover how your compassion transforms lives through our comprehensive child welfare programs. 
-                Each project represents hope, potential, and the journey from broken to beautiful.
-              </p>
-            </div>
-
-            {/* Stats Overview */}
-            <ProjectStats stats={projectStats} />
+<section className="relative bg-gradient-to-br from-background via-warm-foundation to-background text-white overflow-hidden pt-24 pb-12 py-24 lg:py-32">
+  <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      
+      {/* Left Content */}
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-muted  text-sm text-muted-foreground font-medium backdrop-blur-sm">
+            <Icon name="Target" size={16} className="mr-2 text-muted-foreground" />
+            47 Active Projects
           </div>
-        </section>
+
+          <h1 className="font-heading font-bold text-4xl text-foreground lg:text-5xl leading-tight">
+            Impact Showcase Universe
+          </h1>
+
+          <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl leading-relaxed">
+            Discover how your compassion transforms lives through our comprehensive child welfare programs. 
+            Each project represents hope, potential, and the journey from broken to beautiful.
+          </p>
+        </div>
+
+        {/* Stats Overview */}
+        <ProjectStats stats={projectStats} />
+      </div>
+
+      {/* Right Image */}
+      <div className="relative">
+        <div className="relative rounded-2xl overflow-hidden shadow-warm-hover">
+          <img
+            src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg"
+            alt="Children learning together at IGM Children Homes"
+            className="w-full h-96 lg:h-[500px] object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
         {/* Featured Project */}
-        <section className="py-12">
+        <section className="py-12 bg-muted">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <FeaturedProject 
               project={featuredProject} 
@@ -466,9 +489,7 @@ const Projects = () => {
         {/* Call to Action */}
         <section className="py-16 bg-muted">
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mx-auto mb-6">
-              <Icon name="Heart" size={32} className="text-primary" />
-            </div>
+            
             <h2 className="font-heading font-bold text-3xl text-foreground mb-4">
               Can't Find the Right Project?
             </h2>
@@ -476,27 +497,18 @@ const Projects = () => {
               Every child's journey is unique. Contact us to learn about custom sponsorship opportunities 
               or to discuss how you can make a targeted impact in specific areas of need.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="default"
-                size="lg"
-                iconName="Phone"
-                iconPosition="left"
-                iconSize={20}
-                className="bg-primary hover:bg-primary/90"
-              >
-                Contact Our Team
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                iconName="Mail"
-                iconPosition="left"
-                iconSize={20}
-              >
-                Get Project Updates
-              </Button>
-            </div>
+            <Link to="/contact">
+    <Button
+      variant="default"
+      size="lg"
+      iconName="Phone"
+      iconPosition="left"
+      iconSize={20}
+      className="bg-primary hover:bg-primary/90"
+    >
+      Contact Our Team
+    </Button>
+  </Link>
           </div>
         </section>
 

@@ -31,7 +31,7 @@ const ProjectCard = ({ project, onDonate }) => {
         </div>
 
         {/* Impact Stats Overlay */}
-        <div className={`absolute inset-0 bg-primary/90 backdrop-blur-sm transition-warm flex items-center justify-center ${
+        <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-warm flex items-center justify-center ${
           isHovered ? 'opacity-100' : 'opacity-0'
         }`}>
           <div className="text-center text-white p-6">

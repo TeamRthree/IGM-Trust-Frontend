@@ -83,18 +83,7 @@ const Header = () => {
 
           {/* Desktop CTA */}
 <div className="hidden lg:flex items-center space-x-4">
-  <Link to="/contact" onClick={closeMenu}>
-    <Button
-      variant="outline"
-      size="sm"
-      iconName="Phone"
-      iconPosition="left"
-      iconSize={16}
-      className="text-sm"
-    >
-      Contact Us
-    </Button>
-  </Link>
+  
   <Link to="/donate" onClick={closeMenu}>
     <Button
       variant="default"
@@ -102,7 +91,7 @@ const Header = () => {
       iconName="Heart"
       iconPosition="left"
       iconSize={16}
-      className="bg-conversion-orange hover:bg-conversion-orange/90 text-white shadow-button"
+      className="bg-secondary hover:bg-conversion-orange/90 text-white shadow-button"
     >
       Donate Now
     </Button>
@@ -146,17 +135,6 @@ const Header = () => {
               
               {/* Mobile CTAs */}
 <div className="pt-4 space-y-3 border-t border-border">
-  <Link to="/contact" onClick={closeMenu}>
-    <Button
-      variant="outline"
-      fullWidth
-      iconName="Phone"
-      iconPosition="left"
-      iconSize={16}
-    >
-      Contact Us
-    </Button>
-  </Link>
   <Link to="/donate" onClick={closeMenu}>
     <Button
       variant="default"
@@ -164,7 +142,7 @@ const Header = () => {
       iconName="Heart"
       iconPosition="left"
       iconSize={16}
-      className="bg-conversion-orange hover:bg-conversion-orange/90 text-white"
+      className="bg-secondary hover:bg-conversion-orange/90 text-white"
     >
       Donate Now
     </Button>

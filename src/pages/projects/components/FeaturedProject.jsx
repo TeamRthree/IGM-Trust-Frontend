@@ -8,7 +8,7 @@ const FeaturedProject = ({ project, onDonate }) => {
   const daysLeft = Math.ceil((new Date(project.deadline) - new Date()) / (1000 * 60 * 60 * 24));
 
   return (
-    <div className="bg-gradient-trust rounded-xl overflow-hidden shadow-warm-hover mb-8">
+    <div className="bg-gradient-trust rounded-xl overflow-hidden bg-white shadow-warm-hover mb-8">
       <div className="grid lg:grid-cols-2 gap-0">
         {/* Image Section */}
         <div className="relative h-64 lg:h-auto">
@@ -20,7 +20,7 @@ const FeaturedProject = ({ project, onDonate }) => {
           
           {/* Featured Badge */}
           <div className="absolute top-4 left-4">
-            <div className="flex items-center space-x-2 bg-secondary/90 text-secondary-foreground px-3 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
+            <div className="flex items-center space-x-2 bg-black/20 text-secondary-foreground px-3 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
               <Icon name="Star" size={16} />
               <span>Featured Project</span>
             </div>
@@ -29,7 +29,7 @@ const FeaturedProject = ({ project, onDonate }) => {
           {/* Urgency Badge */}
           {project?.urgent && (
             <div className="absolute top-4 right-4">
-              <div className="flex items-center space-x-1 bg-error/90 text-error-foreground px-3 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
+              <div className="flex items-center space-x-1 bg-black/20 text-error-foreground px-3 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
                 <Icon name="Clock" size={16} />
                 <span>{daysLeft} days left</span>
               </div>
@@ -40,13 +40,13 @@ const FeaturedProject = ({ project, onDonate }) => {
         {/* Content Section */}
         <div className="p-8 text-white">
           <div className="mb-4">
-            <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/20 text-white mb-3">
+            <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-black/20 text-white mb-3">
               {project?.category}
             </div>
-            <h2 className="font-heading font-bold text-2xl lg:text-3xl mb-3">
+            <h2 className="font-heading font-bold text-foreground text-2xl lg:text-3xl mb-3">
               {project?.title}
             </h2>
-            <p className="text-white/90 text-lg leading-relaxed">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               {project?.description}
             </p>
           </div>
@@ -54,16 +54,16 @@ const FeaturedProject = ({ project, onDonate }) => {
           {/* Progress Section */}
           <div className="mb-6">
             <div className="flex justify-between items-center mb-3">
-              <span className="text-lg font-semibold">
+              <span className="text-lg text-muted-foreground font-semibold">
                 ₹{project?.raised?.toLocaleString()} raised
               </span>
-              <span className="text-white/80">
+              <span className="text-muted-foreground">
                 {progressPercentage?.toFixed(0)}% of ₹{project?.target?.toLocaleString()}
               </span>
             </div>
-            <div className="w-full bg-white/20 rounded-full h-3">
+            <div className="w-full bg-muted rounded-full h-3">
               <div 
-                className="bg-white h-3 rounded-full transition-warm"
+                className="bg-muted-foreground h-3 rounded-full transition-warm"
                 style={{ width: `${Math.min(progressPercentage, 100)}%` }}
               />
             </div>
@@ -72,16 +72,16 @@ const FeaturedProject = ({ project, onDonate }) => {
           {/* Impact Stats */}
           <div className="grid grid-cols-3 gap-4 mb-6">
             <div className="text-center">
-              <div className="text-2xl font-bold">{project?.beneficiaries}</div>
-              <div className="text-sm text-white/80">Children</div>
+              <div className="text-2xl font-bold text-foreground">{project?.beneficiaries}</div>
+              <div className="text-sm text-muted-foreground">Children</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold">{project?.donors}</div>
-              <div className="text-sm text-white/80">Donors</div>
+              <div className="text-2xl font-bold text-foreground">{project?.donors}</div>
+              <div className="text-sm text-muted-foreground">Donors</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold">{project?.completion}%</div>
-              <div className="text-sm text-white/80">Complete</div>
+              <div className="text-2xl font-bold text-foreground">{project?.completion}%</div>
+              <div className="text-sm text-muted-foreground">Complete</div>
             </div>
           </div>
 
@@ -93,7 +93,7 @@ const FeaturedProject = ({ project, onDonate }) => {
               iconName="Heart"
               iconPosition="left"
               iconSize={20}
-              className="bg-conversion-orange hover:bg-conversion-orange/90 text-white shadow-button flex-1"
+              className="bg-secondary hover:bg-conversion-orange/90 text-white shadow-button flex-1"
               onClick={() => onDonate(project)}
             >
               Donate to This Project
@@ -104,7 +104,7 @@ const FeaturedProject = ({ project, onDonate }) => {
               iconName="Share2"
               iconPosition="left"
               iconSize={20}
-              className="border-white/30 text-white hover:bg-white/10"
+              className="border-secondary text-secondary hover:text-secondary hover:bg-transparent "
             >
               Share
             </Button>
@@ -112,9 +112,9 @@ const FeaturedProject = ({ project, onDonate }) => {
 
           {/* Last Update */}
           <div className="mt-4 pt-4 border-t border-white/20">
-            <div className="flex items-center justify-between text-sm text-white/80">
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
               <span>Last updated: {project?.lastUpdated}</span>
-              <div className="flex items-center space-x-1">
+              <div className="flex items-center text-muted-foreground space-x-1">
                 <Icon name="MapPin" size={14} />
                 <span>{project?.location}</span>
               </div>
