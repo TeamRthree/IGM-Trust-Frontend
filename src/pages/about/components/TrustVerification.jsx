@@ -100,44 +100,11 @@ const TrustVerification = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-4">
-            Trust & Verification Center
+            Transparency Metrics
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Our commitment to transparency and accountability is validated by independent certifications, regular audits, and comprehensive reporting.
           </p>
-        </div>
-
-        {/* Certifications */}
-        <div className="mb-16">
-          <h3 className="font-heading font-bold text-2xl text-foreground mb-8 text-center">
-            Certifications & Recognition
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {certifications?.map((cert, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-warm hover:shadow-warm-hover transition-warm overflow-hidden">
-                <div className="relative h-32 bg-gradient-trust">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full">
-                      <Icon name={cert?.icon} size={32} color="white" />
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <h4 className="font-bold text-foreground mb-2">{cert?.name}</h4>
-                  <div className="flex items-center space-x-2 mb-3">
-                    <span className="px-2 py-1 bg-success/10 text-success text-xs font-medium rounded-full">
-                      {cert?.rating}
-                    </span>
-                    <span className="text-xs text-muted-foreground">
-                      Valid until {cert?.validUntil}
-                    </span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{cert?.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Financial Transparency */}
@@ -178,9 +145,7 @@ const TrustVerification = () => {
 
           {/* Transparency Metrics */}
           <div className="space-y-6">
-            <h3 className="font-heading font-bold text-2xl text-foreground">
-              Transparency Metrics
-            </h3>
+            
             
             <div className="grid grid-cols-2 gap-4">
               {transparencyMetrics?.map((metric, index) => (

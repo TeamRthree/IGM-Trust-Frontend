@@ -12,8 +12,8 @@ const HeroSection = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
-                <div className="flex items-center justify-center w-12 h-12 bg-black/10 rounded-lg backdrop-blur-sm">
-                  <Icon name="Heart" size={24} className='text-muted-foreground' strokeWidth={2.5} />
+                <div className="flex items-center justify-center w-12 h-12 bg-muted rounded-lg backdrop-blur-sm">
+                  <Icon name="Heart" size={24} className='text-foreground' strokeWidth={2.5} />
                 </div>
                 <span className="text-lg font-medium text-muted-foreground">Since 1975</span>
               </div>

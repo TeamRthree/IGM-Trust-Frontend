@@ -84,21 +84,21 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Icon name="MapPin" size={16} className="text-sky-blue flex-shrink-0" />
                 <span className="font-body text-sm text-white/80">
-                  123 Hope Street, Chennai, Tamil Nadu 600001
+                  No.9, Karthick Nagar, IGM Campus Veerabaghu Nagar, Guduvancheri 603202, South India.
                 </span>
               </div>
               
               <div className="flex items-center space-x-3">
                 <Icon name="Phone" size={16} className="text-sky-blue flex-shrink-0" />
                 <span className="font-body text-sm text-white/80">
-                  +91 98765 43210
+                  9087444321 / 9962444321
                 </span>
               </div>
               
               <div className="flex items-center space-x-3">
                 <Icon name="Mail" size={16} className="text-sky-blue flex-shrink-0" />
                 <span className="font-body text-sm text-white/80">
-                  info@igmchildrenhomes.org
+                  projectdirector@igmchildrenhome.com, admin@igmchildrenhome.com
                 </span>
               </div>
             </div>

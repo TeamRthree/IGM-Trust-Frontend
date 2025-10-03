@@ -134,20 +134,9 @@ const CallToAction = () => {
             Ready to Make a Difference?
           </h3>
           
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <div className="flex items-center justify-center space-x-3">
-              <Icon name="Phone" size={20} className='text-muted-foreground'/>
-              <span className="text-muted-foreground">+91 98765 43210</span>
-            </div>
-            <div className="flex items-center justify-center space-x-3">
-              <Icon name="Mail" size={20} className='text-muted-foreground'/>
-              <span className="text-muted-foreground">info@igmhomes.org</span>
-            </div>
-            <div className="flex items-center justify-center space-x-3">
-              <Icon name="MapPin" size={20} className='text-muted-foreground'/>
-              <span className="text-muted-foreground">Visit Our Centers</span>
-            </div>
-          </div>
+          <p className="text-muted-foreground mb-8">
+            Your support can turn small steps into lasting impact. Let’s work together to create something meaningful.
+          </p>
           
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/contact">

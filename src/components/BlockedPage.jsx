@@ -13,7 +13,7 @@ const BlockedPage = () => {
         Coming Soon
       </h1>
       <p className="relative text-lg md:text-xl font-body mb-6 max-w-lg text-center z-10">
-        This section for the <span className="font-semibold">New Trust Foundation for Children</span> 
+        This section for the <span className="font-semibold">New Trust Foundation for Children </span> 
         is currently under development. Check back soon to explore inspiring stories, projects, and ways 
         to support children’s futures.
       </p>

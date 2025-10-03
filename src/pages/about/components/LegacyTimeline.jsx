@@ -75,7 +75,7 @@ const LegacyTimeline = () => {
           <div className="space-y-6">
             <div className="relative">
               {/* Timeline Line */}
-              <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border"></div>
+              <div className="absolute left-10 top-0 bottom-0 w-0.5 bg-border"></div>
               
               {timelineData?.map((item, index) => (
                 <div

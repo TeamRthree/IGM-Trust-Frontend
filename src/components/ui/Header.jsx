@@ -82,28 +82,33 @@ const Header = () => {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <Button
-              variant="outline"
-              size="sm"
-              iconName="Phone"
-              iconPosition="left"
-              iconSize={16}
-              className="text-sm"
-            >
-              Call Us
-            </Button>
-            <Button
-              variant="default"
-              size="sm"
-              iconName="Heart"
-              iconPosition="left"
-              iconSize={16}
-              className="bg-conversion-orange hover:bg-conversion-orange/90 text-white shadow-button"
-            >
-              Donate Now
-            </Button>
-          </div>
+<div className="hidden lg:flex items-center space-x-4">
+  <Link to="/contact" onClick={closeMenu}>
+    <Button
+      variant="outline"
+      size="sm"
+      iconName="Phone"
+      iconPosition="left"
+      iconSize={16}
+      className="text-sm"
+    >
+      Contact Us
+    </Button>
+  </Link>
+  <Link to="/donate" onClick={closeMenu}>
+    <Button
+      variant="default"
+      size="sm"
+      iconName="Heart"
+      iconPosition="left"
+      iconSize={16}
+      className="bg-conversion-orange hover:bg-conversion-orange/90 text-white shadow-button"
+    >
+      Donate Now
+    </Button>
+  </Link>
+</div>
+
 
           {/* Mobile Menu Button */}
           <button
@@ -140,29 +145,32 @@ const Header = () => {
               ))}
               
               {/* Mobile CTAs */}
-              <div className="pt-4 space-y-3 border-t border-border">
-                <Button
-                  variant="outline"
-                  fullWidth
-                  iconName="Phone"
-                  iconPosition="left"
-                  iconSize={16}
-                  onClick={closeMenu}
-                >
-                  Call Us
-                </Button>
-                <Button
-                  variant="default"
-                  fullWidth
-                  iconName="Heart"
-                  iconPosition="left"
-                  iconSize={16}
-                  className="bg-conversion-orange hover:bg-conversion-orange/90 text-white"
-                  onClick={closeMenu}
-                >
-                  Donate Now
-                </Button>
-              </div>
+<div className="pt-4 space-y-3 border-t border-border">
+  <Link to="/contact" onClick={closeMenu}>
+    <Button
+      variant="outline"
+      fullWidth
+      iconName="Phone"
+      iconPosition="left"
+      iconSize={16}
+    >
+      Contact Us
+    </Button>
+  </Link>
+  <Link to="/donate" onClick={closeMenu}>
+    <Button
+      variant="default"
+      fullWidth
+      iconName="Heart"
+      iconPosition="left"
+      iconSize={16}
+      className="bg-conversion-orange hover:bg-conversion-orange/90 text-white"
+    >
+      Donate Now
+    </Button>
+  </Link>
+</div>
+
             </nav>
           </div>
         </div>
