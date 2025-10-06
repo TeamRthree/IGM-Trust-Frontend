@@ -6,6 +6,7 @@ import SixPillarApproach from './components/SixPillarApproach';
 import LeadershipTeam from './components/LeadershipTeam';
 import TrustVerification from './components/TrustVerification';
 import CallToAction from './components/CallToAction';
+import StoryStats from './components/StoryStats';
 
 const About = () => {
   useEffect(() => {
@@ -29,6 +30,8 @@ const About = () => {
         {/* Hero Section */}
         <HeroSection />
         
+<StoryStats/>
+
         {/* Legacy Timeline */}
         <LegacyTimeline />
         

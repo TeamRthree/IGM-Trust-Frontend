@@ -4,9 +4,10 @@ import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
 import NotFound from "./pages/NotFound";
 import ContactPage from "./pages/contact";
-import SuccessStories from "./pages/success-stories";
+
 import Projects from "./pages/projects";
 import DonatePage from "./pages/donate";
+import GalleryPage from "./pages/gallery";
 import About from "./pages/about";
 import Homepage from "./pages/homepage";
 import BlockedPage from "./components/BlockedPage";
@@ -29,7 +30,8 @@ const Routes = () => {
           {/* Other pages wrapped in BlockedPage */}
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/success-stories" element={<BlockedPage><SuccessStories /></BlockedPage>} />
+          
+          <Route path="/gallery" element={<BlockedPage><GalleryPage /></BlockedPage>} />
           <Route path="/contact" element={<BlockedPage><ContactPage /></BlockedPage>} />
           <Route path="/donate" element={<BlockedPage><DonatePage /></BlockedPage>} />
 

@@ -500,33 +500,6 @@ const SuccessStories = () => {
             </div>
           </div>
         </section>
-
-        {/* Footer */}
-        <footer className="bg-foreground text-white py-12">
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="text-center">
-              <div className="flex items-center justify-center space-x-3 mb-6">
-                <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-lg">
-                  <Icon name="Heart" size={24} color="white" strokeWidth={2.5} />
-                </div>
-                <div className="text-left">
-                  <div className="font-heading font-bold text-xl">IGM Children Homes</div>
-                  <div className="text-sm text-white/80">Restoring Broken Lives Since 1975</div>
-                </div>
-              </div>
-              <p className="text-white/80 mb-6 max-w-2xl mx-auto">
-                Every story shared here represents our commitment to transforming lives and building brighter futures. Thank you for being part of these incredible journeys.
-              </p>
-              <div className="flex items-center justify-center space-x-6 text-sm">
-                <span>© {new Date()?.getFullYear()} IGM Children Homes</span>
-                <span>•</span>
-                <span>Registered Charity</span>
-                <span>•</span>
-                <span>All Rights Reserved</span>
-              </div>
-            </div>
-          </div>
-        </footer>
       </div>
     </>
   );
