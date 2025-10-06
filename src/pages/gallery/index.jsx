@@ -93,7 +93,7 @@ const GalleryPage = () => {
   }, [isOpen]);
 
   return (
-    <div className="min-h-screen bg-background ">
+    <div id="gallery" className="min-h-screen bg-background ">
       <Header />
       <main className=" px-4 py-20 lg:py-32 md:px-8">
         <div className="max-w-7xl mx-auto">

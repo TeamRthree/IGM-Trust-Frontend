@@ -217,12 +217,12 @@ const DonatePage = () => {
         </section>
 
         {/* Main Donation Form */}
-        <section className="py-12">
+        <section id='donate-now' className="py-12">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div  className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               
               {/* Left Column - Donation Form */}
-              <div className="lg:col-span-2">
+              <div  className="lg:col-span-2">
                 <div className="bg-card rounded-lg shadow-warm p-6 md:p-8">
                   <ProgressIndicator currentStep={currentStep} totalSteps={totalSteps} />
 

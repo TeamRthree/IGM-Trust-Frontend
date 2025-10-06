@@ -130,7 +130,7 @@ const VolunteerOpportunities = () => {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-muted">
+    <section id='volunteer' className="py-16 lg:py-24 bg-muted">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-6">

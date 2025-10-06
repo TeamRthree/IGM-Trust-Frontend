@@ -81,7 +81,7 @@ const SixPillarApproach = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-background via-warm-foundation to-background">
+    <section id='six-pillar' className="py-20 bg-gradient-to-br from-background via-warm-foundation to-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-4">

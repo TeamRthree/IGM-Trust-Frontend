@@ -85,7 +85,7 @@ const CallToAction = () => {
     switch (activeTab) {
       case 'donate':
         return (
-          <div className="space-y-6">
+          <div  className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {donationOptions?.map((option, index) => (
                 <div key={index} className="bg-card rounded-xl p-6 border border-border hover:border-conversion-orange/50 transition-colors cursor-pointer group">
@@ -97,7 +97,7 @@ const CallToAction = () => {
                 </div>
               ))}
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div  className="flex flex-col sm:flex-row gap-4 ">
               <Link to="/donate" className="flex-1">
                 <Button
                   variant="default"
@@ -219,7 +219,7 @@ const CallToAction = () => {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-muted">
+    <section id='sponsor' className="py-16 lg:py-24 bg-muted">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">

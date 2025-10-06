@@ -34,7 +34,7 @@ const StoryStats = () => {
   ];
 
   return (
-    <div className=" bg-muted  pt-20 ">
+    <div id='our-story' className=" bg-muted  pt-20 ">
       <div className='max-w-7xl mx-auto px-6 lg:px-8'>
 <div className="text-center mb-8">
         <h2 className="font-heading font-bold text-foreground text-3xl mb-4">

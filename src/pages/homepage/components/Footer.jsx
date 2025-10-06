@@ -1,45 +1,47 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { HashLink as Link } from 'react-router-hash-link';
 import Icon from '../../../components/AppIcon';
 
 const Footer = () => {
   const currentYear = new Date()?.getFullYear();
 
+  
   const footerSections = [
     {
       title: "About IGM",
       links: [
-        { name: "Our Story", path: "/about" },
-        { name: "Mission & Vision", path: "/about" },
-        { name: "Leadership Team", path: "/about" },
-        { name: "Annual Reports", path: "/about" }
+        { name: "Our Story", path: "/about", id: "our-story" },
+        { name: "Our Six-Pillar Approach", path: "/about", id: "six-pillar" },
+        { name: "Leadership Team", path: "/about", id: "team" },
+        { name: "Transparency Metrics", path: "/about", id: "transparency-metrics" }
       ]
     },
     {
-      title: "Our Work",
-      links: [
-        { name: "All Programs", path: "/projects" },
-        { name: "Education", path: "/projects" },
-        { name: "Healthcare", path: "/projects" },
-        { name: "Family Reunification", path: "/projects" }
-      ]
-    },
+  title: "Our Work",
+  links: [
+    { name: "All Programs", path: "/projects", category: "" },
+    { name: "Education", path: "/projects", category: "Education" },
+    { name: "Healthcare", path: "/projects", category: "Healthcare" },
+    { name: "Family Reunification", path: "/projects", category: "Family Reunification" }
+  ]
+}
+,
     {
       title: "Get Involved",
       links: [
-        { name: "Donate Now", path: "/donate" },
-        { name: "Sponsor a Child", path: "/donate" },
-        { name: "Volunteer", path: "/contact" },
-        { name: "Corporate Partnership", path: "/contact" }
+        { name: "Donate Now", path: "/donate", id: "donate-now" },
+        { name: "Sponsor a Child", path: "/", id: "sponsor" },
+        { name: "Volunteer", path: "/contact", id: "volunteer" },
+        { name: "Corporate Partnership", path: "/about", id: "corporate" }
       ]
     },
     {
       title: "Resources",
       links: [
-        { name: "Success Stories", path: "/success-stories" },
-        { name: "Photo Gallery", path: "/success-stories" },
-        { name: "News & Updates", path: "/about" },
-        { name: "Contact Us", path: "/contact" }
+        { name: "Photo Gallery", path: "/gallery", id: "gallery" },
+        { name: "Upcoming Events", path: "/contact", id: "events" },
+        { name: "Contact Us", path: "/contact", id: "contact" }
       ]
     }
   ];
@@ -104,26 +106,33 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Footer Links */}
           {footerSections?.map((section, index) => (
-            <div key={index}>
-              <h3 className="font-heading font-bold text-lg text-white mb-6">
-                {section?.title}
-              </h3>
-              <ul className="space-y-3">
-                {section?.links?.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <Link
-                      to={link?.path}
-                      className="font-body text-white/80 hover:text-sky-blue transition-colors text-sm"
-                    >
-                      {link?.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+  <div key={index}>
+    <h3 className="font-heading font-bold text-lg text-white mb-6">
+      {section?.title}
+    </h3>
+    <ul className="space-y-3">
+      {section?.links?.map((link, linkIndex) => (
+        <li key={linkIndex}>
+          <Link
+            to={
+              section.title === "Our Work" && link.category
+                ? `${link.path}?category=${encodeURIComponent(link.category)}`
+                : link.id
+                ? `${link.path}#${link.id}`
+                : link.path
+            }
+            smooth
+            className="font-body text-white/80 hover:text-sky-blue transition-colors text-sm"
+          >
+            {link?.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+))}
+
         </div>
 
         

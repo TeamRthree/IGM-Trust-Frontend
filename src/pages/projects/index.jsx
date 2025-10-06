@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import React, { useState, useEffect,useRef } from 'react';
+import { Link, useLocation } from "react-router-dom"; // ✅ added useLocation
 import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
 import Icon from '../../components/AppIcon';
@@ -11,6 +11,11 @@ import ProjectGrid from './components/ProjectGrid';
 import DonationModal from './components/DonationModal';
 
 const Projects = () => {
+  const location = useLocation(); // ✅ added
+  const query = new URLSearchParams(location.search); // ✅ added
+
+    const projectSectionRef = useRef(null); // ✅ ref to scroll to
+
   const [filters, setFilters] = useState({
     search: '',
     category: '',
@@ -261,65 +266,72 @@ const Projects = () => {
   const ageGroups = [...new Set(allProjects.map(p => p.ageGroup))];
   const locations = [...new Set(allProjects.map(p => p.location))];
 
+  // ✅ Set category from URL on mount
+  useEffect(() => {
+    const categoryFromURL = query.get("category");
+    if (categoryFromURL) {
+      setFilters(prev => ({ ...prev, category: categoryFromURL }));
+
+      // scroll after a tiny delay to let the grid render
+      setTimeout(() => {
+        projectSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, [location.search]);
+
   // Filter projects based on current filters
   useEffect(() => {
     let filtered = [...allProjects];
 
-    // Search filter
     if (filters?.search) {
-      filtered = filtered?.filter(project =>
+      filtered = filtered.filter(project =>
         project?.title?.toLowerCase()?.includes(filters?.search?.toLowerCase()) ||
         project?.description?.toLowerCase()?.includes(filters?.search?.toLowerCase()) ||
         project?.category?.toLowerCase()?.includes(filters?.search?.toLowerCase())
       );
     }
 
-    // Category filter
     if (filters?.category) {
-      filtered = filtered?.filter(project => project?.category === filters?.category);
+      filtered = filtered.filter(project => project?.category === filters?.category);
     }
 
-    // Age group filter
     if (filters?.ageGroup) {
-      filtered = filtered?.filter(project => project?.ageGroup === filters?.ageGroup);
+      filtered = filtered.filter(project => project?.ageGroup === filters?.ageGroup);
     }
 
-    // Location filter
     if (filters?.location) {
-      filtered = filtered?.filter(project => project?.location === filters?.location);
+      filtered = filtered.filter(project => project?.location === filters?.location);
     }
 
-    // Quick filters
     if (filters?.urgent) {
-      filtered = filtered?.filter(project => project?.urgent);
+      filtered = filtered.filter(project => project?.urgent);
     }
 
     if (filters?.nearCompletion) {
-      filtered = filtered?.filter(project => project?.completion >= 80);
+      filtered = filtered.filter(project => project?.completion >= 80);
     }
 
     if (filters?.newProjects) {
-      filtered = filtered?.filter(project => 
+      filtered = filtered.filter(project => 
         project?.lastUpdated?.includes('hour') || project?.lastUpdated === '1 day ago'
       );
     }
 
-    // Sort projects
     switch (filters?.sortBy) {
       case 'urgent':
-        filtered?.sort((a, b) => b?.urgent - a?.urgent);
+        filtered.sort((a, b) => b?.urgent - a?.urgent);
         break;
       case 'progress':
-        filtered?.sort((a, b) => b?.completion - a?.completion);
+        filtered.sort((a, b) => b?.completion - a?.completion);
         break;
       case 'funding':
-        filtered?.sort((a, b) => b?.raised - a?.raised);
+        filtered.sort((a, b) => b?.raised - a?.raised);
         break;
       case 'alphabetical':
-        filtered?.sort((a, b) => a?.title?.localeCompare(b?.title));
+        filtered.sort((a, b) => a?.title?.localeCompare(b?.title));
         break;
-      default: // newest
-        filtered?.sort((a, b) => {
+      default:
+        filtered.sort((a, b) => {
           const timeA = a?.lastUpdated?.includes('hour') ? 1 : 
                        a?.lastUpdated?.includes('1 day') ? 2 : 3;
           const timeB = b?.lastUpdated?.includes('hour') ? 1 : 
@@ -354,7 +366,6 @@ const Projects = () => {
   };
 
   const handleDonationSubmit = (donationData) => {
-    // Mock donation processing
     console.log('Processing donation:', donationData);
     alert(`Thank you for your donation of ₹${donationData?.amount?.toLocaleString()} to ${donationData?.project?.title}!`);
   };
@@ -431,60 +442,59 @@ const Projects = () => {
         </section>
 
         {/* Projects Section */}
-        <section className="py-12">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            {/* Section Header */}
-            <div className="text-center mb-12">
-              <h2 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-4">
-                All Projects
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Browse through our comprehensive collection of projects, each designed to restore broken lives 
-                and create lasting positive change in children's futures.
-              </p>
-            </div>
-
-            {/* Filters */}
-            <ProjectFilters
-              filters={filters}
-              onFilterChange={handleFilterChange}
-              onClearFilters={handleClearFilters}
-              categories={categories}
-              ageGroups={ageGroups}
-              locations={locations}
-            />
-
-            {/* Results Summary */}
-            <div className="flex items-center justify-between mb-8">
-              <div className="flex items-center space-x-4">
-                <span className="text-muted-foreground">
-                  Showing {displayProjects?.length} of {filteredProjects?.length} projects
-                </span>
-                {filteredProjects?.length !== allProjects?.length && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    iconName="RotateCcw"
-                    iconPosition="left"
-                    iconSize={14}
-                    onClick={handleClearFilters}
-                  >
-                    Show All
-                  </Button>
-                )}
-              </div>
-            </div>
-
-            {/* Projects Grid */}
-            <ProjectGrid
-              projects={displayProjects}
-              loading={loading}
-              onDonate={handleDonate}
-              onLoadMore={handleLoadMore}
-              hasMore={hasMore}
-            />
+        <section className="py-12" ref={projectSectionRef}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <h2 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-4">
+              All Projects
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Browse through our comprehensive collection of projects...
+            </p>
           </div>
-        </section>
+
+          {/* Filters */}
+          <ProjectFilters
+            filters={filters}
+            onFilterChange={handleFilterChange}
+            onClearFilters={handleClearFilters}
+            categories={categories}
+            ageGroups={ageGroups}
+            locations={locations}
+          />
+
+          {/* Results Summary */}
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center space-x-4">
+              <span className="text-muted-foreground">
+                Showing {displayProjects?.length} of {filteredProjects?.length} projects
+              </span>
+              {filteredProjects?.length !== allProjects?.length && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  iconName="RotateCcw"
+                  iconPosition="left"
+                  iconSize={14}
+                  onClick={handleClearFilters}
+                >
+                  Show All
+                </Button>
+              )}
+            </div>
+          </div>
+
+          {/* Projects Grid */}
+          <ProjectGrid
+            projects={displayProjects}
+            loading={loading}
+            onDonate={handleDonate}
+            onLoadMore={handleLoadMore}
+            hasMore={hasMore}
+          />
+        </div>
+      </section>
 
         {/* Call to Action */}
         <section className="py-16 bg-muted">

@@ -87,7 +87,7 @@ const LeadershipTeam = () => {
   ];
 
   return (
-    <section className="py-20 bg-muted">
+    <section id='team' className="py-20 bg-muted">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-4">
