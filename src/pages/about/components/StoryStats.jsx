@@ -34,8 +34,9 @@ const StoryStats = () => {
   ];
 
   return (
-    <div className=" bg-muted p-8 pt-20  ">
-      <div className="text-center mb-8">
+    <div className=" bg-muted  pt-20 ">
+      <div className='max-w-7xl mx-auto px-6 lg:px-8'>
+<div className="text-center mb-8">
         <h2 className="font-heading font-bold text-foreground text-3xl mb-4">
           Impact Through Stories
         </h2>
@@ -61,7 +62,9 @@ const StoryStats = () => {
           </div>
         ))}
       </div>
-      {/* Call to Action */}
+      </div>
+      
+      
       
     </div>
   );

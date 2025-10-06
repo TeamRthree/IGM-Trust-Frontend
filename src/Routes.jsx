@@ -31,9 +31,9 @@ const Routes = () => {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           
-          <Route path="/gallery" element={<BlockedPage><GalleryPage /></BlockedPage>} />
-          <Route path="/contact" element={<BlockedPage><ContactPage /></BlockedPage>} />
-          <Route path="/donate" element={<BlockedPage><DonatePage /></BlockedPage>} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/donate" element={<DonatePage />} />
 
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />

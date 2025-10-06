@@ -379,7 +379,7 @@ const Projects = () => {
         {/* Hero Section */}
 <section className="relative bg-gradient-to-br from-background via-warm-foundation to-background text-white overflow-hidden pt-24 pb-12 py-24 lg:py-32">
   <div className="max-w-7xl mx-auto px-6 lg:px-8">
-    <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <div className="grid lg:grid-cols-2 gap-12 items-center ">
       
       {/* Left Content */}
       <div className="space-y-8">
@@ -389,9 +389,9 @@ const Projects = () => {
             47 Active Projects
           </div>
 
-          <h1 className="font-heading font-bold text-4xl text-foreground lg:text-5xl leading-tight">
+          <h2 className="font-heading font-bold text-4xl text-foreground lg:text-5xl !leading-snug">
             Impact Showcase Universe
-          </h1>
+          </h2>
 
           <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl leading-relaxed">
             Discover how your compassion transforms lives through our comprehensive child welfare programs. 
