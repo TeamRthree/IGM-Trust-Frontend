@@ -161,13 +161,13 @@ const DonatePage = () => {
         <Header />
         
         {/* Hero Section with Impact Counters */}
-        <section className="pt-24 pb-12 bg-gradient-trust text-white">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <section className="pt-24 pb-12 bg-muted ">
+          <div className="max-w-7xl mx-auto py-32 px-6 lg:px-8">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 Transform Lives Through Giving
               </h1>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 Your compassion creates lasting change. Join thousands of supporters in restoring hope and building futures for children in need.
               </p>
             </div>
@@ -178,21 +178,21 @@ const DonatePage = () => {
                 <div className="text-3xl md:text-4xl font-bold mb-1">
                   ₹{formatCurrency(impactCounters?.totalRaised)}
                 </div>
-                <div className="text-sm text-white/80">Total Raised</div>
+                <div className="text-sm text-muted-foreground">Total Raised</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-1">
                   {impactCounters?.childrenHelped}+
                 </div>
-                <div className="text-sm text-white/80">Children Helped</div>
+                <div className="text-sm text-muted-foreground">Children Helped</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-1">48</div>
-                <div className="text-sm text-white/80">Years of Service</div>
+                <div className="text-sm text-muted-foreground">Years of Service</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-1">500+</div>
-                <div className="text-sm text-white/80">Lives Transformed</div>
+                <div className="text-sm text-muted-foreground">Lives Transformed</div>
               </div>
             </div>
 
@@ -202,13 +202,13 @@ const DonatePage = () => {
                 <span>Monthly Goal Progress</span>
                 <span>{Math.round(progressPercentage)}%</span>
               </div>
-              <div className="w-full bg-white/20 rounded-full h-2">
+              <div className="w-full bg-white/70 rounded-full h-2">
                 <div 
                   className="bg-secondary h-2 rounded-full transition-all duration-500"
                   style={{ width: `${Math.min(progressPercentage, 100)}%` }}
                 />
               </div>
-              <div className="flex justify-between text-xs mt-1 text-white/80">
+              <div className="flex justify-between text-xs mt-1 text-muted-foreground">
                 <span>₹{formatCurrency(impactCounters?.currentMonthRaised)}</span>
                 <span>₹{formatCurrency(impactCounters?.monthlyGoal)}</span>
               </div>
@@ -353,9 +353,7 @@ const DonatePage = () => {
                   />
                 </div>
 
-                <div className="bg-card rounded-lg shadow-warm p-6">
-                  <ImpactStories />
-                </div>
+                
 
                 {/* Trust Indicators */}
                 <div className="bg-card rounded-lg shadow-warm p-6">
@@ -412,24 +410,7 @@ const DonatePage = () => {
           </div>
         )}
 
-        {/* Footer */}
-        <footer className="bg-foreground text-white py-12">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <div className="flex items-center justify-center space-x-3 mb-4">
-              <div className="flex items-center justify-center w-10 h-10 bg-gradient-trust rounded-lg">
-                <Icon name="Heart" size={24} color="white" />
-              </div>
-              <div>
-                <h3 className="font-bold text-lg">IGM Children Homes</h3>
-                <p className="text-sm text-white/80">Transforming lives since 1975</p>
-              </div>
-            </div>
-            <p className="text-white/60 text-sm">
-              © {new Date()?.getFullYear()} IGM Children Homes. All rights reserved. | 
-              Registered under Section 12A & 80G of Income Tax Act
-            </p>
-          </div>
-        </footer>
+        
       </div>
     </>
   );

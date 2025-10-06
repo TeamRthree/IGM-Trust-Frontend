@@ -4,7 +4,7 @@ import Button from '../../../components/ui/Button';
 
 const ContactHero = () => {
   return (
-    <section className="relative bg-gradient-trust text-white py-20 lg:py-32 overflow-hidden">
+    <section className="relative bg-white  py-20 lg:py-32 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-20 h-20 border-2 border-white rounded-full"></div>
@@ -21,12 +21,12 @@ const ContactHero = () => {
             </div>
           </div>
           
-          <h1 className="font-heading font-bold text-4xl lg:text-6xl mb-6 text-balance">
+          <h1 className="font-heading text-foreground font-bold text-4xl lg:text-6xl mb-6 text-balance">
             Join Our Community of
-            <span className="block text-secondary"> Hope Builders</span>
+            <span className="block text-foreground"> Hope Builders</span>
           </h1>
           
-          <p className="font-body text-lg lg:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-body text-lg lg:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
             Whether you want to volunteer, partner with us, or visit our facilities, we're here to help you make a meaningful difference in children's lives. Every connection starts with a conversation.
           </p>
 
@@ -37,7 +37,7 @@ const ContactHero = () => {
               iconName="Heart"
               iconPosition="left"
               iconSize={20}
-              className="bg-conversion-orange hover:bg-conversion-orange/90 text-white shadow-warm"
+              className="bg-secondary hover:bg-conversion-orange/90 text-white shadow-warm"
             >
               Start Volunteering
             </Button>
@@ -47,7 +47,7 @@ const ContactHero = () => {
               iconName="Calendar"
               iconPosition="left"
               iconSize={20}
-              className="border-white text-white hover:bg-white hover:text-primary"
+              className="border-secondary text-secondary hover:bg-black/10 hover:text-secondary"
             >
               Schedule Visit
             </Button>

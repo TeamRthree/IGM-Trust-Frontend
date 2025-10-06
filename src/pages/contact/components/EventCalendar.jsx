@@ -5,6 +5,7 @@ import Button from '../../../components/ui/Button';
 const EventCalendar = () => {
   const [selectedMonth, setSelectedMonth] = useState(new Date()?.getMonth());
   const [selectedYear] = useState(new Date()?.getFullYear());
+  const [startIndex, setStartIndex] = useState(0); // carousel start index
 
   const months = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -97,6 +98,25 @@ const EventCalendar = () => {
       category: 'education'
     }
   ];
+
+  const eventsToShow = 2; // number of cards to show at a time
+
+  const prevEvents = () => {
+    setStartIndex((prev) => (prev - eventsToShow + upcomingEvents.length) % upcomingEvents.length);
+  };
+
+  const nextEvents = () => {
+    setStartIndex((prev) => (prev + eventsToShow) % upcomingEvents.length);
+  };
+
+  // Helper to get visible events considering looping
+  const getVisibleEvents = () => {
+    const visible = [];
+    for (let i = 0; i < eventsToShow; i++) {
+      visible.push(upcomingEvents[(startIndex + i) % upcomingEvents.length]);
+    }
+    return visible;
+  };
 
   const getEventTypeColor = (type) => {
     const colors = {
@@ -192,9 +212,29 @@ const EventCalendar = () => {
           </Button>
         </div>
 
+        {/* Carousel Controls */}
+        <div className="flex items-center justify-between mb-6">
+          <Button
+            variant="outline"
+            size="sm"
+            iconName="ChevronLeft"
+            onClick={prevEvents}
+          >
+            Previous Events
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            iconName="ChevronRight"
+            onClick={nextEvents}
+          >
+            Next Events
+          </Button>
+        </div>
+
         {/* Events Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {upcomingEvents?.map((event) => (
+          {getVisibleEvents().map((event) => (
             <div key={event?.id} className="bg-card rounded-xl shadow-warm p-8 hover:shadow-warm-hover transition-warm">
               {/* Event Header */}
               <div className="flex items-start justify-between mb-6">
@@ -293,80 +333,6 @@ const EventCalendar = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Event Categories */}
-        <div className="bg-card rounded-xl shadow-warm p-8 lg:p-12">
-          <div className="text-center mb-8">
-            <h3 className="font-heading font-bold text-2xl text-foreground mb-4">
-              Event Categories
-            </h3>
-            <p className="font-body text-muted-foreground">
-              Explore different types of events and find the ones that interest you most.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { name: 'Fundraising Events', icon: 'DollarSign', description: 'Galas, auctions, and charity drives', color: 'bg-conversion-orange' },
-              { name: 'Volunteer Training', icon: 'Users', description: 'Orientation and skill development', color: 'bg-primary' },
-              { name: 'Community Events', icon: 'Heart', description: 'Open houses and celebrations', color: 'bg-success' },
-              { name: 'Educational Workshops', icon: 'BookOpen', description: 'Learning and development sessions', color: 'bg-warning' },
-              { name: 'Corporate Partnerships', icon: 'Handshake', description: 'Business collaboration events', color: 'bg-accent' },
-              { name: 'Awareness Campaigns', icon: 'Megaphone', description: 'Community outreach programs', color: 'bg-secondary' }
-            ]?.map((category, index) => (
-              <div key={index} className="text-center p-6 rounded-lg border border-border hover:shadow-warm transition-warm">
-                <div className="flex items-center justify-center mb-4">
-                  <div className={`flex items-center justify-center w-12 h-12 ${category?.color} rounded-full`}>
-                    <Icon name={category?.icon} size={24} color="white" />
-                  </div>
-                </div>
-                <h4 className="font-heading font-semibold text-lg text-foreground mb-2">
-                  {category?.name}
-                </h4>
-                <p className="font-body text-sm text-muted-foreground">
-                  {category?.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Newsletter Signup */}
-        <div className="mt-16 bg-primary/5 border border-primary/20 rounded-xl p-8 lg:p-12 text-center">
-          <div className="flex items-center justify-center mb-6">
-            <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full">
-              <Icon name="Bell" size={32} color="var(--color-primary)" />
-            </div>
-          </div>
-          
-          <h3 className="font-heading font-bold text-2xl lg:text-3xl text-foreground mb-4">
-            Never Miss an Event
-          </h3>
-          
-          <p className="font-body text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Subscribe to our event newsletter and be the first to know about upcoming fundraisers, volunteer opportunities, and community gatherings.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-            <div className="flex-1 w-full">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="w-full px-4 py-3 border border-border rounded-lg font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
-              />
-            </div>
-            <Button
-              variant="default"
-              size="lg"
-              iconName="Mail"
-              iconPosition="left"
-              iconSize={18}
-              className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto"
-            >
-              Subscribe
-            </Button>
-          </div>
         </div>
       </div>
     </section>

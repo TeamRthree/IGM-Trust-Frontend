@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../components/ui/Header';
 import ContactHero from './components/ContactHero';
 import ContactForm from './components/ContactForm';
-import ContactInfo from './components/ContactInfo';
+
 import LocationMap from './components/LocationMap';
 import VolunteerOpportunities from './components/VolunteerOpportunities';
 import EventCalendar from './components/EventCalendar';
@@ -17,10 +17,11 @@ const ContactPage = () => {
       <main className="pt-16">
         <ContactHero />
         <ContactForm />
-        <ContactInfo />
-        <LocationMap />
+      
+       
         <VolunteerOpportunities />
         <EventCalendar />
+         <LocationMap />
       </main>
     </div>
   );

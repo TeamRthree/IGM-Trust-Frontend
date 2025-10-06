@@ -265,48 +265,7 @@ const VolunteerOpportunities = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="mt-16 text-center">
-          <div className="bg-card rounded-xl shadow-warm p-8 lg:p-12 max-w-4xl mx-auto">
-            <div className="flex items-center justify-center mb-6">
-              <div className="flex items-center justify-center w-16 h-16 bg-secondary/10 rounded-full">
-                <Icon name="Heart" size={32} color="var(--color-secondary)" />
-              </div>
-            </div>
-            
-            <h3 className="font-heading font-bold text-2xl lg:text-3xl text-foreground mb-4">
-              Don't See the Right Fit?
-            </h3>
-            
-            <p className="font-body text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              We're always looking for passionate individuals with unique skills. Tell us about your interests and availability, and we'll find the perfect way for you to contribute.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                variant="default"
-                size="lg"
-                iconName="MessageSquare"
-                iconPosition="left"
-                iconSize={18}
-                className="bg-primary hover:bg-primary/90 text-white"
-              >
-                Discuss Custom Role
-              </Button>
-              
-              <Button
-                variant="outline"
-                size="lg"
-                iconName="Download"
-                iconPosition="left"
-                iconSize={18}
-                className="border-primary text-primary hover:bg-primary hover:text-white"
-              >
-                Download Volunteer Guide
-              </Button>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );
