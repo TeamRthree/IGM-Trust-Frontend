@@ -4,7 +4,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import tagger from "@dhiwise/component-tagger";
 import detectPort from "detect-port";
 
-const DEFAULT_PORT = 5173;
+const DEFAULT_PORT = 5176;
 
 // Function to find the first available port starting from DEFAULT_PORT
 async function getAvailablePort(startPort) {

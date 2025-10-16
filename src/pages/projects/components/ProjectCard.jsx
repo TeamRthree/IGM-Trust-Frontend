@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import utc from 'dayjs/plugin/utc';
+
+dayjs.extend(relativeTime); // MUST extend before using fromNow
+dayjs.extend(utc);
 
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
@@ -37,7 +43,7 @@ const ProjectCard = ({ project, onDonate }) => {
           <div className="text-center text-white p-6">
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div>
-                <div className="text-2xl font-bold">{project?.beneficiaries}</div>
+                <div className="text-2xl font-bold">{project?.children_helped}</div>
                 <div className="text-sm opacity-90">Children Helped</div>
               </div>
               <div>
@@ -104,7 +110,7 @@ const ProjectCard = ({ project, onDonate }) => {
         {/* Impact Metrics */}
         <div className="grid grid-cols-3 gap-3 mb-4 p-3 bg-muted rounded-lg">
           <div className="text-center">
-            <div className="text-sm font-semibold text-card-foreground">{project?.ageGroup}</div>
+           <div className="text-sm font-semibold text-card-foreground">{project?.age_group}</div>
             <div className="text-xs text-muted-foreground">Age Group</div>
           </div>
           <div className="text-center">
@@ -145,10 +151,18 @@ const ProjectCard = ({ project, onDonate }) => {
         {/* Last Updated */}
         <div className="mt-3 pt-3 border-t border-border">
           <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span>Updated {project?.lastUpdated}</span>
+           <span>
+  Updated {project?.last_updated
+    ? dayjs.utc(project.last_updated).local().fromNow()
+    : dayjs.utc(project?.created_at).local().fromNow()
+  }
+</span>
+
+
+
             <div className="flex items-center space-x-1">
               <Icon name="Users" size={12} />
-              <span>{project?.donors} donors</span>
+              <span>{project?.donors_count} donors</span>
             </div>
           </div>
         </div>

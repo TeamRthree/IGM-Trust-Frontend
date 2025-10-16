@@ -1,115 +1,143 @@
 import React, { useState } from 'react';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
+import { categories, opportunities } from '../volunteerData';
+import API from '../../../api/api'; // <-- import your API
 
+// Volunteer Form Modal
+const VolunteerModal = ({ isOpen, onClose, role, onSubmit }) => {
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+
+
+
+  
+  // Reset form when modal opens or closes
+  React.useEffect(() => {
+    if (!isOpen) {
+      setFormData({ name: '', email: '', phone: '' });
+      setErrors({});
+      setLoading(false);
+    }
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  const validate = () => {
+    const errs = {};
+    if (!formData.name.trim()) errs.name = 'Name is required';
+    if (!formData.email.trim()) errs.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) errs.email = 'Invalid email';
+    if (!formData.phone.trim()) errs.phone = 'Phone number is required';
+    else if (!/^\d{10}$/.test(formData.phone)) errs.phone = 'Invalid number';
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: '' });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    setLoading(true);
+    try {
+      const response = await API.post('/volunteer-application', { ...formData, role });
+      if (response.data.success) {
+        onSubmit(); // notify parent to show success modal
+      }
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.errors) {
+        setErrors(error.response.data.errors);
+      } else {
+        console.error(error);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+      <div className="bg-white rounded-xl p-8 w-full max-w-md relative">
+        <button className="absolute top-3 right-3 text-muted-foreground" onClick={onClose}>
+          <Icon name="X" size={20} />
+        </button>
+        <h3 className="text-xl font-bold mb-4">Apply for {role}</h3>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            name="name"
+            placeholder="Full Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+            disabled={loading}
+          />
+          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+
+          <input
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+            disabled={loading}
+          />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+
+          <input
+            name="phone"
+            placeholder="Phone Number"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+            disabled={loading}
+          />
+          {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+
+          <Button type="submit" className="w-full bg-primary text-white" disabled={loading}>
+            {loading ? 'Submitting...' : 'Submit'}
+          </Button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+// Success Modal
+const SuccessModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+      <div className="bg-white rounded-xl p-8 w-full max-w-sm relative text-center">
+        <button className="absolute top-3 right-3 text-muted-foreground" onClick={onClose}>
+          <Icon name="X" size={20} />
+        </button>
+        <Icon name="Check" size={40} className="text-success mx-auto mb-4" />
+        <h3 className="text-xl font-bold mb-2">Application Submitted!</h3>
+        <p className="text-muted-foreground mb-6">Thank you for volunteering. We will get back to you soon.</p>
+        <Button onClick={onClose} className="bg-primary text-white w-full">Close</Button>
+      </div>
+    </div>
+  );
+};
+
+// Main Component
 const VolunteerOpportunities = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [modalOpen, setModalOpen] = useState(false);
+  const [successOpen, setSuccessOpen] = useState(false);
+  const [selectedRole, setSelectedRole] = useState('');
 
-  const categories = [
-    { id: 'all', name: 'All Opportunities', icon: 'Users' },
-    { id: 'education', name: 'Education', icon: 'BookOpen' },
-    { id: 'healthcare', name: 'Healthcare', icon: 'Heart' },
-    { id: 'skills', name: 'Skills Training', icon: 'Tool' },
-    { id: 'events', name: 'Events', icon: 'Calendar' },
-    { id: 'admin', name: 'Administration', icon: 'FileText' }
-  ];
-
-  const opportunities = [
-    {
-      id: 1,
-      title: 'Teaching Assistant',
-      category: 'education',
-      type: 'Regular',
-      duration: '3-6 months',
-      commitment: '4-6 hours/week',
-      location: 'Main Campus',
-      description: 'Help children with homework, reading sessions, and basic computer skills. Perfect for retired teachers or education enthusiasts.',
-      requirements: ['Basic English proficiency', 'Patience with children', 'Regular availability'],
-      impact: 'Direct educational support to 20-30 children',
-      urgency: 'high',
-      volunteers: 12,
-      needed: 20
-    },
-    {
-      id: 2,
-      title: 'Medical Support Volunteer',
-      category: 'healthcare',
-      type: 'Specialized',
-      duration: '6+ months',
-      commitment: '8-12 hours/week',
-      location: 'Medical Center',
-      description: 'Assist healthcare staff with basic medical care, health education, and maintaining medical records.',
-      requirements: ['Medical background preferred', 'First aid certification', 'Compassionate nature'],
-      impact: 'Healthcare support for 150+ children',
-      urgency: 'high',
-      volunteers: 5,
-      needed: 10
-    },
-    {
-      id: 3,
-      title: 'Skill Development Trainer',
-      category: 'skills',
-      type: 'Specialized',
-      duration: '6+ months',
-      commitment: '6-8 hours/week',
-      location: 'Vocational Center',
-      description: 'Teach practical skills like computer basics, tailoring, cooking, or carpentry to older children preparing for independence.',
-      requirements: ['Expertise in specific skill', 'Teaching ability', 'Long-term commitment'],
-      impact: 'Skill development for 40-60 teenagers',
-      urgency: 'medium',
-      volunteers: 8,
-      needed: 15
-    },
-    {
-      id: 4,
-      title: 'Event Coordinator',
-      category: 'events',
-      type: 'Project-based',
-      duration: '1-3 months',
-      commitment: '10-15 hours/week',
-      location: 'Various',
-      description: 'Plan and execute fundraising events, cultural programs, and community outreach activities.',
-      requirements: ['Event management experience', 'Creative thinking', 'Leadership skills'],
-      impact: 'Community engagement and fundraising',
-      urgency: 'medium',
-      volunteers: 3,
-      needed: 8
-    },
-    {
-      id: 5,
-      title: 'Administrative Support',
-      category: 'admin',
-      type: 'Regular',
-      duration: '3+ months',
-      commitment: '4-8 hours/week',
-      location: 'Main Office',
-      description: 'Help with documentation, data entry, donor communications, and general administrative tasks.',
-      requirements: ['Computer literacy', 'Attention to detail', 'Communication skills'],
-      impact: 'Operational efficiency improvement',
-      urgency: 'low',
-      volunteers: 6,
-      needed: 10
-    },
-    {
-      id: 6,
-      title: 'Recreation Coordinator',
-      category: 'events',
-      type: 'Regular',
-      duration: '3+ months',
-      commitment: '3-5 hours/week',
-      location: 'Main Campus',
-      description: 'Organize sports activities, art sessions, music classes, and other recreational programs for children.',
-      requirements: ['Enthusiasm for activities', 'Good with children', 'Creative skills'],
-      impact: 'Mental health and development support',
-      urgency: 'medium',
-      volunteers: 10,
-      needed: 15
-    }
-  ];
-
-  const filteredOpportunities = selectedCategory === 'all' 
-    ? opportunities 
-    : opportunities?.filter(opp => opp?.category === selectedCategory);
+  const filteredOpportunities =
+    selectedCategory === 'all'
+      ? opportunities
+      : opportunities.filter((opp) => opp.category === selectedCategory);
 
   const getUrgencyColor = (urgency) => {
     switch (urgency) {
@@ -129,9 +157,20 @@ const VolunteerOpportunities = () => {
     }
   };
 
+  const handleApplyClick = (role) => {
+    setSelectedRole(role);
+    setModalOpen(true);
+  };
+
+  const handleFormSubmit = () => {
+    setModalOpen(false);
+    setSuccessOpen(true);
+  };
+
   return (
-    <section id='volunteer' className="py-16 lg:py-24 bg-muted">
+    <section id="volunteer" className="py-16 lg:py-24 bg-muted">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-6">
             <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full">
@@ -142,75 +181,66 @@ const VolunteerOpportunities = () => {
             Volunteer Opportunities
           </h2>
           <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join our community of dedicated volunteers and make a direct impact on children's lives. Find the perfect opportunity that matches your skills and schedule.
+            Join our community of dedicated volunteers and make a direct impact on children's lives.
           </p>
         </div>
 
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories?.map((category) => (
+          {categories.map((category) => (
             <button
-              key={category?.id}
-              onClick={() => setSelectedCategory(category?.id)}
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
               className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-warm ${
-                selectedCategory === category?.id
+                selectedCategory === category.id
                   ? 'bg-primary text-white shadow-button'
                   : 'bg-card text-muted-foreground hover:text-foreground hover:bg-card/80 border border-border'
               }`}
             >
-              <Icon name={category?.icon} size={16} />
-              <span>{category?.name}</span>
+              <Icon name={category.icon} size={16} />
+              <span>{category.name}</span>
             </button>
           ))}
         </div>
 
         {/* Opportunities Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {filteredOpportunities?.map((opportunity) => (
-            <div key={opportunity?.id} className="bg-card rounded-xl shadow-warm p-8 hover:shadow-warm-hover transition-warm">
+          {filteredOpportunities.map((opp) => (
+            <div key={opp.id} className="bg-card rounded-xl shadow-warm p-8 hover:shadow-warm-hover transition-warm">
               {/* Header */}
               <div className="flex items-start justify-between mb-6">
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="font-heading font-bold text-xl text-foreground">
-                      {opportunity?.title}
-                    </h3>
-                    <span className={`px-2 py-1 text-xs font-medium rounded-full border ${getUrgencyColor(opportunity?.urgency)}`}>
-                      {getUrgencyText(opportunity?.urgency)}
+                    <h3 className="font-heading font-bold text-xl text-foreground">{opp.title}</h3>
+                    <span className={`px-2 py-1 text-xs font-medium rounded-full border ${getUrgencyColor(opp.urgency)}`}>
+                      {getUrgencyText(opp.urgency)}
                     </span>
                   </div>
-                  
                   <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                     <span className="flex items-center">
                       <Icon name="MapPin" size={14} className="mr-1" />
-                      {opportunity?.location}
+                      {opp.location}
                     </span>
                     <span className="flex items-center">
                       <Icon name="Clock" size={14} className="mr-1" />
-                      {opportunity?.commitment}
+                      {opp.commitment}
                     </span>
                   </div>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="font-body text-muted-foreground mb-6 leading-relaxed">
-                {opportunity?.description}
-              </p>
+              <p className="font-body text-muted-foreground mb-6 leading-relaxed">{opp.description}</p>
 
               {/* Details Grid */}
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
                   <p className="font-body text-xs text-muted-foreground mb-1">Type & Duration</p>
-                  <p className="font-body text-sm font-medium text-foreground">
-                    {opportunity?.type} • {opportunity?.duration}
-                  </p>
+                  <p className="font-body text-sm font-medium text-foreground">{opp.type} • {opp.duration}</p>
                 </div>
                 <div>
                   <p className="font-body text-xs text-muted-foreground mb-1">Impact</p>
-                  <p className="font-body text-sm font-medium text-foreground">
-                    {opportunity?.impact}
-                  </p>
+                  <p className="font-body text-sm font-medium text-foreground">{opp.impact}</p>
                 </div>
               </div>
 
@@ -218,7 +248,7 @@ const VolunteerOpportunities = () => {
               <div className="mb-6">
                 <p className="font-body text-sm font-medium text-foreground mb-2">Requirements:</p>
                 <ul className="space-y-1">
-                  {opportunity?.requirements?.map((req, idx) => (
+                  {opp.requirements.map((req, idx) => (
                     <li key={idx} className="flex items-center text-sm text-muted-foreground">
                       <Icon name="Check" size={14} className="mr-2 text-success flex-shrink-0" />
                       {req}
@@ -231,21 +261,17 @@ const VolunteerOpportunities = () => {
               <div className="flex items-center justify-between pt-6 border-t border-border">
                 <div className="flex items-center space-x-4">
                   <div className="text-center">
-                    <p className="font-body text-lg font-bold text-foreground">
-                      {opportunity?.volunteers}
-                    </p>
+                    <p className="font-body text-lg font-bold text-foreground">{opp.volunteers}</p>
                     <p className="font-body text-xs text-muted-foreground">Current</p>
                   </div>
                   <div className="w-16 h-2 bg-muted rounded-full overflow-hidden">
-                    <div 
+                    <div
                       className="h-full bg-primary rounded-full transition-warm"
-                      style={{ width: `${(opportunity?.volunteers / opportunity?.needed) * 100}%` }}
+                      style={{ width: `${(opp.volunteers / opp.needed) * 100}%` }}
                     />
                   </div>
                   <div className="text-center">
-                    <p className="font-body text-lg font-bold text-foreground">
-                      {opportunity?.needed}
-                    </p>
+                    <p className="font-body text-lg font-bold text-foreground">{opp.needed}</p>
                     <p className="font-body text-xs text-muted-foreground">Needed</p>
                   </div>
                 </div>
@@ -257,6 +283,7 @@ const VolunteerOpportunities = () => {
                   iconPosition="left"
                   iconSize={16}
                   className="bg-primary hover:bg-primary/90 text-white"
+                  onClick={() => handleApplyClick(opp.title)}
                 >
                   Apply Now
                 </Button>
@@ -264,9 +291,19 @@ const VolunteerOpportunities = () => {
             </div>
           ))}
         </div>
-
-        
       </div>
+
+      {/* Modals */}
+      <VolunteerModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        role={selectedRole}
+        onSubmit={handleFormSubmit}
+      />
+      <SuccessModal
+        isOpen={successOpen}
+        onClose={() => setSuccessOpen(false)}
+      />
     </section>
   );
 };

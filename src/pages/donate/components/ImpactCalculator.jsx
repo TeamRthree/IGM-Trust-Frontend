@@ -7,7 +7,7 @@ const ImpactCalculator = ({ amount, donationType }) => {
 
     const impacts = [];
     
-    if (amount >= 500) {
+    if (amount >= 100) {
       const meals = Math.floor(amount / 50);
       impacts?.push({
         icon: 'Utensils',

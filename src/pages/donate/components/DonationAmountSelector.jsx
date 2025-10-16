@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Icon from '../../../components/AppIcon';
 
 const DonationAmountSelector = ({ 
@@ -18,18 +17,33 @@ const DonationAmountSelector = ({
     { value: 25000, label: '25,000', impact: 'Support facility maintenance' }
   ];
 
+  // ✅ Handle selecting predefined amount
+  const handleSelectAmount = (amount) => {
+    onAmountSelect(amount);       // set selected
+    onCustomAmountChange('');     // clear custom
+  };
+
+  // ✅ Handle entering custom amount
+  const handleCustomChange = (value) => {
+    onCustomAmountChange(value);  // set custom
+    onAmountSelect(null);         // clear selected
+  };
+
   return (
     <div className="space-y-6">
       <div>
         <h3 className="text-lg font-semibold text-foreground mb-2">Choose Amount</h3>
-        <p className="text-sm text-muted-foreground">Select a donation amount or enter a custom value</p>
+        <p className="text-sm text-muted-foreground">
+          Select a donation amount or enter a custom value
+        </p>
       </div>
+
       {/* Predefined Amounts Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         {predefinedAmounts?.map((amount) => (
           <button
             key={amount?.value}
-            onClick={() => onAmountSelect(amount?.value)}
+            onClick={() => handleSelectAmount(amount?.value)}
             className={`p-4 rounded-lg border-2 transition-all duration-200 text-left hover:shadow-md ${
               selectedAmount === amount?.value
                 ? 'border-primary bg-primary/5 shadow-md'
@@ -50,6 +64,7 @@ const DonationAmountSelector = ({
           </button>
         ))}
       </div>
+
       {/* Custom Amount Input */}
       <div className="space-y-3">
         <label className="text-sm font-medium text-foreground">Custom Amount</label>
@@ -60,7 +75,7 @@ const DonationAmountSelector = ({
           <input
             type="number"
             value={customAmount}
-            onChange={(e) => onCustomAmountChange(e?.target?.value)}
+            onChange={(e) => handleCustomChange(e?.target?.value)}
             placeholder="Enter amount"
             className="w-full pl-8 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
             min="100"

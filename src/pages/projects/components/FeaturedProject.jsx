@@ -3,19 +3,26 @@ import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
 
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import utc from 'dayjs/plugin/utc';
+
+dayjs.extend(relativeTime); // MUST extend before using fromNow
+dayjs.extend(utc);
+
 const FeaturedProject = ({ project, onDonate }) => {
   const progressPercentage = (project?.raised / project?.target) * 100;
   const daysLeft = Math.ceil((new Date(project.deadline) - new Date()) / (1000 * 60 * 60 * 24));
 
   return (
-    <div className="bg-gradient-trust rounded-xl overflow-hidden bg-white shadow-warm-hover mb-8">
+    <div className="bg-gradient-trust rounded-xl overflow-hidden bg-white h-[500px] shadow-warm-hover  mb-8">
       <div className="grid lg:grid-cols-2 gap-0">
         {/* Image Section */}
-        <div className="relative h-64 lg:h-auto">
+        <div className="relative h-full">
           <Image
             src={project?.image}
             alt={project?.title}
-            className="w-full h-full object-cover"
+            className="w-full object-contain h-full"
           />
           
           {/* Featured Badge */}
@@ -31,7 +38,7 @@ const FeaturedProject = ({ project, onDonate }) => {
             <div className="absolute top-4 right-4">
               <div className="flex items-center space-x-1 bg-black/20 text-error-foreground px-3 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
                 <Icon name="Clock" size={16} />
-                <span>{daysLeft} days left</span>
+                <span>64 days left</span>
               </div>
             </div>
           )}
@@ -72,11 +79,11 @@ const FeaturedProject = ({ project, onDonate }) => {
           {/* Impact Stats */}
           <div className="grid grid-cols-3 gap-4 mb-6">
             <div className="text-center">
-              <div className="text-2xl font-bold text-foreground">{project?.beneficiaries}</div>
+              <div className="text-2xl font-bold text-foreground">{project?.children_helped}</div>
               <div className="text-sm text-muted-foreground">Children</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-foreground">{project?.donors}</div>
+              <div className="text-2xl font-bold text-foreground">{project?.donors_count}</div>
               <div className="text-sm text-muted-foreground">Donors</div>
             </div>
             <div className="text-center">
@@ -113,7 +120,10 @@ const FeaturedProject = ({ project, onDonate }) => {
           {/* Last Update */}
           <div className="mt-4 pt-4 border-t border-white/20">
             <div className="flex items-center justify-between text-sm text-muted-foreground">
-              <span>Last updated: {project?.lastUpdated}</span>
+              <span>Last updated: {project?.last_updated
+                  ? dayjs.utc(project.last_updated).local().fromNow()
+                  : dayjs.utc(project?.created_at).local().fromNow()
+                }</span>
               <div className="flex items-center text-muted-foreground space-x-1">
                 <Icon name="MapPin" size={14} />
                 <span>{project?.location}</span>

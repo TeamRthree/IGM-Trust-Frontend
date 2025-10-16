@@ -20,7 +20,7 @@ const ProjectStats = ({ stats }) => {
     {
       icon: 'IndianRupee',
       label: 'Total Raised',
-      value: `₹${stats?.totalRaised?.toLocaleString()}`,
+      value: `${stats?.totalRaised?.toLocaleString()}`,
       color: 'text-conversion-orange',
       bgColor: 'bg-conversion-orange/10'
     },

@@ -139,7 +139,7 @@ const Footer = () => {
       </div>
       {/* Bottom Footer */}
       <div className="border-t border-white/20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
+        <div className=" mx-auto px-6 md:px-8 xl:px-48  py-8">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="font-body text-white/60 text-sm text-center md:text-left">

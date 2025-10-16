@@ -11,6 +11,11 @@ import PaymentMethodSelector from './components/PaymentMethodSelector';
 import DonationSummary from './components/DonationSummary';
 import ProgressIndicator from './components/ProgressIndicator';
 import ImpactStories from './components/ImpactStories';
+import DonationPopup from '../../components/DonationPopup';
+
+
+
+import API from '../../api/api'; // ✅ Import the axios instance
 
 const DonatePage = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -37,8 +42,12 @@ const DonatePage = () => {
   const isInternational = donorInfo?.country !== 'IN';
   const currency = isInternational ? '$' : '₹';
   const finalAmount = customAmount && parseFloat(customAmount) >= 100 ? parseFloat(customAmount) : selectedAmount;
+  const [donationId, setDonationId] = useState(null); // store the created donation ID
 
-  // Mock impact counters
+  const [recentDonation, setRecentDonation] = useState(null);
+
+
+
   const [impactCounters, setImpactCounters] = useState({
     totalRaised: 2847650,
     childrenHelped: 1247,
@@ -47,7 +56,6 @@ const DonatePage = () => {
   });
 
   useEffect(() => {
-    // Simulate real-time counter updates
     const interval = setInterval(() => {
       setImpactCounters(prev => ({
         ...prev,
@@ -61,93 +69,108 @@ const DonatePage = () => {
 
   const validateStep = (step) => {
     const newErrors = {};
-
-    if (step === 1) {
-      if (!finalAmount || finalAmount < 100) {
-        newErrors.amount = 'Please select or enter a valid amount (minimum ₹100)';
-      }
-    }
-
+    if (step === 1 && (!finalAmount || finalAmount < 100)) newErrors.amount = 'Please select a valid amount (min ₹100)';
     if (step === 2) {
       if (!donorInfo?.firstName?.trim()) newErrors.firstName = 'First name is required';
       if (!donorInfo?.lastName?.trim()) newErrors.lastName = 'Last name is required';
       if (!donorInfo?.email?.trim()) newErrors.email = 'Email is required';
-      if (!donorInfo?.country) newErrors.country = 'Country is required';
-      if (!donorInfo?.agreeToTerms) newErrors.agreeToTerms = 'You must agree to terms and conditions';
-      
-      if (donorInfo?.country === 'IN' && !donorInfo?.confirmSource) {
-        newErrors.confirmSource = 'Please confirm the source of funds';
-      }
-
+      if (!donorInfo?.agreeToTerms) newErrors.agreeToTerms = 'You must agree to terms';
+      if (donorInfo?.country === 'IN' && !donorInfo?.confirmSource) newErrors.confirmSource = 'Confirm source of funds';
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (donorInfo?.email && !emailRegex?.test(donorInfo?.email)) {
-        newErrors.email = 'Please enter a valid email address';
-      }
+      if (donorInfo?.email && !emailRegex?.test(donorInfo?.email)) newErrors.email = 'Enter a valid email';
     }
-
-    if (step === 3) {
-      if (!paymentMethod) newErrors.paymentMethod = 'Please select a payment method';
-    }
-
+    if (step === 3 && !paymentMethod) newErrors.paymentMethod = 'Please select a payment method';
     setErrors(newErrors);
     return Object.keys(newErrors)?.length === 0;
   };
 
   const handleNextStep = () => {
-    if (validateStep(currentStep)) {
-      setCurrentStep(prev => Math.min(prev + 1, totalSteps));
-    }
+    if (validateStep(currentStep)) setCurrentStep(prev => Math.min(prev + 1, totalSteps));
   };
-
-  const handlePreviousStep = () => {
-    setCurrentStep(prev => Math.max(prev - 1, 1));
-  };
-
+  const handlePreviousStep = () => setCurrentStep(prev => Math.max(prev - 1, 1));
   const handleEditStep = (section) => {
     switch (section) {
-      case 'type': case'amount':
-        setCurrentStep(1);
-        break;
-      case 'donor':
-        setCurrentStep(2);
-        break;
-      case 'payment':
-        setCurrentStep(3);
-        break;
-      default:
-        break;
+      case 'type': case 'amount': setCurrentStep(1); break;
+      case 'donor': setCurrentStep(2); break;
+      case 'payment': setCurrentStep(3); break;
+      default: break;
     }
   };
 
+  // ✅ Updated handleDonationSubmit with API
   const handleDonationSubmit = async () => {
     if (!validateStep(currentStep)) return;
 
     setIsProcessing(true);
-    
-    // Simulate payment processing
-    try {
-      await new Promise(resolve => setTimeout(resolve, 3000));
-      
-      // Update impact counters
-      setImpactCounters(prev => ({
-        ...prev,
-        totalRaised: prev?.totalRaised + finalAmount,
-        currentMonthRaised: prev?.currentMonthRaised + finalAmount,
-        childrenHelped: prev?.childrenHelped + Math.floor(finalAmount / 2000)
-      }));
 
-      setShowSuccessModal(true);
+    try {
+      const payload = {
+        donor_first_name: donorInfo.firstName,
+        donor_last_name: donorInfo.lastName,
+        donor_email: donorInfo.email,
+        donor_phone: donorInfo.phone,
+        donor_country: donorInfo.country,
+        donor_pan: donorInfo.panNumber,
+        receive_updates: donorInfo.receiveUpdates,
+        agree_terms: donorInfo.agreeToTerms,
+        confirm_source: donorInfo.confirmSource,
+        donation_type: donationType,
+        amount: finalAmount,
+        currency: currency,
+        payment_method: paymentMethod
+      };
+
+      const response = await API.post('/donations', payload);
+
+      if (response?.data?.success) {
+  const createdDonation = response.data.donation;
+  setDonationId(createdDonation.id); // ✅ save ID
+
+  setImpactCounters(prev => ({
+    ...prev,
+    totalRaised: prev?.totalRaised + finalAmount,
+    currentMonthRaised: prev?.currentMonthRaised + finalAmount,
+    childrenHelped: prev?.childrenHelped + Math.floor(finalAmount / 2000)
+  }));
+
+  setShowSuccessModal(true);
+}
     } catch (error) {
-      console.error('Payment failed:', error);
+      console.error('Donation failed: ', error);
+      alert('Donation failed. Please check console for details.');
     } finally {
       setIsProcessing(false);
     }
   };
 
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('en-IN')?.format(amount);
-  };
+  const simulatePaymentSuccess = async () => {
+  if (!donationId) {
+    alert("Submit donation first!");
+    return;
+  }
 
+  setIsProcessing(true);
+  try {
+    const response = await API.put(`/donations/${donationId}/status`, {
+      payment_status: "success",
+      payment_id: "SIMULATED_PAYMENT_12345",
+    });
+
+    if (response?.data?.success) {
+      alert("Payment status updated to SUCCESS!");
+      setRecentDonation(response.data.donation);
+      setShowSuccessModal(true);
+    }
+  } catch (error) {
+    console.error("Simulate payment failed:", error);
+    alert("Failed to simulate payment. Check console.");
+  } finally {
+    setIsProcessing(false);
+  }
+};
+
+
+  const formatCurrency = (amount) => new Intl.NumberFormat('en-IN').format(amount);
   const progressPercentage = (impactCounters?.currentMonthRaised / impactCounters?.monthlyGoal) * 100;
 
   return (
@@ -340,7 +363,18 @@ const DonatePage = () => {
                       onProceed={handleDonationSubmit}
                       isProcessing={isProcessing}
                     />
+                    
                   )}
+                  <div className="flex justify-center mt-4">
+  <Button
+    variant="default"
+    onClick={simulatePaymentSuccess}
+    className="bg-success hover:bg-success/90"
+  >
+    Simulate Payment Success
+  </Button>
+</div>
+
                 </div>
               </div>
 
@@ -412,6 +446,11 @@ const DonatePage = () => {
 
         
       </div>
+      {recentDonation && (
+  <DonationPopup donation={recentDonation} onClose={() => setRecentDonation(null)} />
+)}
+
+       
     </>
   );
 };
