@@ -15,7 +15,7 @@ const FeaturedProject = ({ project, onDonate }) => {
   const daysLeft = Math.ceil((new Date(project.deadline) - new Date()) / (1000 * 60 * 60 * 24));
 
   return (
-    <div className="bg-gradient-trust rounded-xl overflow-hidden bg-white h-[500px] shadow-warm-hover  mb-8">
+    <div className="bg-gradient-trust rounded-xl overflow-hidden bg-white min-h-[400px] shadow-warm-hover  mb-8">
       <div className="grid lg:grid-cols-2 gap-0">
         {/* Image Section */}
         <div className="relative h-full">
@@ -58,23 +58,7 @@ const FeaturedProject = ({ project, onDonate }) => {
             </p>
           </div>
 
-          {/* Progress Section */}
-          <div className="mb-6">
-            <div className="flex justify-between items-center mb-3">
-              <span className="text-lg text-muted-foreground font-semibold">
-                ₹{project?.raised?.toLocaleString()} raised
-              </span>
-              <span className="text-muted-foreground">
-                {progressPercentage?.toFixed(0)}% of ₹{project?.target?.toLocaleString()}
-              </span>
-            </div>
-            <div className="w-full bg-muted rounded-full h-3">
-              <div 
-                className="bg-muted-foreground h-3 rounded-full transition-warm"
-                style={{ width: `${Math.min(progressPercentage, 100)}%` }}
-              />
-            </div>
-          </div>
+         
 
           {/* Impact Stats */}
           <div className="grid grid-cols-3 gap-4 mb-6">

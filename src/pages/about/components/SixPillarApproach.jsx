@@ -7,10 +7,14 @@ const SixPillarApproach = () => {
 
   const pillars = [
     {
-      title: "Holistic Child Development",
+      title: "Child Care & Protection ",
       icon: "Users",
       description: "Comprehensive approach addressing physical, emotional, intellectual, and social development of every child.",
-      details: `Our holistic development framework ensures each child receives personalized attention across all growth dimensions. We focus on building confidence, creativity, and critical thinking skills while nurturing emotional intelligence and social awareness.\n\nThrough structured activities, mentorship programs, and individualized care plans, we help children discover their unique potential and develop the skills needed for successful integration into society.`,
+      details: `By closely following the Juvenile Justice Act, IGM guarantees a safe, secure and caring environment for 
+each and every kid. Every child's welfare is given top priority in the house thanks to 24-hour supervision, 
+well-defined emergency response plans, and explicit safety procedures.\n\n IGM has a strict zero-tolerance 
+policy for any kind of abuse, discrimination, or neglect, and every child is treated with respect, dignity, 
+and privacy. `,
       image: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg",
       stats: [
         { label: "Development Programs", value: "25+" },
@@ -19,10 +23,16 @@ const SixPillarApproach = () => {
       ]
     },
     {
-      title: "Quality Education Access",
+      title: "Child-Centered Development ",
       icon: "BookOpen",
       description: "Ensuring every child receives quality education from primary through higher education with scholarship support.",
-      details: `Education is the cornerstone of transformation. We provide comprehensive educational support including formal schooling, vocational training, and skill development programs tailored to each child's interests and abilities.\n\nOur partnerships with leading educational institutions ensure children have access to quality learning environments, modern teaching methods, and opportunities for higher education through our scholarship programs.`,
+      details: `We focus on nurturing their individuality, potential and well-being through holistic care that integrates 
+education, emotional support, health and moral guidance. Every program is designed to empower 
+children to make informed choices, develop self-confidence, and grow into responsible, independent 
+individuals.\n\nOur goal is to create an environment where every child feels valued, heard, and inspired to 
+achieve their fullest potential ensuring that care at IGM goes beyond meeting basic needs to fostering 
+lifelong growth. 
+`,
       image: "https://images.pexels.com/photos/8613087/pexels-photo-8613087.jpeg",
       stats: [
         { label: "Graduation Rate", value: "98%" },
@@ -31,10 +41,13 @@ const SixPillarApproach = () => {
       ]
     },
     {
-      title: "Healthcare & Nutrition",
+      title: "Quality Education Access ",
       icon: "Heart",
       description: "Comprehensive healthcare services including regular check-ups, nutrition programs, and mental health support.",
-      details: `Health is fundamental to a child's development. Our healthcare pillar encompasses preventive care, regular health monitoring, nutritional support, and mental health services.\n\nWe maintain on-site medical facilities staffed by qualified healthcare professionals and have partnerships with leading hospitals to ensure children receive the best possible medical care when needed.`,
+      details: `We focus on fostering Economic Self-Reliance for Women by equipping them with the skills, resources, 
+and confidence needed to achieve financial independence. Through vocational training, 
+entrepreneurship programs, and financial literacy initiatives, women are empowered to generate 
+sustainable income and manage their own resources effectively.  \n\nBy promoting self-reliance, IGM helps women build confidence, dignity, and the ability to shape their own futures, contributing to stronger families and communities.`,
       image: "https://images.pexels.com/photos/8613090/pexels-photo-8613090.jpeg",
       stats: [
         { label: "Health Check-ups", value: "Monthly" },
@@ -43,7 +56,7 @@ const SixPillarApproach = () => {
       ]
     },
     {
-      title: "Life Skills Training",
+      title: "Economic Self-Reliance for Women ",
       icon: "Target",
       description: "Practical life skills preparation including financial literacy, communication, and independent living capabilities.",
       details: `Preparing children for independent living is crucial for their successful transition to adulthood. Our life skills training covers financial literacy, communication skills, time management, and practical daily living skills.\n\nThrough workshops, mentorship programs, and real-world practice opportunities, we ensure children are well-equipped to navigate adult responsibilities and make informed decisions about their futures.`,
@@ -53,131 +66,144 @@ const SixPillarApproach = () => {
         { label: "Workshop Hours", value: "500+" },
         { label: "Mentors Available", value: "35" }
       ]
-    },
-    {
-      title: "Family Reintegration",
-      icon: "Home",
-      description: "Supporting family reunification when possible and creating lasting family-like bonds within our community.",
-      details: `When appropriate and safe, we work towards family reintegration through counseling, mediation, and support services. For children who cannot return to their biological families, we create strong family-like bonds within our community.\n\nOur approach includes family counseling, regular family visits when possible, and creating a supportive environment that mimics healthy family dynamics to ensure children experience love, belonging, and security.`,
-      image: "https://images.pexels.com/photos/8613264/pexels-photo-8613264.jpeg",
-      stats: [
-        { label: "Successful Reintegrations", value: "280+" },
-        { label: "Family Counseling Sessions", value: "1,200+" },
-        { label: "Support Programs", value: "12" }
-      ]
-    },
-    {
-      title: "Community Integration",
-      icon: "Globe",
-      description: "Facilitating smooth integration into society through community engagement and social responsibility programs.",
-      details: `Community integration ensures children develop strong social connections and civic responsibility. We organize community service projects, cultural events, and social activities that help children build relationships beyond our facilities.\n\nThrough partnerships with local organizations, volunteer programs, and community events, we help children develop a sense of belonging and responsibility towards society while building networks that support their long-term success.`,
-      image: "https://images.pexels.com/photos/8613265/pexels-photo-8613265.jpeg",
-      stats: [
-        { label: "Community Projects", value: "50+" },
-        { label: "Volunteer Hours", value: "2,000+" },
-        { label: "Partner Organizations", value: "25" }
-      ]
     }
   ];
 
   return (
-    <section id='six-pillar' className="py-20 bg-gradient-to-br from-background via-warm-foundation to-background">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-4">
-            Our Six-Pillar Approach
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            A comprehensive methodology that addresses every aspect of child welfare, ensuring holistic development and successful life outcomes.
-          </p>
-        </div>
+<section
+  id="six-pillar"
+  className="py-14 sm:py-16 lg:py-20 bg-gradient-to-br from-background via-warm-foundation to-background"
+>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Pillar Navigation */}
-          <div className="space-y-3">
-            {pillars?.map((pillar, index) => (
+    {/* Header */}
+    <div className="text-center mb-12 sm:mb-14 lg:mb-16">
+      <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-foreground mb-4">
+        Our Four-Pillar Approach
+      </h2>
+      <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
+        A comprehensive methodology that addresses every aspect of child welfare, ensuring holistic development and successful life outcomes.
+      </p>
+    </div>
+
+    <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
+
+      {/* Pillar Navigation */}
+      <div className="space-y-3">
+        {pillars?.map((pillar, index) => (
+          <div
+            key={index}
+            className={`p-3 sm:p-4 rounded-xl cursor-pointer transition-warm ${
+              activePillar === index
+                ? 'bg-primary text-white shadow-warm'
+                : 'bg-white hover:bg-muted shadow-warm hover:shadow-warm-hover'
+            }`}
+            onClick={() => setActivePillar(index)}
+          >
+            <div className="flex items-start space-x-3">
               <div
-                key={index}
-                className={`p-4 rounded-xl cursor-pointer transition-warm ${
+                className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg ${
                   activePillar === index
-                    ? 'bg-primary text-white shadow-warm'
-                    : 'bg-white hover:bg-muted shadow-warm hover:shadow-warm-hover'
+                    ? 'bg-white/20'
+                    : 'bg-primary/10'
                 }`}
-                onClick={() => setActivePillar(index)}
               >
-                <div className="flex items-center space-x-3">
-                  <div className={`flex items-center justify-center w-10 h-10 rounded-lg ${
+                <Icon
+                  name={pillar?.icon}
+                  size={18}
+                  color={
                     activePillar === index
-                      ? 'bg-white/20' :'bg-primary/10'
-                  }`}>
-                    <Icon 
-                      name={pillar?.icon} 
-                      size={20} 
-                      color={activePillar === index ? 'white' : 'var(--color-primary)'} 
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className={`font-medium text-sm ${
-                      activePillar === index ? 'text-white' : 'text-foreground'
-                    }`}>
-                      {pillar?.title}
-                    </h3>
-                    <p className={`text-xs mt-1 ${
-                      activePillar === index ? 'text-white/80' : 'text-muted-foreground'
-                    }`}>
-                      {pillar?.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Active Pillar Content */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="bg-white rounded-2xl shadow-warm-hover overflow-hidden">
-              <div className="relative">
-                <Image
-                  src={pillars?.[activePillar]?.image}
-                  alt={pillars?.[activePillar]?.title}
-                  className="w-full h-64 object-cover"
+                      ? 'white'
+                      : 'var(--color-primary)'
+                  }
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div className="absolute bottom-4 left-6">
-                  <h3 className="font-heading font-bold text-2xl text-white mb-2">
-                    {pillars?.[activePillar]?.title}
-                  </h3>
-                </div>
               </div>
-              
-              <div className="p-6">
-                <div className="prose prose-gray max-w-none">
-                  {pillars?.[activePillar]?.details?.split('\n\n')?.map((paragraph, index) => (
-                    <p key={index} className="text-muted-foreground leading-relaxed mb-4 last:mb-0">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
+
+              <div className="flex-1">
+                <h3
+                  className={`font-medium text-sm sm:text-base ${
+                    activePillar === index
+                      ? 'text-white'
+                      : 'text-foreground'
+                  }`}
+                >
+                  {pillar?.title}
+                </h3>
+
+                <p
+                  className={`text-xs sm:text-sm mt-1 ${
+                    activePillar === index
+                      ? 'text-white/80'
+                      : 'text-muted-foreground'
+                  }`}
+                >
+                  {pillar?.description}
+                </p>
               </div>
             </div>
+          </div>
+        ))}
+      </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4">
-              {pillars?.[activePillar]?.stats?.map((stat, index) => (
-                <div key={index} className="bg-white rounded-xl p-4 text-center shadow-warm">
-                  <div className="text-xl font-bold text-primary mb-1">
-                    {stat?.value}
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    {stat?.label}
-                  </div>
-                </div>
-              ))}
+      {/* Active Pillar Content */}
+      <div className="lg:col-span-2 space-y-5 sm:space-y-6">
+        <div className="bg-white rounded-2xl shadow-warm-hover overflow-hidden">
+
+          {/* Image */}
+          <div className="relative">
+            <Image
+              src={pillars?.[activePillar]?.image}
+              alt={pillars?.[activePillar]?.title}
+              className="w-full h-52 sm:h-60 md:h-64 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+
+            <div className="absolute bottom-4 left-4 sm:left-6">
+              <h3 className="font-heading font-bold text-lg sm:text-xl md:text-2xl text-white mb-1 sm:mb-2">
+                {pillars?.[activePillar]?.title}
+              </h3>
+            </div>
+          </div>
+
+          {/* Text Content */}
+          <div className="p-4 sm:p-6">
+            <div className="prose prose-gray max-w-none">
+              {pillars?.[activePillar]?.details
+                ?.split('\n\n')
+                ?.map((paragraph, index) => (
+                  <p
+                    key={index}
+                    className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-4 last:mb-0"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
             </div>
           </div>
         </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-3 sm:gap-4">
+          {pillars?.[activePillar]?.stats?.map((stat, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl p-3 sm:p-4 text-center shadow-warm"
+            >
+              <div className="text-lg sm:text-xl font-bold text-primary mb-1">
+                {stat?.value}
+              </div>
+              <div className="text-xs sm:text-sm text-muted-foreground">
+                {stat?.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
   );
 };
 

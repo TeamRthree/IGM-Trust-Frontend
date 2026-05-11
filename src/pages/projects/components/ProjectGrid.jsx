@@ -2,7 +2,7 @@ import React from 'react';
 import ProjectCard from './ProjectCard';
 import Icon from '../../../components/AppIcon';
 
-const ProjectGrid = ({ projects, loading, onDonate, onLoadMore, hasMore }) => {
+const ProjectGrid = ({ projects, loading, onDonate, onLoadMore, hasMore, onView }) => {
   if (loading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -54,6 +54,8 @@ const ProjectGrid = ({ projects, loading, onDonate, onLoadMore, hasMore }) => {
             key={project?.id}
             project={project}
             onDonate={onDonate}
+            onView={onView}
+            
           />
         ))}
       </div>

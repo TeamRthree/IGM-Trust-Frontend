@@ -10,41 +10,41 @@ const SuccessStoriesPreview = () => {
   const successStories = [
     {
       id: 1,
-      name: "Nandhini Krishnan",
-      age: "24 years old",
-      profession: "Software Engineer at TCS",
-      story: "Abandoned as an infant at our doorstep, Nandhini grew up with unwavering determination. Today, she's a successful software engineer, supporting her adoptive family and inspiring other children at IGM.",
+      name: "Swetha",
+      age: "27 Years old",
+      profession: "Nurse at Hindu mission hospital ",
+      story: "Swetha was abandoned at just 3 years old and cared for by her loving grandmother. At age 6, she joined IGM Children Home, where guidance and support shaped her future. With encouragement, she completed her studies and pursued her dreams. Today, Swetha serves as a nurse in a reputed hospital, living the life she always hoped for. ",
       image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600",
       beforeImage: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400",
-      achievement: "Computer Science Graduate",
-      yearsAtIGM: "18 years",
-      quote: "IGM didn\'t just give me shelter; they gave me dreams and the courage to pursue them.",
+      achievement: "Professional Nurse ",
+      yearsAtIGM: "24 years",
+      quote: "Abandoned young, I joined IGM, completed my studies, and am now a nurse.",
       currentStatus: "Mentoring 15 children in coding"
     },
     {
       id: 2,
-      name: "Bakiyalakshmi Raman",
-      age: "22 years old",
-      profession: "Registered Nurse",
-      story: "Rescued from child labor at age 8, Bakiyalakshmi discovered her passion for helping others. She's now a registered nurse at Apollo Hospital, dedicated to caring for children.",
+      name: "Bakiyalakshmi",
+      age: "21 years old",
+      profession: "Nurse at Reputed Hospital",
+      story: "Orphaned and abandoned as a young child, I felt lost and alone. Then IGM Children Homes welcomed me with love, care, and the chance to learn. With their support, I grew, studied, and followed my dreams. Today, I am a nurse, grateful for the life and opportunities they gave me",
       image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=600",
       beforeImage: "https://images.pexels.com/photos/8613264/pexels-photo-8613264.jpeg?auto=compress&cs=tinysrgb&w=400",
       achievement: "Nursing Degree with Honors",
       yearsAtIGM: "14 years",
-      quote: "Every child I care for reminds me of my own journey from despair to hope.",
+      quote: "I found love, care, and education at IGM—today, my dreams have come true",
       currentStatus: "Pediatric ward specialist"
     },
     {
       id: 3,
-      name: "Arjun Kumar",
-      age: "26 years old",
-      profession: "Small Business Owner",
-      story: "Lost his parents in an accident at age 6, Arjun found a new family at IGM. He now runs a successful tailoring business and employs 8 people from his community.",
+      name: "Suresh Kumar",
+      age: "34 years old",
+      profession: "Accounting Manager, IGM Children homes. ",
+      story: "At the age of 10, my parents entrusted me to IGM. There, I was nurtured, supported and given the education I needed to grow. With their guidance, I completed my college studies successfully. Today, I proudly work as a manager at IGM, giving back to the place that shaped my life.",
       image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600",
       beforeImage: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400",
       achievement: "Vocational Training Graduate",
-      yearsAtIGM: "16 years",
-      quote: "IGM taught me that setbacks are setups for comebacks. Now I help others rise too.",
+      yearsAtIGM: "24 years",
+      quote: "IGM gave me a home, a future and the chance to give back",
       currentStatus: "Employing 8 community members"
     }
   ];
@@ -52,7 +52,7 @@ const SuccessStoriesPreview = () => {
   const currentStory = successStories?.[activeStory];
 
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-warm-foundation via-background to-sky-blue/5">
+    <section id='success-stories' className="py-16 lg:py-24 bg-gradient-to-br from-warm-foundation via-background to-sky-blue/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -71,7 +71,7 @@ const SuccessStoriesPreview = () => {
         </div>
 
         {/* Main Story Display */}
-        <div className="bg-card rounded-3xl overflow-hidden shadow-warm-hover border border-border mb-12">
+        <div  className="bg-card rounded-3xl overflow-hidden shadow-warm-hover border border-border mb-12">
           <div className="grid lg:grid-cols-2">
             {/* Story Content */}
             <div className="p-8 lg:p-12 flex flex-col justify-center">
@@ -137,7 +137,7 @@ const SuccessStoriesPreview = () => {
 
             {/* Before/After Images */}
             <div className="relative">
-              <div className="h-full min-h-[500px] relative overflow-hidden">
+              <div className="h-full max-h-[640px] relative overflow-hidden">
                 <Image
                   src={currentStory?.image}
                   alt={`${currentStory?.name} today`}
@@ -192,19 +192,7 @@ const SuccessStoriesPreview = () => {
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="flex-shrink-0">
-            <Link to="/success-stories">
-              <Button
-                variant="default"
-                iconName="ArrowRight"
-                iconPosition="right"
-                className="bg-secondary hover:bg-secondary/90 text-white shadow-button"
-              >
-                Read All Stories
-              </Button>
-            </Link>
-          </div>
+          
         </div>
 
        

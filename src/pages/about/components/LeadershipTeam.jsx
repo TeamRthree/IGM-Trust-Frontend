@@ -10,7 +10,7 @@ const LeadershipTeam = () => {
     {
       id: 1,
       name: "Shanthi Williams",
-      position: "Chairman",
+      position: "Treasurer",
       tenure: "Since 1985",
       image: "/assets/leadership/IGM-01.jpg",
       bio: `Shanthi Williams has been the driving force behind IGM Children Homes for nearly four decades. With a PhD in Child Psychology and extensive experience in social work, she has transformed the organization from a small shelter into a comprehensive child welfare institution.\n\nUnder her leadership, IGM has expanded to serve over 1,500 children and has achieved a 94% success rate in child rehabilitation and reintegration. Her vision of 'Transformative Compassion in Action' continues to guide the organization's mission.`,
@@ -26,8 +26,8 @@ const LeadershipTeam = () => {
     },
     {
       id: 2,
-      name: "Jehoshaphat P. Williams",
-      position: "CEO",
+      name: "Rev. Dr. Jehoshaphat P. Williams",
+      position: "Chairman",
       tenure: "Since 1995",
       image: "/assets/leadership/IGM-02.jpg",
       bio: `Jehoshaphat P. Williams oversees the day-to-day operations of all IGM facilities. With an MBA in Non-Profit Management and 30 years of experience in organizational development, he ensures efficient resource allocation and program implementation.\n\nHis expertise in operational excellence has helped IGM maintain the highest standards of care while expanding services to reach more children in need. He is particularly passionate about educational programs and vocational training initiatives.`,
@@ -43,8 +43,8 @@ const LeadershipTeam = () => {
     },
     {
       id: 3,
-      name: "Pearlyn Williams Suganthamani",
-      position: "Administrator",
+      name: "Mrs. Pearlyn Suganthamani",
+      position: "Secretary",
       tenure: "Since 2000",
       image: "/assets/leadership/IGM-03.jpg",
       bio: `Pearlyn Williams Suganthamani leads our child development programs with expertise in developmental psychology and trauma-informed care. She holds a PhD in Child Development and has specialized training in working with vulnerable children.\n\nHer innovative approaches to healing and development have been instrumental in achieving our high success rates. She has developed several proprietary programs that are now used as models by other child welfare organizations.`,
@@ -60,7 +60,7 @@ const LeadershipTeam = () => {
     },
     {
       id: 4,
-      name: "Eunice Williams",
+      name: "Mrs. Eunice Vinola Williams",
       position: "Project Director",
       tenure: "Since 2005",
       image: "/assets/leadership/IGM-04.jpg",

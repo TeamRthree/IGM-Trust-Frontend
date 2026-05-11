@@ -168,36 +168,44 @@ const ImpactCounters = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="bg-card rounded-2xl p-8 shadow-warm border border-border max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0 md:space-x-8">
-              <div className="text-center md:text-left">
-                <h3 className="font-heading font-bold text-2xl text-foreground mb-2">
-                  Be Part of Our Growing Impact
-                </h3>
-                <p className="font-body text-muted-foreground">
-                  Your support helps us reach more children and create more success stories every day.
-                </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
-                <Link to="/donate" >
-                 <button className="inline-flex items-center justify-center space-x-2 bg-conversion-orange hover:bg-conversion-orange/90 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-button">
-                  <Icon name="Heart" size={18} />
-                  <span>Donate Now</span>
-                </button>
-                </Link>
-               
-                <Link to="/donate" >
-                <button className="inline-flex items-center justify-center space-x-2 bg-transparent hover:bg-muted text-foreground border border-border px-6 py-3 rounded-lg font-medium transition-colors">
-                  <Icon name="Users" size={18} />
-                  <span>Volunteer</span>
-                </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+       <div className="text-center mt-12 sm:mt-16 px-0 md:px-6">
+  <div className="bg-card rounded-2xl p-6 sm:p-8 shadow-warm border border-border max-w-4xl mx-auto">
+    
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+      
+      {/* Text Section */}
+      <div className="text-center lg:text-left max-w-xl">
+        <h3 className="font-heading font-bold text-xl sm:text-2xl md:text-3xl text-foreground mb-3">
+          Be Part of Our Growing Impact
+        </h3>
+        <p className="font-body text-sm sm:text-base text-muted-foreground leading-relaxed">
+          Your support helps us reach more children and create more success stories every day.
+        </p>
+      </div>
+
+      {/* Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+        
+        <Link to="/donate" className="w-full sm:w-auto">
+          <button className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-conversion-orange hover:bg-conversion-orange/90 text-white px-6 py-3 sm:py-3.5 rounded-lg font-medium transition-colors shadow-button text-sm sm:text-base">
+            <Icon name="Heart" size={18} />
+            <span>Donate Now</span>
+          </button>
+        </Link>
+
+        <Link to="/donate" className="w-full sm:w-auto">
+          <button className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-transparent hover:bg-muted text-foreground border border-border px-6 py-3 sm:py-3.5 rounded-lg font-medium transition-colors text-sm sm:text-base">
+            <Icon name="Users" size={18} />
+            <span>Volunteer</span>
+          </button>
+        </Link>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
       </div>
     </section>
   );

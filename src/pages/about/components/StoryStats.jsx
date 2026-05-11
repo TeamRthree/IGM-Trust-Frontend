@@ -5,28 +5,28 @@ const StoryStats = () => {
   const stats = [
     {
       icon: 'Users',
-      value: '2,847',
-      label: 'Children Transformed',
+      value: '50+',
+      label: 'Years of Service ',
       description: 'Lives changed through our programs',
       color: 'text-primary'
     },
     {
       icon: 'GraduationCap',
-      value: '1,234',
-      label: 'Educational Success',
+      value: '60+',
+      label: 'Children currently under care',
       description: 'Children completed their education',
       color: 'text-success'
     },
     {
       icon: 'Briefcase',
-      value: '567',
-      label: 'Career Placements',
+      value: '1000+',
+      label: 'lives transformed ',
       description: 'Secured meaningful employment',
       color: 'text-secondary'
     },
     {
       icon: 'Home',
-      value: '89%',
+      value: '87%',
       label: 'Family Reunification',
       description: 'Successfully reunited with families',
       color: 'text-accent'

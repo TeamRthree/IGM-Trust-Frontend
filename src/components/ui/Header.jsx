@@ -17,48 +17,52 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // 🔥 Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isMenuOpen]);
+
   const navigationItems = [
-  { name: 'Home', path: '/', icon: 'Home' },
-  { name: 'About', path: '/about', icon: 'Users' },
-  { name: 'Projects', path: '/projects', icon: 'FolderOpen' },
-  { name: 'Gallery', path: '/gallery', icon: 'Heart' },
-  { name: 'Contact', path: '/contact', icon: 'Mail' }
-];
+    { name: 'Home', path: '/', icon: 'Home' },
+    { name: 'About', path: '/about', icon: 'Users' },
+    { name: 'Projects', path: '/projects', icon: 'FolderOpen' },
+    { name: 'Gallery', path: '/gallery', icon: 'Heart' },
+    { name: 'Contact', path: '/contact', icon: 'Mail' }
+  ];
 
+  const isActivePath = (path) => location?.pathname === path;
 
-  const isActivePath = (path) => {
-    return location?.pathname === path;
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header 
-      className="fixed top-0 left-0  z-50 transition-warm 
-          shadow-warm border-b w-full bg-white"
-    >
-      <div className="w-full px-2 md:px-8 xl:px-48">
-        <div className="flex  items-center justify-between h-20 ">
+    <header className="fixed top-0 left-0 z-50 w-full bg-white border-b shadow-warm">
+      
+      {/* Container */}
+      <div className="w-full px-4 sm:px-6 md:px-8 xl:px-48">
+
+        {/* Header Row */}
+        <div className="flex items-center justify-between h-16 sm:h-20">
+
           {/* Logo */}
           <Link 
-            to="/homepage" 
-            className="flex items-center space-x-3 hover:opacity-80 transition-quick"
+            to="/homepage"
+            className="flex items-center space-x-3"
             onClick={closeMenu}
           >
-            <div className="flex items-center justify-center w-10 h-10 bg-gradient-trust rounded-lg shadow-button">
-              <Icon name="Heart" size={24} className='text-secondary' strokeWidth={2.5} />
+            <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 bg-gradient-trust rounded-lg shadow-button">
+              <Icon name="Heart" size={20} className="text-secondary" strokeWidth={2.5} />
             </div>
-            <div className="flex flex-col">
-              <span className="font-heading font-bold text-lg text-foreground leading-none">
+
+            <div className="flex flex-col leading-none">
+              <span className="font-heading font-bold text-base sm:text-lg text-foreground">
                 IGM Children
               </span>
-              <span className="font-body text-sm text-muted-foreground leading-none">
+              <span className="font-body text-xs sm:text-sm text-muted-foreground">
                 Homes
               </span>
             </div>
@@ -66,38 +70,37 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
-            {navigationItems?.map((item) => (
+            {navigationItems.map((item) => (
               <Link
-                key={item?.path}
-                to={item?.path}
+                key={item.path}
+                to={item.path}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-button text-sm font-medium transition-warm hover:bg-muted ${
-                  isActivePath(item?.path)
-                    ? 'text-primary bg-muted' :'text-muted-foreground hover:text-foreground'
+                  isActivePath(item.path)
+                    ? 'text-primary bg-muted'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
-                <Icon name={item?.icon} size={16} />
-                <span>{item?.name}</span>
+                <Icon name={item.icon} size={16} />
+                <span>{item.name}</span>
               </Link>
             ))}
           </nav>
 
           {/* Desktop CTA */}
-<div className="hidden lg:flex items-center space-x-4">
-  
-  <Link to="/donate" onClick={closeMenu}>
-    <Button
-      variant="default"
-      size="sm"
-      iconName="Heart"
-      iconPosition="left"
-      iconSize={16}
-      className="bg-secondary hover:bg-conversion-orange/90 text-white shadow-button"
-    >
-      Donate Now
-    </Button>
-  </Link>
-</div>
-
+          <div className="hidden lg:flex items-center space-x-4">
+            <Link to="/donate" onClick={closeMenu}>
+              <Button
+                variant="default"
+                size="sm"
+                iconName="Heart"
+                iconPosition="left"
+                iconSize={16}
+                className="bg-secondary hover:bg-conversion-orange/90 text-white shadow-button"
+              >
+                Donate Now
+              </Button>
+            </Link>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -105,53 +108,55 @@ const Header = () => {
             className="lg:hidden flex items-center justify-center w-10 h-10 rounded-button text-muted-foreground hover:text-foreground hover:bg-muted transition-warm"
             aria-label="Toggle menu"
           >
-            <Icon name={isMenuOpen ? "X" : "Menu"} size={20} />
+            <Icon name={isMenuOpen ? "X" : "Menu"} size={22} />
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        <div 
-          className={`lg:hidden transition-warm overflow-hidden ${
-            isMenuOpen 
-              ? 'max-h-96 opacity-100' :'max-h-0 opacity-0'
+        <div
+          className={`lg:hidden fixed inset-x-0 top-16 sm:top-20 bg-white transition-all duration-300 ${
+            isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
           }`}
         >
-          <div className="bg-background/95 backdrop-blur-md border-t border-border">
-            <nav className="px-6 py-4 space-y-2">
-              {navigationItems?.map((item) => (
+          <div className="border-t border-border shadow-lg">
+            <nav className="px-6 py-6 space-y-3">
+
+              {navigationItems.map((item) => (
                 <Link
-                  key={item?.path}
-                  to={item?.path}
+                  key={item.path}
+                  to={item.path}
                   onClick={closeMenu}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-button text-sm font-medium transition-warm ${
-                    isActivePath(item?.path)
-                      ? 'text-primary bg-muted' :'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl text-base font-medium transition-warm ${
+                    isActivePath(item.path)
+                      ? 'text-primary bg-muted'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                   }`}
                 >
-                  <Icon name={item?.icon} size={18} />
-                  <span>{item?.name}</span>
+                  <Icon name={item.icon} size={20} />
+                  <span>{item.name}</span>
                 </Link>
               ))}
-              
-              {/* Mobile CTAs */}
-<div className="pt-4 space-y-3 border-t border-border">
-  <Link to="/donate" onClick={closeMenu}>
-    <Button
-      variant="default"
-      fullWidth
-      iconName="Heart"
-      iconPosition="left"
-      iconSize={16}
-      className="bg-secondary hover:bg-conversion-orange/90 text-white"
-    >
-      Donate Now
-    </Button>
-  </Link>
-</div>
+
+              {/* Mobile CTA */}
+              <div className="pt-4 border-t border-border">
+                <Link to="/donate" onClick={closeMenu}>
+                  <Button
+                    variant="default"
+                    fullWidth
+                    iconName="Heart"
+                    iconPosition="left"
+                    iconSize={18}
+                    className="bg-secondary hover:bg-conversion-orange/90 text-white py-3 text-base"
+                  >
+                    Donate Now
+                  </Button>
+                </Link>
+              </div>
 
             </nav>
           </div>
         </div>
+
       </div>
     </header>
   );

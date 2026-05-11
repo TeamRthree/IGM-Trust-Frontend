@@ -59,109 +59,127 @@ const LegacyTimeline = () => {
   const activeData = timelineData?.find(item => item?.year === activeYear);
 
   return (
-    <section className="py-20 bg-muted">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-4">
-            50 Years of Transformative Impact
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            From humble beginnings to global recognition, our journey reflects unwavering commitment to restoring broken lives and creating lasting change.
-          </p>
-        </div>
+    <section className="py-16 lg:py-20 bg-muted">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Timeline Navigation */}
-          <div className="space-y-6">
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-10 top-0 bottom-0 w-0.5 bg-border"></div>
-              
-              {timelineData?.map((item, index) => (
-                <div
-                  key={item?.year}
-                  className={`relative flex items-center space-x-4 p-4 rounded-xl cursor-pointer transition-warm ${
-                    activeYear === item?.year
-                      ? 'bg-white shadow-warm'
-                      : 'hover:bg-white/50'
-                  }`}
-                  onClick={() => setActiveYear(item?.year)}
-                >
-                  <div className={`flex items-center justify-center w-12 h-12 rounded-full transition-warm ${
-                    activeYear === item?.year
-                      ? 'bg-primary text-white' :'bg-muted text-muted-foreground'
+    {/* Header */}
+    <div className="text-center mb-12 lg:mb-16">
+      <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-foreground mb-4">
+        50 Years of Transformative Impact
+      </h2>
+      <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
+        From humble beginnings to global recognition, our journey reflects unwavering commitment to restoring broken lives and creating lasting change.
+      </p>
+    </div>
+
+    <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+      {/* Timeline Navigation */}
+      <div className="space-y-5 sm:space-y-6">
+        <div className="relative">
+
+          {/* Timeline Line */}
+          <div className="absolute left-8 sm:left-10 top-0 bottom-0 w-0.5 bg-border"></div>
+
+          {timelineData?.map((item) => (
+            <div
+              key={item?.year}
+              className={`relative flex items-start space-x-4 p-3 sm:p-4 rounded-xl cursor-pointer transition-warm ${
+                activeYear === item?.year
+                  ? 'bg-white shadow-warm'
+                  : 'hover:bg-white/50'
+              }`}
+              onClick={() => setActiveYear(item?.year)}
+            >
+              <div className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-warm ${
+                activeYear === item?.year
+                  ? 'bg-primary text-white'
+                  : 'bg-muted text-muted-foreground'
+              }`}>
+                <Icon name={item?.icon} size={18} />
+              </div>
+
+              <div className="flex-1">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3 mb-1">
+                  <span className={`font-bold text-base sm:text-lg ${
+                    activeYear === item?.year ? 'text-primary' : 'text-foreground'
                   }`}>
-                    <Icon name={item?.icon} size={20} />
-                  </div>
-                  
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3 mb-1">
-                      <span className={`font-bold text-lg ${
-                        activeYear === item?.year ? 'text-primary' : 'text-foreground'
-                      }`}>
-                        {item?.year}
-                      </span>
-                      <span className={`font-medium ${
-                        activeYear === item?.year ? 'text-foreground' : 'text-muted-foreground'
-                      }`}>
-                        {item?.title}
-                      </span>
-                    </div>
-                    <p className={`text-sm ${
-                      activeYear === item?.year ? 'text-muted-foreground' : 'text-muted-foreground/70'
-                    }`}>
-                      {item?.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+                    {item?.year}
+                  </span>
 
-          {/* Active Content */}
-          <div className="space-y-6">
-            <div className="relative rounded-2xl overflow-hidden shadow-warm-hover">
-              <Image
-                src={activeData?.image}
-                alt={`IGM Children Homes in ${activeData?.year}`}
-                className="w-full h-80 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 text-white">
-                <h3 className="font-heading font-bold text-2xl mb-2">
-                  {activeData?.title}
-                </h3>
-                <p className="text-white/90 leading-relaxed">
-                  {activeData?.description}
+                  <span className={`font-medium text-sm sm:text-base ${
+                    activeYear === item?.year ? 'text-foreground' : 'text-muted-foreground'
+                  }`}>
+                    {item?.title}
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {item?.description}
                 </p>
               </div>
             </div>
+          ))}
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4">
-              <div className="bg-white rounded-xl p-6 text-center shadow-warm">
-                <div className="text-2xl font-bold text-primary mb-1">
-                  {activeData?.stats?.children}
-                </div>
-                <div className="text-sm text-muted-foreground">Children Served</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 text-center shadow-warm">
-                <div className="text-2xl font-bold text-secondary mb-1">
-                  {activeData?.stats?.staff}
-                </div>
-                <div className="text-sm text-muted-foreground">Staff Members</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 text-center shadow-warm">
-                <div className="text-2xl font-bold text-accent mb-1">
-                  {activeData?.stats?.facilities}
-                </div>
-                <div className="text-sm text-muted-foreground">Facilities</div>
-              </div>
+        </div>
+      </div>
+
+      {/* Active Content */}
+      <div className="space-y-5 sm:space-y-6">
+
+        {/* Image */}
+        <div className="relative rounded-2xl overflow-hidden shadow-warm-hover">
+          <Image
+            src={activeData?.image}
+            alt={`IGM Children Homes in ${activeData?.year}`}
+            className="w-full h-64 sm:h-72 md:h-80 object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white pr-4">
+            <h3 className="font-heading font-bold text-lg sm:text-xl md:text-2xl mb-2">
+              {activeData?.title}
+            </h3>
+            <p className="text-sm sm:text-base text-white/90 leading-relaxed">
+              {activeData?.description}
+            </p>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-3 sm:gap-4">
+          <div className="bg-white rounded-xl p-4 sm:p-6 text-center shadow-warm">
+            <div className="text-xl sm:text-2xl font-bold text-primary mb-1">
+              {activeData?.stats?.children}
+            </div>
+            <div className="text-xs sm:text-sm text-muted-foreground">
+              Children Served
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl p-4 sm:p-6 text-center shadow-warm">
+            <div className="text-xl sm:text-2xl font-bold text-secondary mb-1">
+              {activeData?.stats?.staff}
+            </div>
+            <div className="text-xs sm:text-sm text-muted-foreground">
+              Staff Members
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl p-4 sm:p-6 text-center shadow-warm">
+            <div className="text-xl sm:text-2xl font-bold text-accent mb-1">
+              {activeData?.stats?.facilities}
+            </div>
+            <div className="text-xs sm:text-sm text-muted-foreground">
+              Facilities
             </div>
           </div>
         </div>
+
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
   );
 };
 

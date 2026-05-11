@@ -5,38 +5,60 @@ import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
 
 const FeaturedPrograms = () => {
-  const programs = [
-    {
-      id: 1,
-      title: "Education & Skill Development",
-      description: "Comprehensive educational programs from primary school through vocational training, ensuring every child has the tools for a successful future.",
-      image: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800",
-      icon: "BookOpen",
-      stats: "1,200+ Students",
-      color: "secondary",
-      features: ["Primary & Secondary Education", "Vocational Training", "Computer Literacy", "Life Skills Development"]
-    },
-    {
-      id: 2,
-      title: "Healthcare & Nutrition",
-      description: "Complete healthcare services including regular check-ups, nutritious meals, and mental health support to ensure holistic well-being.",
-      image: "https://images.pexels.com/photos/6303773/pexels-photo-6303773.jpeg?auto=compress&cs=tinysrgb&w=800",
-      icon: "Heart",
-      stats: "24/7 Care",
-      color: "secondary",
-      features: ["Regular Health Check-ups", "Nutritious Meals", "Mental Health Support", "Emergency Medical Care"]
-    },
-    {
-      id: 3,
-      title: "Family Reunification",
-      description: "Dedicated efforts to reunite children with their families when possible, providing counseling and support throughout the process.",
-      image: "https://media.istockphoto.com/id/1473468869/photo/group-of-happy-people-with-senior-citizens-at-park.jpg?s=612x612&w=0&k=20&c=xROHNPZDpatj3V_XaVwZjthyC0HhT0FVSevcXsmI_xo=",
-      icon: "Users",
-      stats: "85% Success Rate",
-      color: "secondary",
-      features: ["Family Tracing", "Counseling Services", "Gradual Reintegration", "Follow-up Support"]
-    }
-  ];
+const programs = [
+  {
+    id: 1,
+    title: "Children’s Residential Home",
+    description:
+      "Providing a safe and nurturing residential environment for vulnerable children with complete care, education, healthcare and emotional support, ensuring every child grows with dignity and hope.",
+    image:
+      "https://images.pexels.com/photos/8613092/pexels-photo-8613092.jpeg?auto=compress&cs=tinysrgb&w=800",
+    icon: "Heart",
+    stats: "220 Children Supported",
+    color: "secondary",
+    features: [
+      "Safe Residential Care",
+      "Nutritious Meals & Healthcare",
+      "Education & School Fees",
+      "Mentoring & Counseling Support"
+    ]
+  },
+  {
+    id: 2,
+    title: "Free Tuition Centres",
+    description:
+      "After-school academic support programs serving rural and tribal communities, helping children improve performance, reduce dropout rates and build confidence for a brighter future.",
+    image:
+      "https://images.pexels.com/photos/8613015/pexels-photo-8613015.jpeg?auto=compress&cs=tinysrgb&w=800",
+    icon: "BookOpen",
+    stats: "670+ Children Benefited",
+    color: "secondary",
+    features: [
+      "Academic Coaching",
+      "Study Materials & Exam Preparation",
+      "Life Skill Development",
+      "Community & Parent Engagement"
+    ]
+  },
+  {
+    id: 3,
+    title: "Women Tailoring & Skill Development Centre",
+    description:
+      "Empowering vulnerable women through vocational training, skill development and entrepreneurship support, enabling economic independence and restoring dignity.",
+    image:
+      "https://images.pexels.com/photos/8613086/pexels-photo-8613086.jpeg?auto=compress&cs=tinysrgb&w=800",
+    icon: "Users",
+    stats: "230+ Women Benefited",
+    color: "secondary",
+    features: [
+      "Tailoring Machine Training",
+      "Handicraft & Jute Product Design",
+      "Entrepreneurship Guidance",
+      "Livelihood & Income Support"
+    ]
+  }
+];
+
 
   const getColorClasses = (color) => {
     const colorMap = {
@@ -76,8 +98,11 @@ const FeaturedPrograms = () => {
             How We Transform Lives
           </h2>
           
-          <p className="font-body text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Our comprehensive approach addresses every aspect of a child's development, from basic needs to future aspirations. Each program is designed to restore hope and build lasting foundations for success.
+          <p className="font-body text-lg text-muted-foreground max-w-6xl mx-auto leading-relaxed">
+           We are committed to igniting the dreams of every child deserve not just care, but a chance to dream 
+and achieve. Our holistic approach touches every part of a child’s journey nurturing their needs, shaping 
+their character and guiding their hopes for the future. Each program we build is a step toward restoring 
+hope and creating a life filled with love, purpose and possibility. 
           </p>
         </div>
 
@@ -96,7 +121,7 @@ const FeaturedPrograms = () => {
                   <Image
                     src={program?.image}
                     alt={program?.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full  object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent"></div>
                   
@@ -148,60 +173,82 @@ const FeaturedPrograms = () => {
           })}
         </div>
 
-        {/* Bottom Section */}
-        <div className="bg-gradient-to-r from-primary/5 via-warm-foundation to-secondary/5 rounded-2xl p-8 lg:p-12">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="font-heading font-bold text-2xl lg:text-3xl text-foreground mb-4">
-                Every Program Tells a Story
-              </h3>
-              <p className="font-body text-muted-foreground leading-relaxed mb-6">
-                Behind every program are countless success stories of children who found hope, developed skills, and built bright futures. Your support makes these transformations possible.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/success-stories">
-                  <Button
-                    variant="default"
-                    iconName="BookOpen"
-                    iconPosition="left"
-                    className="bg-primary hover:bg-primary/90 text-white"
-                  >
-                    Read Success Stories
-                  </Button>
-                </Link>
-                
-                <Link to="/projects">
-                  <Button
-                    variant="outline"
-                    iconName="Eye"
-                    iconPosition="left"
-                  >
-                    View All Programs
-                  </Button>
-                </Link>
-              </div>
-            </div>
+       {/* Bottom Section */}
+<div className="bg-gradient-to-r from-primary/5 via-warm-foundation to-secondary/5 rounded-2xl p-6 sm:p-8 lg:p-12 mt-12 sm:mt-16">
+  
+  <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+    
+    {/* Left Content */}
+    <div className="text-center lg:text-left">
+      <h3 className="font-heading font-bold text-xl sm:text-2xl lg:text-3xl text-foreground mb-4">
+        Every Initiative Speaks for Itself
+      </h3>
 
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-card rounded-xl p-6 shadow-warm text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Award" size={24} className="text-primary" />
-                </div>
-                <div className="font-heading font-bold text-2xl text-foreground mb-1">95%</div>
-                <div className="font-body text-sm text-muted-foreground">Program Success Rate</div>
-              </div>
-              
-              <div className="bg-card rounded-xl p-6 shadow-warm text-center">
-                <div className="w-12 h-12 bg-conversion-orange/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Users" size={24} className="text-conversion-orange" />
-                </div>
-                <div className="font-heading font-bold text-2xl text-foreground mb-1">12</div>
-                <div className="font-body text-sm text-muted-foreground">Active Programs</div>
-              </div>
-            </div>
-          </div>
+      <p className="font-body text-sm sm:text-base text-muted-foreground leading-relaxed mb-6 max-w-xl mx-auto lg:mx-0">
+        Behind each initiative are countless inspiring stories of growth, learning and resilience. 
+        These life-changing journeys are made possible through the generous support of our donors, 
+        volunteers and well-wishers, whose contributions help turn potential into reality.
+      </p>
+
+      {/* Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start">
+        
+        <Link to="/success-stories" className="w-full sm:w-auto">
+          <Button
+            variant="default"
+            iconName="BookOpen"
+            iconPosition="left"
+            className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto text-sm sm:text-base py-3"
+          >
+            Read Success Stories
+          </Button>
+        </Link>
+
+        <Link to="/projects" className="w-full sm:w-auto">
+          <Button
+            variant="outline"
+            iconName="Eye"
+            iconPosition="left"
+            className="w-full sm:w-auto text-sm sm:text-base py-3"
+          >
+            View All Programs
+          </Button>
+        </Link>
+
+      </div>
+    </div>
+
+    {/* Right Stats */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      
+      <div className="bg-card rounded-xl p-5 sm:p-6 shadow-warm text-center">
+        <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <Icon name="Award" size={22} className="text-primary" />
         </div>
+        <div className="font-heading font-bold text-xl sm:text-2xl text-foreground mb-1">
+          95%
+        </div>
+        <div className="font-body text-xs sm:text-sm text-muted-foreground">
+          Program Success Rate
+        </div>
+      </div>
+
+      <div className="bg-card rounded-xl p-5 sm:p-6 shadow-warm text-center">
+        <div className="w-12 h-12 bg-conversion-orange/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <Icon name="Users" size={22} className="text-conversion-orange" />
+        </div>
+        <div className="font-heading font-bold text-xl sm:text-2xl text-foreground mb-1">
+          5
+        </div>
+        <div className="font-body text-xs sm:text-sm text-muted-foreground">
+          Active Programs
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
       </div>
     </section>
   );

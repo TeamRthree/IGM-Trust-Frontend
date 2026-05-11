@@ -219,23 +219,7 @@ const DonatePage = () => {
               </div>
             </div>
 
-            {/* Monthly Goal Progress */}
-            <div className="max-w-md mx-auto">
-              <div className="flex justify-between text-sm mb-2">
-                <span>Monthly Goal Progress</span>
-                <span>{Math.round(progressPercentage)}%</span>
-              </div>
-              <div className="w-full bg-white/70 rounded-full h-2">
-                <div 
-                  className="bg-secondary h-2 rounded-full transition-all duration-500"
-                  style={{ width: `${Math.min(progressPercentage, 100)}%` }}
-                />
-              </div>
-              <div className="flex justify-between text-xs mt-1 text-muted-foreground">
-                <span>₹{formatCurrency(impactCounters?.currentMonthRaised)}</span>
-                <span>₹{formatCurrency(impactCounters?.monthlyGoal)}</span>
-              </div>
-            </div>
+            
           </div>
         </section>
 

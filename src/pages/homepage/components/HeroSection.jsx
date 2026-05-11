@@ -11,17 +11,17 @@ const HeroSection = () => {
   const heroStories = [
     {
       id: 1,
-      title: "Nandhini\'s Journey to Success",
-      subtitle: "From abandoned child to software engineer",
-      description: "Once left at our doorstep as an infant, Nandhini graduated with honors in Computer Science and now works at a leading tech company, supporting her adoptive family.",
+      title: "Swetha\'s Journey to Success",
+      subtitle: "An abandoned Child to Professional Nurse",
+      description: "Swetha an abandoned child left by her father and mother at the age of 3 years and then she was taken care of her grandma later on she came to IGM at the age of 6 years…",
       image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200",
       cta: "Read Her Story",
-      link: "/success-stories"
+      link: "#success-stories"
     },
     {
       id: 2,
       title: "Building Dreams, One Child at a Time",
-      subtitle: "48 years of transforming lives",
+      subtitle: "40 Years of transforming lives",
       description: "Since 1975, we've provided shelter, education, and love to over 500,000 children. Every child deserves a chance to dream, and your support makes it possible.",
       image: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=1200",
       cta: "See Our Impact",
@@ -63,7 +63,8 @@ const HeroSection = () => {
   const currentHeroStory = heroStories?.[currentStory];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-warm-foundation via-background to-sky-blue/10">
+    <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-warm-foundation via-background to-sky-blue/10">
+
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="relative w-full h-full">
@@ -72,12 +73,14 @@ const HeroSection = () => {
             alt={currentHeroStory?.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-foreground/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 md:from-black/90 via-black/70 md:via-foreground/50 to-transparent"></div>
+
           <div className="absolute inset-0 bg-gradient-to-l from-black/40 via-transparent to-transparent"></div>
         </div>
       </div>
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
+     <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-14 sm:pt-28 lg:pt-0 pb-3 md:pb-0">
+
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           {/* Text Content */}
           <div className={`space-y-8 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
@@ -102,17 +105,40 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to={currentHeroStory?.link}>
-                <Button
-                  variant="default"
-                  size="lg"
-                  iconName="ArrowRight"
-                  iconPosition="right"
-                  className="bg-conversion-orange hover:bg-conversion-orange/90 text-white shadow-warm-hover w-full sm:w-auto"
-                >
-                  {currentHeroStory?.cta}
-                </Button>
-              </Link>
+              {currentHeroStory?.link.startsWith('#') ? (
+  <button
+    onClick={(e) => {
+      e.preventDefault();
+      const section = document.querySelector(currentHeroStory.link);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }}
+  >
+    <Button
+      variant="default"
+      size="lg"
+      iconName="ArrowRight"
+      iconPosition="right"
+      className="bg-conversion-orange hover:bg-conversion-orange/90 text-white shadow-warm-hover w-full sm:w-auto"
+    >
+      {currentHeroStory?.cta}
+    </Button>
+  </button>
+) : (
+  <Link to={currentHeroStory?.link}>
+    <Button
+      variant="default"
+      size="lg"
+      iconName="ArrowRight"
+      iconPosition="right"
+      className="bg-conversion-orange hover:bg-conversion-orange/90 text-white shadow-warm-hover w-full sm:w-auto"
+    >
+      {currentHeroStory?.cta}
+    </Button>
+  </Link>
+)}
+
               
               <Link to="/about">
                 <Button
@@ -184,7 +210,7 @@ const HeroSection = () => {
         </div>
       </div>
       {/* Scroll Indicator */}
-      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-10">
+      <div className="hidden md:block absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
         <div className="flex flex-col items-center space-y-2 text-white/80">
           <span className="text-sm font-body">Discover Our Impact</span>
           <Icon name="ChevronDown" size={20} className="animate-bounce" />

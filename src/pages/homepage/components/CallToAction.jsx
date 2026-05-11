@@ -45,10 +45,10 @@ const CallToAction = () => {
   ];
 
   const volunteerOpportunities = [
-    { role: 'Education Support', time: '2-4 hours/week', description: 'Help with homework and tutoring' },
-    { role: 'Skill Training', time: '4-6 hours/week', description: 'Teach vocational skills and life skills' },
-    { role: 'Mentorship', time: '1-2 hours/week', description: 'Provide guidance and emotional support' },
-    { role: 'Event Support', time: 'Flexible', description: 'Help organize fundraising events' }
+    { role: 'Awareness Program ', time: '2-4 hours/week', description: 'Help with homework and tutoring' },
+    { role: 'Disaster Rescue team ', time: '4-6 hours/week', description: 'Teach vocational skills and life skills' },
+    { role: 'Urban Afforestation', time: '1-2 hours/week', description: 'Provide guidance and emotional support' },
+    { role: 'Philanthropy Drive', time: 'Flexible', description: 'Help organize fundraising events' }
   ];
 
   const getColorClasses = (color) => {
@@ -91,7 +91,7 @@ const CallToAction = () => {
                 <div key={index} className="bg-card rounded-xl p-6 border border-border hover:border-conversion-orange/50 transition-colors cursor-pointer group">
                   <div className="flex items-center justify-between mb-3">
                     <span className="font-heading font-bold text-2xl text-secondary">{option?.amount}</span>
-                    <Icon name="Heart" size={20} className="text-conversion-orange group-hover:scale-110 transition-transform" />
+                    
                   </div>
                   <p className="font-body text-muted-foreground text-sm">{option?.impact}</p>
                 </div>
@@ -181,7 +181,7 @@ const CallToAction = () => {
                       <h4 className="font-heading font-bold text-lg text-foreground mb-1">{opportunity?.role}</h4>
                       <p className="font-body text-secondary text-sm font-medium">{opportunity?.time}</p>
                     </div>
-                    <Icon name="Clock" size={20} className="text-secondary" />
+                   
                   </div>
                   <p className="font-body text-muted-foreground text-sm">{opportunity?.description}</p>
                 </div>
@@ -229,7 +229,7 @@ const CallToAction = () => {
           </div>
           
           <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-            Your Compassion Creates Change
+            Transformation Needs You 
           </h2>
           
           <p className="font-body text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -239,7 +239,7 @@ const CallToAction = () => {
 
         {/* Main CTA Card */}
         <div className="bg-card rounded-3xl shadow-warm-hover border border-border overflow-hidden">
-          <div className="grid lg:grid-cols-2 md:h-[100vh]">
+          <div className="grid lg:grid-cols-2 ">
             {/* Image Side */}
             <div className="relative h-64 lg:h-auto">
               <Image
@@ -271,7 +271,7 @@ const CallToAction = () => {
                           : 'text-muted-foreground hover:text-foreground hover:bg-background'
                       }`}
                     >
-                      <Icon name={tab?.icon} size={16} />
+                      
                       <span className="hidden sm:inline">{tab?.title}</span>
                       <span className="sm:hidden">{tab?.title?.split(' ')?.[0]}</span>
                     </button>

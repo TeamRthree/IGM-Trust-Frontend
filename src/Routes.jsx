@@ -13,6 +13,7 @@ import Homepage from "./pages/homepage";
 import BlockedPage from "./components/BlockedPage";
 import Header from "./components/ui/Header";
 import Footer from "./pages/homepage/components/Footer";
+import SuccessStories from "./pages/success-stories";
 
 const Routes = () => {
   return (
@@ -30,6 +31,7 @@ const Routes = () => {
           {/* Other pages wrapped in BlockedPage */}
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
+           <Route path="/success-stories" element={<SuccessStories />} />
           
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />

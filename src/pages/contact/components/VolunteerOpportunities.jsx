@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
+import WhyVolunteer from './WhyVolunteer';
 import { categories, opportunities } from '../volunteerData';
 import API from '../../../api/api'; // <-- import your API
 
@@ -62,49 +63,89 @@ const VolunteerModal = ({ isOpen, onClose, role, onSubmit }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="bg-white rounded-xl p-8 w-full max-w-md relative">
-        <button className="absolute top-3 right-3 text-muted-foreground" onClick={onClose}>
-          <Icon name="X" size={20} />
-        </button>
-        <h3 className="text-xl font-bold mb-4">Apply for {role}</h3>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            name="name"
-            placeholder="Full Name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            disabled={loading}
-          />
-          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 px-4">
+  <div className="bg-white rounded-xl p-5 sm:p-8 w-full max-w-md relative max-h-[90vh] overflow-y-auto">
 
-          <input
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            disabled={loading}
-          />
-          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+    {/* Close Button */}
+    <button
+      className="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors"
+      onClick={onClose}
+    >
+      <Icon name="X" size={20} />
+    </button>
 
-          <input
-            name="phone"
-            placeholder="Phone Number"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            disabled={loading}
-          />
-          {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+    {/* Title */}
+    <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">
+      Apply for {role}
+    </h3>
 
-          <Button type="submit" className="w-full bg-primary text-white" disabled={loading}>
-            {loading ? 'Submitting...' : 'Submit'}
-          </Button>
-        </form>
+    {/* Form */}
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+
+      {/* Name */}
+      <div>
+        <input
+          name="name"
+          placeholder="Full Name"
+          value={formData.name}
+          onChange={handleChange}
+          className="w-full border border-border p-2.5 sm:p-3 rounded-md text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary/30"
+          disabled={loading}
+        />
+        {errors.name && (
+          <p className="text-red-500 text-xs sm:text-sm mt-1">
+            {errors.name}
+          </p>
+        )}
       </div>
-    </div>
+
+      {/* Email */}
+      <div>
+        <input
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full border border-border p-2.5 sm:p-3 rounded-md text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary/30"
+          disabled={loading}
+        />
+        {errors.email && (
+          <p className="text-red-500 text-xs sm:text-sm mt-1">
+            {errors.email}
+          </p>
+        )}
+      </div>
+
+      {/* Phone */}
+      <div>
+        <input
+          name="phone"
+          placeholder="Phone Number"
+          value={formData.phone}
+          onChange={handleChange}
+          className="w-full border border-border p-2.5 sm:p-3 rounded-md text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary/30"
+          disabled={loading}
+        />
+        {errors.phone && (
+          <p className="text-red-500 text-xs sm:text-sm mt-1">
+            {errors.phone}
+          </p>
+        )}
+      </div>
+
+      {/* Submit Button */}
+      <Button
+        type="submit"
+        className="w-full bg-primary hover:bg-primary/90 text-white text-sm sm:text-base py-2.5 sm:py-3"
+        disabled={loading}
+      >
+        {loading ? 'Submitting...' : 'Submit'}
+      </Button>
+
+    </form>
+  </div>
+</div>
+
   );
 };
 
@@ -168,130 +209,145 @@ const VolunteerOpportunities = () => {
   };
 
   return (
-    <section id="volunteer" className="py-16 lg:py-24 bg-muted">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="volunteer" className="py-16 lg:pb-24 bg-muted">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+  {/* Header */}
+  <div className="text-center mb-10 sm:mb-12">
+
+
+    <WhyVolunteer />
+
+
+  </div>
+
+  {/* Category Filter */}
+  <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 sm:mb-12 px-2">
+    {categories.map((category) => (
+      <button
+        key={category.id}
+        onClick={() => setSelectedCategory(category.id)}
+        className={`flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-warm ${
+          selectedCategory === category.id
+            ? 'bg-primary text-white shadow-button'
+            : 'bg-card text-muted-foreground hover:text-foreground hover:bg-card/80 border border-border'
+        }`}
+      >
+        <Icon name={category.icon} size={14} />
+        <span>{category.name}</span>
+      </button>
+    ))}
+  </div>
+
+  {/* Opportunities Grid */}
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+    {filteredOpportunities.map((opp) => (
+      <div
+        key={opp.id}
+        className="bg-card rounded-xl shadow-warm p-5 sm:p-6 lg:p-8 hover:shadow-warm-hover transition-warm"
+      >
+
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center mb-6">
-            <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full">
-              <Icon name="Users" size={24} color="var(--color-primary)" />
+        <div className="flex items-start justify-between mb-5 sm:mb-6">
+          <div className="flex-1">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
+              <h3 className="font-heading font-bold text-lg sm:text-xl text-foreground">
+                {opp.title}
+              </h3>
+
+              <span
+                className={`px-2 py-1 text-xs font-medium rounded-full border ${getUrgencyColor(
+                  opp.urgency
+                )}`}
+              >
+                {getUrgencyText(opp.urgency)}
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+              <span className="flex items-center">
+                <Icon name="MapPin" size={14} className="mr-1" />
+                {opp.location}
+              </span>
+              <span className="flex items-center">
+                <Icon name="Clock" size={14} className="mr-1" />
+                {opp.commitment}
+              </span>
             </div>
           </div>
-          <h2 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-4">
-            Volunteer Opportunities
-          </h2>
-          <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join our community of dedicated volunteers and make a direct impact on children's lives.
+        </div>
+
+        {/* Description */}
+        <p className="font-body text-sm sm:text-base text-muted-foreground mb-5 sm:mb-6 leading-relaxed">
+          {opp.description}
+        </p>
+
+        {/* Details Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5 sm:mb-6">
+          <div>
+            <p className="font-body text-xs text-muted-foreground mb-1">
+              Type & Duration
+            </p>
+            <p className="font-body text-sm font-medium text-foreground">
+              {opp.type} • {opp.duration}
+            </p>
+          </div>
+
+          <div>
+            <p className="font-body text-xs text-muted-foreground mb-1">
+              Impact
+            </p>
+            <p className="font-body text-sm font-medium text-foreground">
+              {opp.impact}
+            </p>
+          </div>
+        </div>
+
+        {/* Requirements */}
+        <div className="mb-5 sm:mb-6">
+          <p className="font-body text-sm font-medium text-foreground mb-2">
+            Requirements:
           </p>
+          <ul className="space-y-1">
+            {opp.requirements.map((req, idx) => (
+              <li
+                key={idx}
+                className="flex items-center text-xs sm:text-sm text-muted-foreground"
+              >
+                <Icon
+                  name="Check"
+                  size={14}
+                  className="mr-2 text-success flex-shrink-0"
+                />
+                {req}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-warm ${
-                selectedCategory === category.id
-                  ? 'bg-primary text-white shadow-button'
-                  : 'bg-card text-muted-foreground hover:text-foreground hover:bg-card/80 border border-border'
-              }`}
-            >
-              <Icon name={category.icon} size={16} />
-              <span>{category.name}</span>
-            </button>
-          ))}
-        </div>
+        {/* Progress & Action */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-5 sm:pt-6 border-t border-border">
 
-        {/* Opportunities Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {filteredOpportunities.map((opp) => (
-            <div key={opp.id} className="bg-card rounded-xl shadow-warm p-8 hover:shadow-warm-hover transition-warm">
-              {/* Header */}
-              <div className="flex items-start justify-between mb-6">
-                <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="font-heading font-bold text-xl text-foreground">{opp.title}</h3>
-                    <span className={`px-2 py-1 text-xs font-medium rounded-full border ${getUrgencyColor(opp.urgency)}`}>
-                      {getUrgencyText(opp.urgency)}
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                    <span className="flex items-center">
-                      <Icon name="MapPin" size={14} className="mr-1" />
-                      {opp.location}
-                    </span>
-                    <span className="flex items-center">
-                      <Icon name="Clock" size={14} className="mr-1" />
-                      {opp.commitment}
-                    </span>
-                  </div>
-                </div>
-              </div>
+          
 
-              {/* Description */}
-              <p className="font-body text-muted-foreground mb-6 leading-relaxed">{opp.description}</p>
+          <Button
+            variant="default"
+            size="sm"
+            iconName="UserPlus"
+            iconPosition="left"
+            iconSize={16}
+            className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto"
+            onClick={() => handleApplyClick(opp.title)}
+          >
+            Apply Now
+          </Button>
 
-              {/* Details Grid */}
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div>
-                  <p className="font-body text-xs text-muted-foreground mb-1">Type & Duration</p>
-                  <p className="font-body text-sm font-medium text-foreground">{opp.type} • {opp.duration}</p>
-                </div>
-                <div>
-                  <p className="font-body text-xs text-muted-foreground mb-1">Impact</p>
-                  <p className="font-body text-sm font-medium text-foreground">{opp.impact}</p>
-                </div>
-              </div>
-
-              {/* Requirements */}
-              <div className="mb-6">
-                <p className="font-body text-sm font-medium text-foreground mb-2">Requirements:</p>
-                <ul className="space-y-1">
-                  {opp.requirements.map((req, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                      <Icon name="Check" size={14} className="mr-2 text-success flex-shrink-0" />
-                      {req}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Progress & Action */}
-              <div className="flex items-center justify-between pt-6 border-t border-border">
-                <div className="flex items-center space-x-4">
-                  <div className="text-center">
-                    <p className="font-body text-lg font-bold text-foreground">{opp.volunteers}</p>
-                    <p className="font-body text-xs text-muted-foreground">Current</p>
-                  </div>
-                  <div className="w-16 h-2 bg-muted rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-primary rounded-full transition-warm"
-                      style={{ width: `${(opp.volunteers / opp.needed) * 100}%` }}
-                    />
-                  </div>
-                  <div className="text-center">
-                    <p className="font-body text-lg font-bold text-foreground">{opp.needed}</p>
-                    <p className="font-body text-xs text-muted-foreground">Needed</p>
-                  </div>
-                </div>
-
-                <Button
-                  variant="default"
-                  size="sm"
-                  iconName="UserPlus"
-                  iconPosition="left"
-                  iconSize={16}
-                  className="bg-primary hover:bg-primary/90 text-white"
-                  onClick={() => handleApplyClick(opp.title)}
-                >
-                  Apply Now
-                </Button>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
+    ))}
+  </div>
+</div>
+
 
       {/* Modals */}
       <VolunteerModal

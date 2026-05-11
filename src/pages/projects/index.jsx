@@ -11,6 +11,7 @@
   import DonationModal from './components/DonationModal';
   import api from '../../api/api'; // ✅ your API helper
   import DonationPopup from '../../components/DonationPopup';
+    import ProjectDetailsModal from './components/ProjectDetailModal';
 
   const Projects = () => {
     const location = useLocation();
@@ -34,6 +35,8 @@
     const [loading, setLoading] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
     const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
+    const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+
     const [displayedProjects, setDisplayedProjects] = useState(9);
 
     const [liveDonation, setLiveDonation] = useState(null);
@@ -144,6 +147,13 @@ useEffect(() => {
     });
 
     const handleDonate = (project) => { setSelectedProject(project); setIsDonationModalOpen(true); };
+
+    const handleViewProject = (project) => {
+  setSelectedProject(project);
+  setIsDetailsModalOpen(true); // open details modal instead of donation
+};
+
+
 
   const handleDonationSubmit = (donationData) => {
   const { project: updatedProject } = donationData;
@@ -278,6 +288,7 @@ if (donationData) setLiveDonation(donationData);
                 projects={displayProjects}
                 loading={loading}
                 onDonate={handleDonate}
+                  onView={handleViewProject}
                 onLoadMore={handleLoadMore}
                 hasMore={hasMore}
               />
@@ -315,9 +326,16 @@ if (donationData) setLiveDonation(donationData);
             onClose={() => {setIsDonationModalOpen(false);setSelectedProject(null);}}
             onDonate={handleDonationSubmit}
           />
+
+          <ProjectDetailsModal
+  project={selectedProject}
+  isOpen={isDetailsModalOpen}
+  onClose={() => setIsDetailsModalOpen(false)}
+/>
+
         </div>
 
-        // Render the DonationPopup at the end of return
+        {/* // Render the DonationPopup at the end of return */}
 {liveDonation && (
   <DonationPopup donation={liveDonation} onClose={() => setLiveDonation(null)} />
 )}
