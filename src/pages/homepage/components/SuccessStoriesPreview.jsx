@@ -124,20 +124,13 @@ const SuccessStoriesPreview = () => {
                   </div>
                 </div>
 
-                {/* Current Status */}
-                <div className="bg-secondary/10 rounded-xl p-4">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <Icon name="TrendingUp" size={16} className="text-secondary" />
-                    <span className="font-medium text-secondary text-sm">Current Impact</span>
-                  </div>
-                  <p className="font-body text-foreground">{currentStory?.currentStatus}</p>
-                </div>
+                
               </div>
             </div>
 
             {/* Before/After Images */}
             <div className="relative">
-              <div className="h-full max-h-[640px] relative overflow-hidden">
+              <div className="h-full max-h-[540px] relative overflow-hidden">
                 <Image
                   src={currentStory?.image}
                   alt={`${currentStory?.name} today`}
@@ -145,18 +138,9 @@ const SuccessStoriesPreview = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent"></div>
                 
-                {/* Before Image Overlay */}
-                <div className="absolute bottom-6 left-6 w-24 h-24 rounded-xl overflow-hidden border-4 border-white shadow-warm">
-                  <Image
-                    src={currentStory?.beforeImage}
-                    alt={`${currentStory?.name} before`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+               
                 
-                <div className="absolute bottom-6 left-36 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2">
-                  <span className="text-sm font-medium text-foreground">Then & Now</span>
-                </div>
+                
               </div>
             </div>
           </div>

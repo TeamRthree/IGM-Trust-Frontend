@@ -3,12 +3,15 @@ import Icon from "../../../components/AppIcon";
 
 const WhyVolunteer = () => {
   const opportunities = [
-    "Teaching & tutoring children",
-    "Conducting skill development workshops",
-    "Organizing cultural & sports activities",
-    "Medical camp support",
-    "Mentorship & career guidance",
-    "Event organization & fundraising",
+    "Child Mentoring & Tutoring",
+    "Arts, Crafts & Creative Activities",
+    "Sports & Recreation Programs",
+    "Computer & Digital Skills Training",
+    "Healthcare & Medical Camps",
+    "Community Outreach Programs",
+    "Fundraising & Awareness Campaigns",
+    "Event Planning & Coordination",
+    "Photography & Media Support"
   ];
 
   const durations = [
@@ -19,11 +22,12 @@ const WhyVolunteer = () => {
   ];
 
   const benefits = [
-    "50+ years of trusted service",
-    "Direct impact on children’s lives",
-    "Safe & structured environment",
-    "Government registered institution",
-    "Transparent operations",
+    "Students and Youth Volunteers",
+    "Corporate Teams",
+    "Professionals",
+    "Retired Individuals",
+    "Community Groups",
+    "Social Service Enthusiasts"
   ];
 
   return (
@@ -33,13 +37,7 @@ const WhyVolunteer = () => {
         {/* TOP CONTENT */}
         <div className="flex flex-col items-center  mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="flex items-center justify-center w-11 h-11 bg-primary/10 rounded-full">
-              <Icon
-                name="HeartHandshake"
-                size={22}
-                color="var(--color-primary)"
-              />
-            </div>
+            
 
             <h3 className="font-heading font-bold text-2xl sm:text-3xl text-foreground">
               Volunteer With IGM
@@ -60,13 +58,7 @@ const WhyVolunteer = () => {
           {/* OPPORTUNITIES */}
           <div className="bg-card rounded-xl p-5 sm:p-6 border border-border">
             <div className="flex items-center gap-3 mb-5">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10">
-                <Icon
-                  name="Users"
-                  size={20}
-                  color="var(--color-primary)"
-                />
-              </div>
+             
 
               <h4 className="font-heading font-semibold text-lg text-foreground">
                 Opportunities
@@ -94,13 +86,7 @@ const WhyVolunteer = () => {
           {/* DURATIONS */}
           <div className="bg-card rounded-xl p-5 sm:p-6 border border-border">
             <div className="flex items-center gap-3 mb-5">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10">
-                <Icon
-                  name="Clock"
-                  size={20}
-                  color="var(--color-primary)"
-                />
-              </div>
+             
 
               <h4 className="font-heading font-semibold text-lg text-foreground">
                 Duration Options
@@ -124,16 +110,10 @@ const WhyVolunteer = () => {
           {/* BENEFITS */}
           <div className="bg-card rounded-xl p-5 sm:p-6 border border-border">
             <div className="flex items-center gap-3 mb-5">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10">
-                <Icon
-                  name="ShieldCheck"
-                  size={20}
-                  color="var(--color-primary)"
-                />
-              </div>
+              
 
               <h4 className="font-heading font-semibold text-lg text-foreground">
-                Why Volunteer?
+                Who Can Volunteer?
               </h4>
             </div>
 

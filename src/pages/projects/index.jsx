@@ -208,10 +208,7 @@ if (donationData) setLiveDonation(donationData);
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-8">
                   <div className="space-y-4">
-                    <div className="inline-flex items-center px-4 py-2 rounded-full bg-muted text-sm text-muted-foreground font-medium backdrop-blur-sm">
-                      <Icon name="Target" size={16} className="mr-2 text-muted-foreground" />
-                      {projectStats.activeProjects} Active Projects
-                    </div>
+                    
                     <h2 className="font-heading font-bold text-4xl text-foreground lg:text-5xl !leading-snug">
                       Impact Showcase Universe
                     </h2>
@@ -219,7 +216,17 @@ if (donationData) setLiveDonation(donationData);
                       Discover how your compassion transforms lives through our comprehensive child welfare programs. Each project represents hope, potential, and the journey from broken to beautiful.
                     </p>
                   </div>
-                  <ProjectStats stats={projectStats} />
+                  <div className="flex flex-wrap gap-4">
+                                <Button
+                                  variant="default"
+                                  size="lg"
+                                  
+                                  className="bg-primary hover:bg-primary/90 text-white shadow-warm"
+                                >
+                                  See our Impact
+                                </Button>
+                                
+                              </div>
                 </div>
 
                 <div className="relative">
@@ -308,9 +315,7 @@ if (donationData) setLiveDonation(donationData);
                 <Button
                   variant="default"
                   size="lg"
-                  iconName="Phone"
-                  iconPosition="left"
-                  iconSize={20}
+                  
                   className="bg-primary hover:bg-primary/90"
                 >
                   Contact Our Team

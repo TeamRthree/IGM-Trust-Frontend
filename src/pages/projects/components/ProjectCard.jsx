@@ -85,15 +85,7 @@ const ProjectCard = ({ project, onDonate, onView }) => {
       </div>
     </div>
 
-    {/* Urgency Badge */}
-    {project?.urgent && (
-      <div className="absolute top-3 right-3">
-        <div className="flex items-center space-x-1 bg-error/90 text-error-foreground px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm">
-          <Icon name="AlertCircle" size={12} />
-          <span>Urgent</span>
-        </div>
-      </div>
-    )}
+    
   </div>
 
   {/* Content */}
@@ -181,9 +173,7 @@ const ProjectCard = ({ project, onDonate, onView }) => {
             variant="default"
             size="sm"
             fullWidth
-            iconName="Heart"
-            iconPosition="left"
-            iconSize={16}
+           
             className="bg-conversion-orange hover:bg-conversion-orange/90 text-white"
             onClick={() => onDonate(project)}
           >
@@ -193,8 +183,7 @@ const ProjectCard = ({ project, onDonate, onView }) => {
           <Button
             variant="outline"
             size="sm"
-            iconName="Eye"
-            iconSize={16}
+         
             className="px-3"
             onClick={() => onView(project)}
           >
@@ -212,10 +201,7 @@ const ProjectCard = ({ project, onDonate, onView }) => {
                 : dayjs.utc(project?.created_at).local().fromNow()}
             </span>
 
-            <div className="flex items-center space-x-1">
-              <Icon name="Users" size={12} />
-              <span>{project?.donors_count} donors</span>
-            </div>
+            
           </div>
         </div>
 

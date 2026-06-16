@@ -117,11 +117,9 @@ const TrustVerification = () => {
             
             <div className="flex gap-4">
               {transparencyMetrics?.map((metric, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-warm text-center">
-                  <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mx-auto mb-3">
-                    <Icon name={metric?.icon} size={20} className="text-primary" />
-                  </div>
-                  <div className="text-2xl font-bold text-primary mb-1">{metric?.value}</div>
+                <div key={index} className="bg-white rounded-xl p-8 shadow-warm text-center">
+                  
+                  <div className="text-5xl font-bold text-primary mb-1">{metric?.value}</div>
                   <div className="text-sm text-muted-foreground">{metric?.label}</div>
                 </div>
               ))}

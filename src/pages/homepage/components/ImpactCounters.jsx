@@ -133,22 +133,19 @@ const ImpactCounters = () => {
           {impactData?.map((item) => (
             <div
               key={item?.key}
-              className={`relative group bg-card rounded-xl p-8 shadow-warm hover:shadow-warm-hover transition-all duration-300 border border-border hover:border-primary/20 ${
+              className={`relative group bg-card rounded-xl p-6 shadow-warm hover:shadow-warm-hover transition-all duration-300 border border-border hover:border-primary/20 flex flex-col items-center text-center ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-100 translate-y-8'
               }`}
               style={{
                 transitionDelay: `${impactData?.indexOf(item) * 100}ms`
               }}
             >
-              {/* Icon */}
-              <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl ${item?.bgColor} mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <Icon name={item?.icon} size={28} className="text-primary" strokeWidth={2.5} />
-              </div>
+             
 
               {/* Counter */}
               <div className="space-y-2 mb-4">
                 <div className="flex items-baseline space-x-1">
-                  <span className={`font-heading font-bold text-4xl lg:text-5xl text-secondary tabular-nums`}>
+                  <span className={`font-heading font-bold text-4xl lg:text-6xl text-secondary tabular-nums`}>
                     {formatNumber(counters?.[item?.key])}
                   </span>
                   <span className="font-heading font-bold text-2xl text-secondary">
@@ -168,13 +165,13 @@ const ImpactCounters = () => {
         </div>
 
         {/* Bottom CTA */}
-       <div className="text-center mt-12 sm:mt-16 px-0 md:px-6">
-  <div className="bg-card rounded-2xl p-6 sm:p-8 shadow-warm border border-border max-w-4xl mx-auto">
+       <div className="text-center mt-12 sm:mt-16">
+  <div className="bg-card rounded-2xl p-6 sm:p-8 shadow-warm border border-border max-w-7xl mx-auto">
     
     <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
       
       {/* Text Section */}
-      <div className="text-center lg:text-left max-w-xl">
+      <div className="text-center lg:text-left ">
         <h3 className="font-heading font-bold text-xl sm:text-2xl md:text-3xl text-foreground mb-3">
           Be Part of Our Growing Impact
         </h3>
@@ -188,14 +185,14 @@ const ImpactCounters = () => {
         
         <Link to="/donate" className="w-full sm:w-auto">
           <button className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-conversion-orange hover:bg-conversion-orange/90 text-white px-6 py-3 sm:py-3.5 rounded-lg font-medium transition-colors shadow-button text-sm sm:text-base">
-            <Icon name="Heart" size={18} />
+            
             <span>Donate Now</span>
           </button>
         </Link>
 
         <Link to="/donate" className="w-full sm:w-auto">
           <button className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-transparent hover:bg-muted text-foreground border border-border px-6 py-3 sm:py-3.5 rounded-lg font-medium transition-colors text-sm sm:text-base">
-            <Icon name="Users" size={18} />
+          
             <span>Volunteer</span>
           </button>
         </Link>

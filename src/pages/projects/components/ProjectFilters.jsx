@@ -32,9 +32,7 @@ const ProjectFilters = ({
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
-          <div className="flex items-center justify-center w-10 h-10 bg-primary/10 rounded-lg">
-            <Icon name="Filter" size={20} className="text-primary" />
-          </div>
+          
           <div>
             <h3 className="font-heading font-semibold text-lg text-card-foreground">
               Filter Projects

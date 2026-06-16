@@ -130,10 +130,7 @@ hope and creating a life filled with love, purpose and possibility.
                     <span className="text-sm font-medium text-foreground">{program?.stats}</span>
                   </div>
                   
-                  {/* Icon */}
-                  <div className={`absolute bottom-4 left-4 w-12 h-12 ${colors?.bg} rounded-xl flex items-center justify-center backdrop-blur-sm`}>
-                    <Icon name={program?.icon} size={24} className={colors?.icon} strokeWidth={2.5} />
-                  </div>
+                  
                 </div>
                 {/* Content */}
                 <div className="p-8">
@@ -196,8 +193,7 @@ hope and creating a life filled with love, purpose and possibility.
         <Link to="/success-stories" className="w-full sm:w-auto">
           <Button
             variant="default"
-            iconName="BookOpen"
-            iconPosition="left"
+           
             className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto text-sm sm:text-base py-3"
           >
             Read Success Stories
@@ -207,8 +203,7 @@ hope and creating a life filled with love, purpose and possibility.
         <Link to="/projects" className="w-full sm:w-auto">
           <Button
             variant="outline"
-            iconName="Eye"
-            iconPosition="left"
+            
             className="w-full sm:w-auto text-sm sm:text-base py-3"
           >
             View All Programs

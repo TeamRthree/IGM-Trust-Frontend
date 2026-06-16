@@ -83,11 +83,9 @@ const CallToAction = () => {
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {actionCards?.map((card, index) => (
             <div key={index} className="bg-card shadow-warm hover:shadow-warm-hover transition-all duration-300 backdrop-blur-sm rounded-2xl p-8 ">
-              <div className="flex items-center justify-center w-16 h-16 bg-black/10 rounded-full mb-6 mx-auto">
-                <Icon name={card?.icon} size={32} className='text-primary' />
-              </div>
               
-              <h3 className="font-heading font-bold text-2xl text-foreground text-center mb-4">
+              
+              <h3 className="font-heading font-bold text-3xl text-foreground text-center mb-12">
                 {card?.title}
               </h3>
               
@@ -142,8 +140,7 @@ const CallToAction = () => {
             <Link to="/contact">
               <Button
                 variant="default"
-                iconName="MessageCircle"
-                iconPosition="left"
+                
                 className="bg-secondary text-white "
               >
                 Get in Touch
@@ -152,8 +149,7 @@ const CallToAction = () => {
             <Link to="/projects">
               <Button
                 variant="outline"
-                iconName="Eye"
-                iconPosition="left"
+                
                 className="border-secondary text-secondary hover:text-secondary hover:bg-transparent"
               >
                 See Our Impact

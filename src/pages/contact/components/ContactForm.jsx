@@ -131,11 +131,7 @@ const ContactForm = () => {
     <section id='contact' className="py-16 lg:py-24 bg-background relative">
       <div className="max-w-4xl mx-auto px-6 lg:px-8 relative">
         <div className="text-center mb-12">
-          <div className="flex items-center justify-center mb-6">
-            <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full">
-              <Icon name="MessageSquare" size={24} color="var(--color-primary)" />
-            </div>
-          </div>
+          
           <h2 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-4">Get in Touch</h2>
           <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
             Ready to make a difference? Fill out the form below and we'll connect you with the right opportunities to help transform children's lives.
@@ -223,33 +219,16 @@ const ContactForm = () => {
               {errors.message && <p className="mt-2 text-sm text-destructive">{errors.message}</p>}
             </div>
 
-            <div className="space-y-4 pt-4 border-t border-border">
-              <Checkbox
-                label="Subscribe to our newsletter"
-                description="Get updates about our programs and success stories"
-                checked={formData.newsletter}
-                onChange={(e) => setFormData(prev => ({ ...prev, newsletter: e.target.checked }))}
-              />
-              <Checkbox
-                label="Receive volunteer opportunity updates"
-                description="Be notified about new volunteer opportunities and events"
-                checked={formData.updates}
-                onChange={(e) => setFormData(prev => ({ ...prev, updates: e.target.checked }))}
-              />
-            </div>
+           
 
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">
-              <p className="text-sm text-muted-foreground">
-                We'll respond within 24 hours during business days.
-              </p>
+            <div className="flex items-center justify-center pt-6">
+              
               <Button
                 type="submit"
                 variant="default"
                 size="lg"
                 loading={isSubmitting}
-                iconName="Send"
-                iconPosition="right"
-                iconSize={18}
+               
                 className={`bg-primary hover:bg-primary/90 text-white shadow-button ${isSent ? 'opacity-50 pointer-events-none' : ''}`}
               >
                 {isSent ? 'Sent' : isSubmitting ? 'Sending Message...' : 'Send Message'}

@@ -13,7 +13,7 @@ const StoryStats = () => {
     {
       icon: 'GraduationCap',
       value: '60+',
-      label: 'Children currently under care',
+      label: 'Children under care',
       description: 'Children completed their education',
       color: 'text-success'
     },
@@ -46,10 +46,8 @@ const StoryStats = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats?.map((stat, index) => (
-          <div key={index} className="text-center">
-            <div className="w-16 h-16 bg-white/70 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Icon name={stat?.icon} size={28} className="text-foreground" />
-            </div>
+          <div key={index} className="text-center bg-white rounded-lg p-6 shadow-warm">
+            
             <div className="text-3xl font-heading font-bold mb-2">
               {stat?.value}
             </div>

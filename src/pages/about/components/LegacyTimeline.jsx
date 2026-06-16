@@ -84,19 +84,19 @@ const LegacyTimeline = () => {
           {timelineData?.map((item) => (
             <div
               key={item?.year}
-              className={`relative flex items-start space-x-4 p-3 sm:p-4 rounded-xl cursor-pointer transition-warm ${
+              className={`relative flex items-center space-x-4 p-3 sm:p-4 rounded-xl cursor-pointer transition-warm ${
                 activeYear === item?.year
                   ? 'bg-white shadow-warm'
                   : 'hover:bg-white/50'
               }`}
               onClick={() => setActiveYear(item?.year)}
             >
-              <div className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-warm ${
+              <div className={`flex items-center justify-center w-3 h-3 rounded-full transition-warm ${
                 activeYear === item?.year
                   ? 'bg-primary text-white'
-                  : 'bg-muted text-muted-foreground'
+                  : 'bg-primary/80 text-muted-foreground'
               }`}>
-                <Icon name={item?.icon} size={18} />
+               
               </div>
 
               <div className="flex-1">

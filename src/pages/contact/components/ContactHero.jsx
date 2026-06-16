@@ -34,23 +34,12 @@ const ContactHero = () => {
             <Button
               variant="default"
               size="lg"
-              iconName="Heart"
-              iconPosition="left"
-              iconSize={20}
+             
               className="bg-secondary hover:bg-conversion-orange/90 text-white shadow-warm"
             >
               Start Volunteering
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              iconName="Calendar"
-              iconPosition="left"
-              iconSize={20}
-              className="border-secondary text-secondary hover:bg-black/10 hover:text-secondary"
-            >
-              Schedule Visit
-            </Button>
+           
           </div>
         </div>
       </div>

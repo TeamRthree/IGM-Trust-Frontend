@@ -14,7 +14,9 @@ const Footer = () => {
         { name: "Our Story", path: "/about", id: "our-story" },
         { name: "Our Six-Pillar Approach", path: "/about", id: "six-pillar" },
         { name: "Leadership Team", path: "/about", id: "team" },
-        { name: "Transparency Metrics", path: "/about", id: "transparency-metrics" }
+        { name: "Transparency Metrics", path: "/about", id: "transparency-metrics" },
+        { name: "Photo Gallery", path: "/gallery", id: "gallery" },
+        { name: "Contact Us", path: "/contact", id: "contact" }
       ]
     },
     {
@@ -32,23 +34,14 @@ const Footer = () => {
       links: [
         { name: "Donate Now", path: "/donate", id: "donate-now" },
         { name: "Sponsor a Child", path: "/", id: "sponsor" },
-        { name: "Volunteer", path: "/contact", id: "volunteer" },
-        { name: "Corporate Partnership", path: "/about", id: "corporate" }
-      ]
-    },
-    {
-      title: "Resources",
-      links: [
-        { name: "Photo Gallery", path: "/gallery", id: "gallery" },
-        { name: "Upcoming Events", path: "/contact", id: "events" },
-        { name: "Contact Us", path: "/contact", id: "contact" }
+        { name: "Volunteer", path: "/contact", id: "volunteer" }
       ]
     }
   ];
 
   const socialLinks = [
     { name: "Facebook", icon: "Facebook", url: "https://facebook.com/igmchildrenhomes" },
-    { name: "Twitter", icon: "Twitter", url: "https://twitter.com/igmchildrenhomes" },
+   
     { name: "Instagram", icon: "Instagram", url: "https://instagram.com/igmchildrenhomes" },
     { name: "LinkedIn", icon: "Linkedin", url: "https://linkedin.com/company/igmchildrenhomes" },
     { name: "YouTube", icon: "Youtube", url: "https://youtube.com/igmchildrenhomes" }
@@ -60,22 +53,16 @@ const Footer = () => {
     <footer className="bg-foreground text-white">
       {/* Main Footer */}
       <div className=" mx-auto px-6 md:px-8 xl:px-48  py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-6 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <Link to="/homepage" className="flex items-center space-x-3 mb-6">
-              <div className="flex items-center justify-center w-12 h-12 bg-gradient-trust rounded-lg">
-                <Icon name="Heart" size={28} color="white" strokeWidth={2.5} />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-heading font-bold text-xl text-white leading-none">
-                  IGM Children
-                </span>
-                <span className="font-body text-sm text-white/80 leading-none">
-                  Homes
-                </span>
-              </div>
-            </Link>
+            <Link to="/homepage" className="mb-6 inline-block">
+  <img
+    src="/assets/images/igm-logo-light.png"
+    alt="IGM Children Homes"
+    className="h-16 w-auto"
+  />
+</Link>
             
             <p className="font-body text-white/80 leading-relaxed mb-6">
               Since 1975, we've been restoring broken lives and building brighter futures for children in need. Every child deserves a chance to dream.
@@ -169,7 +156,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Legal Links */}
+          {/* Legal Links
           <div className="mt-6 pt-6 border-t border-white/10 text-center">
             <div className="flex flex-wrap justify-center gap-6">
               <Link to="/about" className="font-body text-white/60 hover:text-white text-sm transition-colors">
@@ -185,7 +172,7 @@ const Footer = () => {
                 Transparency Report
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

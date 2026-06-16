@@ -49,24 +49,13 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
 
           {/* Logo */}
-          <Link 
-            to="/homepage"
-            className="flex items-center space-x-3"
-            onClick={closeMenu}
-          >
-            <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 bg-gradient-trust rounded-lg shadow-button">
-              <Icon name="Heart" size={20} className="text-secondary" strokeWidth={2.5} />
-            </div>
-
-            <div className="flex flex-col leading-none">
-              <span className="font-heading font-bold text-base sm:text-lg text-foreground">
-                IGM Children
-              </span>
-              <span className="font-body text-xs sm:text-sm text-muted-foreground">
-                Homes
-              </span>
-            </div>
-          </Link>
+          <Link to="/homepage" className=" inline-block">
+  <img
+    src="/assets/images/igm-logo.png"
+    alt="IGM Children Homes"
+    className="h-16 w-auto"
+  />
+</Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">

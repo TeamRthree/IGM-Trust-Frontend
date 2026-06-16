@@ -41,7 +41,7 @@ const CallToAction = () => {
   const sponsorshipLevels = [
     { level: 'Basic Care', amount: '₹3,000/month', features: ['Food & Shelter', 'Basic Healthcare', 'Primary Education'] },
     { level: 'Complete Care', amount: '₹5,000/month', features: ['All Basic Care', 'Skill Development', 'Higher Education', 'Personal Mentoring'] },
-    { level: 'Future Builder', amount: '₹8,000/month', features: ['All Complete Care', 'Vocational Training', 'Career Guidance', 'Life Skills Coaching'] }
+   
   ];
 
   const volunteerOpportunities = [
@@ -85,57 +85,65 @@ const CallToAction = () => {
     switch (activeTab) {
       case 'donate':
         return (
-          <div  className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {donationOptions?.map((option, index) => (
-                <div key={index} className="bg-card rounded-xl p-6 border border-border hover:border-conversion-orange/50 transition-colors cursor-pointer group">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-heading font-bold text-2xl text-secondary">{option?.amount}</span>
-                    
-                  </div>
-                  <p className="font-body text-muted-foreground text-sm">{option?.impact}</p>
-                </div>
-              ))}
-            </div>
-            <div  className="flex flex-col sm:flex-row gap-4 ">
-              <Link to="/donate" className="flex-1">
-                <Button
-                  variant="default"
-                  fullWidth
-                  iconName="Heart"
-                  iconPosition="left"
-                  className="bg-secondary hover:bg-conversion-orange/90 text-white shadow-button"
-                >
-                  Donate Now
-                </Button>
-              </Link>
-              <Link to="/donate" >
-              <Button
-                variant="outline"
-                iconName="Calculator"
-                iconPosition="left"
-                className="border-secondary text-conversion-orange hover:bg-secondary"
-              >
-                Custom Amount
-              </Button>
-              </Link>
-            </div>
-          </div>
+         <div className="flex flex-col h-full">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {donationOptions?.map((option, index) => (
+      <div
+        key={index}
+        className="bg-card rounded-xl p-6 border border-border hover:border-conversion-orange/50 transition-colors cursor-pointer group h-full flex flex-col justify-center"
+      >
+        <div className="flex items-center justify-between mb-3">
+          <span className="font-heading font-bold text-2xl text-secondary">
+            {option?.amount}
+          </span>
+        </div>
+
+        <p className="font-body text-muted-foreground text-sm">
+          {option?.impact}
+        </p>
+      </div>
+    ))}
+  </div>
+
+  <div className="mt-auto pt-6 flex flex-col sm:flex-row gap-4">
+    <Link to="/donate" className="flex-1">
+      <Button
+        variant="default"
+        fullWidth
+        className="bg-secondary hover:bg-conversion-orange/90 text-white shadow-button"
+      >
+        Donate Now
+      </Button>
+    </Link>
+
+    <Link to="/donate">
+      <Button
+        variant="outline"
+        className="border-secondary text-conversion-orange hover:bg-secondary"
+      >
+        Custom Amount
+      </Button>
+    </Link>
+  </div>
+</div>
         );
 
       case 'sponsor':
         return (
-          <div className="space-y-6">
-            <div className="grid gap-4">
+          <div className="flex flex-col h-full">
+            <div className="grid gap-4 flex-1">
               {sponsorshipLevels?.map((level, index) => (
-                <div key={index} className="bg-card rounded-xl p-6 border border-border hover:border-primary/50 transition-colors">
+                <div
+  key={index}
+  className="bg-card rounded-xl p-6 border border-border hover:border-primary/50 transition-colors flex flex-col"
+>
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                     <div>
                       <h4 className="font-heading font-bold text-lg text-foreground">{level?.level}</h4>
                       <p className="font-body text-primary font-medium">{level?.amount}</p>
                     </div>
-                    <Link to="/donate" >
-                    <Button
+                  <Link to="/donate" className="shrink-0">
+  <Button
                       variant="outline"
                       size="sm"
                       className="border-primary text-primary hover:bg-primary mt-4 md:mt-0"
@@ -156,12 +164,11 @@ const CallToAction = () => {
                 </div>
               ))}
             </div>
-            <Link to="/donate">
+            <Link to="/donate" className="mt-auto pt-6">
               <Button
                 variant="default"
                 fullWidth
-                iconName="Users"
-                iconPosition="left"
+              
                 className="bg-primary mt-8 hover:bg-primary/90 text-white shadow-button"
               >
                 Start Sponsorship
@@ -172,45 +179,44 @@ const CallToAction = () => {
 
       case 'volunteer':
         return (
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {volunteerOpportunities?.map((opportunity, index) => (
-                <div key={index} className="bg-card rounded-xl p-6 border border-border hover:border-secondary/50 transition-colors">
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <h4 className="font-heading font-bold text-lg text-foreground mb-1">{opportunity?.role}</h4>
-                      <p className="font-body text-secondary text-sm font-medium">{opportunity?.time}</p>
-                    </div>
-                   
-                  </div>
-                  <p className="font-body text-muted-foreground text-sm">{opportunity?.description}</p>
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact" className="flex-1">
-                <Button
-                  variant="default"
-                  fullWidth
-                  iconName="UserPlus"
-                  iconPosition="left"
-                  className="bg-secondary hover:bg-secondary/90 text-white shadow-button"
-                >
-                  Apply to Volunteer
-                </Button>
-              </Link>
-              <Link to="/contact" className="">
-              <Button
-                variant="outline"
-                iconName="Calendar"
-                iconPosition="left"
-                className="border-secondary text-secondary hover:bg-secondary"
-              >
-                Schedule Visit
-              </Button>
-              </Link>
-            </div>
+          <div className="flex flex-col h-full">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
+    {volunteerOpportunities?.map((opportunity, index) => (
+      <div
+        key={index}
+        className="bg-card rounded-xl p-6 border border-border hover:border-secondary/50 transition-colors h-full flex flex-col"
+      >
+        <div className="flex items-start justify-between mb-3">
+          <div>
+            <h4 className="font-heading font-bold text-lg text-foreground mb-1">
+              {opportunity?.role}
+            </h4>
+
+            <p className="font-body text-secondary text-sm font-medium">
+              {opportunity?.time}
+            </p>
           </div>
+        </div>
+
+        <p className="font-body text-muted-foreground text-sm mt-auto">
+          {opportunity?.description}
+        </p>
+      </div>
+    ))}
+  </div>
+
+  <div className="mt-auto pt-6">
+    <Link to="/contact" className="flex-1">
+      <Button
+        variant="default"
+        fullWidth
+        className="bg-secondary hover:bg-secondary/90 text-white shadow-button"
+      >
+        Apply to Volunteer
+      </Button>
+    </Link>
+  </div>
+</div>
         );
 
       default:
@@ -239,11 +245,11 @@ const CallToAction = () => {
 
         {/* Main CTA Card */}
         <div className="bg-card rounded-3xl shadow-warm-hover border border-border overflow-hidden">
-          <div className="grid lg:grid-cols-2 ">
+          <div className="grid lg:grid-cols-2 items-stretch">
             {/* Image Side */}
-            <div className="relative h-64 lg:h-auto">
+          <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[660px] max-h-[760px]">
               <Image
-                src="https://media.istockphoto.com/id/1092042232/photo/two-cute-asian-child-girls-making-heart-shape-with-hands-together-with-love.jpg?s=612x612&w=0&k=20&c=BYx43zNVQB4HLsDxLq-17o55JBgqlD2rpjGMlhZztOU="
+                src="/public/assets/Gallery/_DSC6414.jpg"
                 alt="Children at IGM Homes"
                 className="w-full h-full object-cover"
               />
@@ -254,7 +260,7 @@ const CallToAction = () => {
             </div>
 
             {/* Content Side */}
-            <div className="p-8 lg:p-12">
+         <div className="p-6 md:p-8 lg:p-12 flex flex-col min-h-[760px]">
               {/* Tab Navigation */}
               <div className="flex flex-col sm:flex-row gap-2 mb-8 bg-muted rounded-xl p-2">
                 {actionTabs?.map((tab) => {
@@ -290,7 +296,9 @@ const CallToAction = () => {
               </div>
 
               {/* Tab Content */}
-              {renderTabContent()}
+             <div className="flex-1 flex flex-col">
+  {renderTabContent()}
+</div>
             </div>
           </div>
         </div>
@@ -305,28 +313,19 @@ const CallToAction = () => {
               Whether you donate ₹100 or ₹10,000, sponsor a child or volunteer an hour, your contribution creates ripples of positive change that last a lifetime.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
+            <div className="inline-block">
+                <Link to="/donate" className="flex-1">
                 <Button
-                  variant="outline"
-                  iconName="Phone"
-                  iconPosition="left"
-                  className="border-primary text-primary hover:bg-primary"
+                  variant="default"
+                  fullWidth
+                  
+                  className="bg-secondary hover:bg-conversion-orange/90 text-white shadow-button px-12"
                 >
-                  Call Us: +91 98765 43210
+                  Donate Now
                 </Button>
               </Link>
               
-              <Link to="/about">
-                <Button
-                  variant="ghost"
-                  iconName="Info"
-                  iconPosition="left"
-                  className="text-muted-foreground hover:text-white"
-                >
-                  Learn More About IGM
-                </Button>
-              </Link>
+    
             </div>
           </div>
         </div>

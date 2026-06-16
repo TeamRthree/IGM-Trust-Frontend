@@ -26,7 +26,7 @@ const ContactPage = () => {
         <ContactHero />
         <ContactForm />
         <VolunteerOpportunities />
-        <EventCalendar />
+        
         <LocationMap />
       </main>
     </div>

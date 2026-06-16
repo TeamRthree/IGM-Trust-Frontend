@@ -13,11 +13,19 @@ const LeadershipTeam = () => {
       position: "Treasurer",
       tenure: "Since 1985",
       image: "/assets/leadership/IGM-01.jpg",
-      bio: `Shanthi Williams has been the driving force behind IGM Children Homes for nearly four decades. With a PhD in Child Psychology and extensive experience in social work, she has transformed the organization from a small shelter into a comprehensive child welfare institution.\n\nUnder her leadership, IGM has expanded to serve over 1,500 children and has achieved a 94% success rate in child rehabilitation and reintegration. Her vision of 'Transformative Compassion in Action' continues to guide the organization's mission.`,
+      bio: `Mrs. Shanthi Williams, along with her husband Rev. Dr. Jacob Williams, founded IGM 
+Children's Homes in 1974 with just seven orphaned children, inspired by a God-given calling to 
+care for the vulnerable and transform lives through compassion, love and service. What began as 
+a small act of care for a few vulnerable children has grown into a mission that has transformed 
+thousands of lives through dedicated for the community development initiatives. 
+Driven by the belief that every child deserves a safe and nurturing environment, Mrs. Shanthi 
+Williams has been instrumental in developing programs that provide shelter, education, 
+healthcare and emotional support to children.  
+Today, her legacy continues to inspire children, volunteers, donors, staff and supporters to work 
+towards a society where every child is protected, every woman is empowered and every 
+individual can live with dignity, hope, and purpose.`,
       achievements: [
-        "Padma Shri Award for Social Service (2018)",
-        "National Child Welfare Excellence Award (2015)",
-        "40 years of dedicated service to child welfare"
+       
       ],
       contact: {
         email: "priya.sharma@igmhomes.org",
@@ -30,11 +38,23 @@ const LeadershipTeam = () => {
       position: "Chairman",
       tenure: "Since 1995",
       image: "/assets/leadership/IGM-02.jpg",
-      bio: `Jehoshaphat P. Williams oversees the day-to-day operations of all IGM facilities. With an MBA in Non-Profit Management and 30 years of experience in organizational development, he ensures efficient resource allocation and program implementation.\n\nHis expertise in operational excellence has helped IGM maintain the highest standards of care while expanding services to reach more children in need. He is particularly passionate about educational programs and vocational training initiatives.`,
+      bio: `Dr. Jehoshaphat P. Williams is the Chairman of IGM Children 
+Homes and a passionate humanitarian dedicated to serving vulnerable 
+children and communities. He continues the legacy of IGM, founded by 
+his parents, Rev. Dr. Jacob Williams and Mrs. Shanthi Williams, in 
+1974. Under his leadership, IGM provides child care, education, women 
+empowerment programs, healthcare services, and disaster relief support. 
+He is committed to ensuring every child receives protection, quality 
+education, and opportunities for a brighter future.  He has been honored with several awards, including the Sac of Honor 
+from Lions Clubs International and an Honorary Doctorate from 
+Universal Globe Academy, for his exceptional social service. As 
+Chairman of IGM Children Homes, he leads initiatives in child welfare, 
+education, women empowerment, healthcare and disaster relief. His 
+dedication to serving humanity continues to transform lives and inspire 
+positive change in communities. `,
       achievements: [
-        "Excellence in Non-Profit Management Award (2020)",
-        "Implemented digital transformation initiatives",
-        "Expanded operations to 12 facilities across regions"
+        "Sac of Honor from Lions Clubs International",
+        "Honorary Doctorate from Universal Globe Academy"
       ],
       contact: {
         email: "rajesh.kumar@igmhomes.org",
@@ -47,11 +67,20 @@ const LeadershipTeam = () => {
       position: "Secretary",
       tenure: "Since 2000",
       image: "/assets/leadership/IGM-03.jpg",
-      bio: `Pearlyn Williams Suganthamani leads our child development programs with expertise in developmental psychology and trauma-informed care. She holds a PhD in Child Development and has specialized training in working with vulnerable children.\n\nHer innovative approaches to healing and development have been instrumental in achieving our high success rates. She has developed several proprietary programs that are now used as models by other child welfare organizations.`,
+      bio: `Mrs. Pearlyn Suganthamani serves as the Secretary of IGM Children 
+Homes, contributing significantly to the organization's mission of caring 
+for children and supporting disadvantaged communities. She plays a key 
+role in coordinating administrative functions and ensuring the smooth 
+operation of various programs and activities. Her responsibilities include 
+supporting child welfare initiatives, educational programs, women 
+empowerment projects, and community outreach efforts. With strong 
+organizational skills and a compassionate heart for service, she helps 
+maintain effective communication and program management. She works 
+closely with the leadership team to uphold the values and vision of IGM. 
+Her dedication and commitment have helped strengthen the 
+organization's impact over the years. `,
       achievements: [
-        "Developed trauma-informed care protocols",
-        "Published 15+ research papers on child development",
-        "Trained over 200 child welfare professionals"
+        
       ],
       contact: {
         email: "meera.patel@igmhomes.org",
@@ -64,11 +93,22 @@ const LeadershipTeam = () => {
       position: "Project Director",
       tenure: "Since 2005",
       image: "/assets/leadership/IGM-04.jpg",
-      bio: `Eunice Williams manages our community engagement and partnership initiatives. With a background in social work and community development, he has built strong relationships with government agencies, corporate partners, and local communities.\n\nHis efforts have resulted in numerous successful partnerships that have expanded our reach and impact. He is particularly focused on creating sustainable community-based support systems for children and families.`,
+      bio: `Mrs. Eunice Vinola Williams serves as the Project Director of IGM 
+Children Homes, overseeing the planning, implementation, and 
+monitoring of various child welfare, education, women empowerment, 
+healthcare, and community development programs. With a deep passion 
+for social service and child care, she works closely with the team to 
+ensure the well-being, protection, and holistic development of every 
+child under IGM's care. Her dedication and leadership continue to 
+strengthen IGM’s mission of transforming lives and building a brighter 
+future for vulnerable children and communities. She is committed to 
+creating sustainable programs that empower children and families to 
+achieve long-term growth and self-reliance. Through her compassionate 
+leadership and vision, she continues to inspire positive change and foster 
+a nurturing environment where every child can thrive and reach their full 
+potential.`,
       achievements: [
-        "Established partnerships with 50+ organizations",
-        "Launched community volunteer program",
-        "Developed family reintegration protocols"
+        
       ],
       contact: {
         email: "arjun.singh@igmhomes.org",
@@ -124,10 +164,7 @@ const LeadershipTeam = () => {
                 </div>
                 
                 <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm text-muted-foreground">{member?.tenure}</span>
-                    <Icon name="ChevronRight" size={16} className="text-muted-foreground" />
-                  </div>
+                  
                   <p className="text-sm text-muted-foreground line-clamp-3">
                     {member?.bio?.split('\n\n')?.[0]}
                   </p>
@@ -187,24 +224,7 @@ const LeadershipTeam = () => {
                   </ul>
                 </div>
                 
-                <div className="flex flex-wrap gap-4 pt-4 border-t border-border">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    iconName="Mail"
-                    iconPosition="left"
-                  >
-                    Contact
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    iconName="Phone"
-                    iconPosition="left"
-                  >
-                    Call
-                  </Button>
-                </div>
+               
               </div>
             </div>
           </div>

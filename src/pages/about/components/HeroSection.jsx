@@ -11,12 +11,7 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="flex items-center justify-center w-12 h-12 bg-muted rounded-lg backdrop-blur-sm">
-                  <Icon name="Heart" size={24} className='text-foreground' strokeWidth={2.5} />
-                </div>
-                <span className="text-lg font-medium text-muted-foreground">Since 1975</span>
-              </div>
+              
               <h1 className="font-heading text-foreground font-bold text-4xl lg:text-6xl leading-tight">
                 Transformative Compassion in Action
               </h1>
@@ -29,9 +24,8 @@ const HeroSection = () => {
               <Button
                 variant="default"
                 size="lg"
-                iconName="Users"
-                iconPosition="left"
-                className="bg-white text-primary hover:bg-white/90 shadow-warm"
+                
+                className="bg-primary hover:bg-primary/90 text-white shadow-warm"
               >
                 Meet Our Team
               </Button>

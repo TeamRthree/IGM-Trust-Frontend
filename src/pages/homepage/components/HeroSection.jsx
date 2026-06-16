@@ -85,11 +85,7 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className={`space-y-8 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <div className="space-y-4">
-              <div className="inline-flex items-center space-x-2 bg-primary/10 backdrop-blur-sm rounded-full px-4 py-2 border border-primary/20">
-                <Icon name="Heart" size={16} className="text-conversion-orange" />
-                <span className="text-sm font-medium text-conversion-orange">Since 1975</span>
-              </div>
-              
+             
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-tight">
                 {currentHeroStory?.title}
               </h1>
@@ -118,8 +114,7 @@ const HeroSection = () => {
     <Button
       variant="default"
       size="lg"
-      iconName="ArrowRight"
-      iconPosition="right"
+     
       className="bg-conversion-orange hover:bg-conversion-orange/90 text-white shadow-warm-hover w-full sm:w-auto"
     >
       {currentHeroStory?.cta}
@@ -130,8 +125,7 @@ const HeroSection = () => {
     <Button
       variant="default"
       size="lg"
-      iconName="ArrowRight"
-      iconPosition="right"
+     
       className="bg-conversion-orange hover:bg-conversion-orange/90 text-white shadow-warm-hover w-full sm:w-auto"
     >
       {currentHeroStory?.cta}
@@ -144,8 +138,7 @@ const HeroSection = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  iconName="Users"
-                  iconPosition="left"
+                
                   className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm w-full sm:w-auto"
                 >
                   Learn About Us
