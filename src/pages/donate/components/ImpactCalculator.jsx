@@ -60,25 +60,23 @@ const ImpactCalculator = ({ amount, donationType }) => {
   }
 
   return (
-    <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg p-6">
+    <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg p-2">
       <div className="flex items-center space-x-2 mb-4">
-        <Icon name="Target" size={20} color="var(--color-primary)" />
+       
         <h3 className="text-lg font-semibold text-foreground">Your Impact</h3>
       </div>
       <div className="space-y-3">
         {impacts?.map((impact, index) => (
           <div key={index} className="flex items-start space-x-3">
-            <div className="p-2 bg-white rounded-lg shadow-sm">
-              <Icon name={impact?.icon} size={16} className={impact?.color} />
-            </div>
+           
             <p className="text-sm text-foreground flex-1">{impact?.text}</p>
           </div>
         ))}
       </div>
       {donationType === 'monthly' && (
-        <div className="mt-4 p-3 bg-white/50 rounded-lg">
+        <div className="mt-8 bg-white/50 rounded-lg">
           <div className="flex items-center space-x-2">
-            <Icon name="Repeat" size={16} color="var(--color-secondary)" />
+            
             <p className="text-sm font-medium text-foreground">
               Monthly Impact: This impact multiplies every month!
             </p>

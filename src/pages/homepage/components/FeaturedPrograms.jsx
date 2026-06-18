@@ -12,7 +12,7 @@ const programs = [
     description:
       "Providing a safe and nurturing residential environment for vulnerable children with complete care, education, healthcare and emotional support, ensuring every child grows with dignity and hope.",
     image:
-      "https://images.pexels.com/photos/8613092/pexels-photo-8613092.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "/assets/Gallery/Children 5.jpg",
     icon: "Heart",
     stats: "220 Children Supported",
     color: "secondary",
@@ -29,7 +29,7 @@ const programs = [
     description:
       "After-school academic support programs serving rural and tribal communities, helping children improve performance, reduce dropout rates and build confidence for a brighter future.",
     image:
-      "https://images.pexels.com/photos/8613015/pexels-photo-8613015.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "/assets/Gallery/DSCF9665.jpg",
     icon: "BookOpen",
     stats: "670+ Children Benefited",
     color: "secondary",
@@ -46,7 +46,7 @@ const programs = [
     description:
       "Empowering vulnerable women through vocational training, skill development and entrepreneurship support, enabling economic independence and restoring dignity.",
     image:
-      "https://images.pexels.com/photos/8613086/pexels-photo-8613086.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "/assets/Gallery/Jute.jpg",
     icon: "Users",
     stats: "230+ Women Benefited",
     color: "secondary",
@@ -117,7 +117,7 @@ hope and creating a life filled with love, purpose and possibility.
                 className="group bg-card rounded-2xl overflow-hidden shadow-warm hover:shadow-warm-hover transition-all duration-300 border border-border hover:border-primary/20"
               >
                 {/* Image */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative max-h-44 overflow-hidden">
                   <Image
                     src={program?.image}
                     alt={program?.title}
@@ -217,10 +217,8 @@ hope and creating a life filled with love, purpose and possibility.
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
       
       <div className="bg-card rounded-xl p-5 sm:p-6 shadow-warm text-center">
-        <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-          <Icon name="Award" size={22} className="text-primary" />
-        </div>
-        <div className="font-heading font-bold text-xl sm:text-2xl text-foreground mb-1">
+        
+        <div className="font-heading font-bold text-xl sm:text-4xl text-foreground mb-1">
           95%
         </div>
         <div className="font-body text-xs sm:text-sm text-muted-foreground">
@@ -229,10 +227,8 @@ hope and creating a life filled with love, purpose and possibility.
       </div>
 
       <div className="bg-card rounded-xl p-5 sm:p-6 shadow-warm text-center">
-        <div className="w-12 h-12 bg-conversion-orange/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-          <Icon name="Users" size={22} className="text-conversion-orange" />
-        </div>
-        <div className="font-heading font-bold text-xl sm:text-2xl text-foreground mb-1">
+        
+        <div className="font-heading font-bold text-xl sm:text-4xl text-foreground mb-1">
           5
         </div>
         <div className="font-body text-xs sm:text-sm text-muted-foreground">

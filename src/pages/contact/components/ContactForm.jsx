@@ -128,7 +128,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id='contact' className="py-16 lg:py-24 bg-background relative">
+    <section id='contact' className="py-16 lg:py-24 bg-muted relative">
       <div className="max-w-4xl mx-auto px-6 lg:px-8 relative">
         <div className="text-center mb-12">
           

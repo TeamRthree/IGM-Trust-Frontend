@@ -103,44 +103,7 @@ const ProjectFilters = ({
           onChange={(value) => onFilterChange('sortBy', value)}
         />
       </div>
-      {/* Quick Filters */}
-      <div className="flex flex-wrap gap-3">
-        <Button
-          variant={filters?.urgent ? "default" : "outline"}
-          size="sm"
-          iconName="AlertCircle"
-          iconPosition="left"
-          iconSize={16}
-          onClick={() => onFilterChange('urgent', !filters?.urgent)}
-          className={filters?.urgent ? "bg-error hover:bg-error/90 text-error-foreground" : ""}
-        >
-          Urgent Projects
-        </Button>
-        
-        <Button
-          variant={filters?.nearCompletion ? "default" : "outline"}
-          size="sm"
-          iconName="Target"
-          iconPosition="left"
-          iconSize={16}
-          onClick={() => onFilterChange('nearCompletion', !filters?.nearCompletion)}
-          className={filters?.nearCompletion ? "bg-success hover:bg-success/90 text-success-foreground" : ""}
-        >
-          Near Completion
-        </Button>
-        
-        <Button
-          variant={filters?.newProjects ? "default" : "outline"}
-          size="sm"
-          iconName="Sparkles"
-          iconPosition="left"
-          iconSize={16}
-          onClick={() => onFilterChange('newProjects', !filters?.newProjects)}
-          className={filters?.newProjects ? "bg-secondary hover:bg-secondary/90 text-secondary-foreground" : ""}
-        >
-          New Projects
-        </Button>
-      </div>
+      
     </div>
   );
 };

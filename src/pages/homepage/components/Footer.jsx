@@ -40,11 +40,11 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: "Facebook", icon: "Facebook", url: "https://facebook.com/igmchildrenhomes" },
+    { name: "Facebook", icon: "Facebook", url: "https://www.facebook.com/igmchildren.home/" },
    
-    { name: "Instagram", icon: "Instagram", url: "https://instagram.com/igmchildrenhomes" },
-    { name: "LinkedIn", icon: "Linkedin", url: "https://linkedin.com/company/igmchildrenhomes" },
-    { name: "YouTube", icon: "Youtube", url: "https://youtube.com/igmchildrenhomes" }
+    { name: "Instagram", icon: "Instagram", url: "https://www.instagram.com/igmchildrenhome/" },
+    { name: "LinkedIn", icon: "Linkedin", url: "https://www.linkedin.com/in/igm-children-home-001594351/" },
+    { name: "YouTube", icon: "Youtube", url: "https://www.youtube.com/@igmchildrenhome3093" }
   ];
 
   

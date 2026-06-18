@@ -10,7 +10,7 @@ const LegacyTimeline = () => {
       year: 1975,
       title: "Foundation of Hope",
       description: "IGM Children Homes was established with a vision to restore broken lives and provide sanctuary for vulnerable children.",
-      image: "https://images.pexels.com/photos/8613264/pexels-photo-8613264.jpeg",
+      image: "/assets/Gallery/20220628_080706.jpg",
       icon: "Home",
       stats: { children: "25", staff: "3", facilities: "1" }
     },
@@ -18,7 +18,7 @@ const LegacyTimeline = () => {
       year: 1985,
       title: "Official Registration",
       description: "Achieved official charitable organization status, establishing legal framework for expanded operations and transparency.",
-      image: "https://images.pexels.com/photos/8613103/pexels-photo-8613103.jpeg",
+      image: "/assets/Gallery/IMG_1916.jpg",
       icon: "FileCheck",
       stats: { children: "150", staff: "12", facilities: "2" }
     },
@@ -26,7 +26,7 @@ const LegacyTimeline = () => {
       year: 1995,
       title: "Educational Excellence",
       description: "Launched comprehensive education programs, ensuring every child receives quality schooling and skill development.",
-      image: "https://images.pexels.com/photos/8613087/pexels-photo-8613087.jpeg",
+      image: "/assets/Gallery/DSCF9665.jpg",
       icon: "GraduationCap",
       stats: { children: "400", staff: "25", facilities: "4" }
     },
@@ -34,7 +34,7 @@ const LegacyTimeline = () => {
       year: 2005,
       title: "Healthcare Integration",
       description: "Established on-site medical facilities and partnerships with healthcare providers for comprehensive child welfare.",
-      image: "https://images.pexels.com/photos/8613090/pexels-photo-8613090.jpeg",
+      image: "/assets/Gallery/Privaram Medical camp.jpg",
       icon: "Heart",
       stats: { children: "800", staff: "45", facilities: "6" }
     },
@@ -42,7 +42,7 @@ const LegacyTimeline = () => {
       year: 2015,
       title: "Digital Transformation",
       description: "Embraced technology for better child tracking, donor engagement, and transparent impact reporting.",
-      image: "https://images.pexels.com/photos/8613265/pexels-photo-8613265.jpeg",
+      image: "/assets/Gallery/_DSC4764.jpg",
       icon: "Smartphone",
       stats: { children: "1200", staff: "75", facilities: "8" }
     },
@@ -50,7 +50,7 @@ const LegacyTimeline = () => {
       year: 2025,
       title: "Global Recognition",
       description: "Celebrating 50 years of transformative compassion with half a million lives touched and international partnerships.",
-      image: "https://images.pexels.com/photos/8613266/pexels-photo-8613266.jpeg",
+      image: "/assets/Gallery/iGM-3.webp",
       icon: "Award",
       stats: { children: "1500", staff: "120", facilities: "12" }
     }

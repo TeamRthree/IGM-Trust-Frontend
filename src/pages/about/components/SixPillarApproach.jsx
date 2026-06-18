@@ -15,7 +15,7 @@ each and every kid. Every child's welfare is given top priority in the house tha
 well-defined emergency response plans, and explicit safety procedures.\n\n IGM has a strict zero-tolerance 
 policy for any kind of abuse, discrimination, or neglect, and every child is treated with respect, dignity, 
 and privacy. `,
-      image: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg",
+      image: "/assets/Gallery/_DSC6363.jpg",
       stats: [
         { label: "Development Programs", value: "25+" },
         { label: "Success Rate", value: "94%" },
@@ -33,7 +33,7 @@ individuals.\n\nOur goal is to create an environment where every child feels val
 achieve their fullest potential ensuring that care at IGM goes beyond meeting basic needs to fostering 
 lifelong growth. 
 `,
-      image: "https://images.pexels.com/photos/8613087/pexels-photo-8613087.jpeg",
+      image: "/assets/Gallery/_DSC2049.jpg",
       stats: [
         { label: "Graduation Rate", value: "98%" },
         { label: "Scholarships Awarded", value: "450+" },
@@ -48,7 +48,7 @@ lifelong growth.
 and confidence needed to achieve financial independence. Through vocational training, 
 entrepreneurship programs, and financial literacy initiatives, women are empowered to generate 
 sustainable income and manage their own resources effectively.  \n\nBy promoting self-reliance, IGM helps women build confidence, dignity, and the ability to shape their own futures, contributing to stronger families and communities.`,
-      image: "https://images.pexels.com/photos/8613090/pexels-photo-8613090.jpeg",
+      image: "/assets/Gallery/DJI_0212.jpg",
       stats: [
         { label: "Health Check-ups", value: "Monthly" },
         { label: "Nutrition Programs", value: "Daily" },
@@ -60,7 +60,7 @@ sustainable income and manage their own resources effectively.  \n\nBy promoting
       icon: "Target",
       description: "Practical life skills preparation including financial literacy, communication, and independent living capabilities.",
       details: `Preparing children for independent living is crucial for their successful transition to adulthood. Our life skills training covers financial literacy, communication skills, time management, and practical daily living skills.\n\nThrough workshops, mentorship programs, and real-world practice opportunities, we ensure children are well-equipped to navigate adult responsibilities and make informed decisions about their futures.`,
-      image: "https://images.pexels.com/photos/8613103/pexels-photo-8613103.jpeg",
+      image: "/assets/Gallery/Girl grp photo.jpg",
       stats: [
         { label: "Skills Modules", value: "20+" },
         { label: "Workshop Hours", value: "500+" },

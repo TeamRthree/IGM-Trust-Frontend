@@ -14,7 +14,7 @@ const HeroSection = () => {
       title: "Swetha\'s Journey to Success",
       subtitle: "An abandoned Child to Professional Nurse",
       description: "Swetha an abandoned child left by her father and mother at the age of 3 years and then she was taken care of her grandma later on she came to IGM at the age of 6 years…",
-      image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      image: "/assets/Gallery/Dress Giving.jpg",
       cta: "Read Her Story",
       link: "#success-stories"
     },
@@ -23,7 +23,7 @@ const HeroSection = () => {
       title: "Building Dreams, One Child at a Time",
       subtitle: "40 Years of transforming lives",
       description: "Since 1975, we've provided shelter, education, and love to over 500,000 children. Every child deserves a chance to dream, and your support makes it possible.",
-      image: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      image: "/assets/Gallery/iGM-3.webp",
       cta: "See Our Impact",
       link: "/projects"
     },
@@ -32,7 +32,7 @@ const HeroSection = () => {
       title: "Your Compassion Creates Change",
       subtitle: "Join our mission today",
       description: "Every donation, every volunteer hour, every shared story brings us closer to a world where no child is left behind. Together, we restore broken lives.",
-      image: "https://images.pexels.com/photos/8613264/pexels-photo-8613264.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      image: "/assets/Gallery/_DSC3967.jpg",
       cta: "Donate Now",
       link: "/donate"
     }

@@ -18,11 +18,11 @@ const FeaturedProject = ({ project, onDonate }) => {
     <div className="bg-gradient-trust rounded-xl overflow-hidden bg-white min-h-[400px] shadow-warm-hover  mb-8">
       <div className="grid lg:grid-cols-2 gap-0">
         {/* Image Section */}
-        <div className="relative h-full">
+        <div className="relative h-full min-h-[400px]">
           <Image
             src={project?.image}
             alt={project?.title}
-            className="w-full object-contain h-full"
+            className="w-full  h-full"
           />
           
          

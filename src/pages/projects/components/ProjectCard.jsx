@@ -36,16 +36,16 @@ const ProjectCard = ({ project, onDonate, onView }) => {
 
   return (
    <div
-  className="bg-card rounded-xl shadow-warm hover:shadow-warm-hover transition-warm overflow-hidden group flex flex-col h-[720px]"
+  className="bg-card rounded-xl shadow-warm hover:shadow-warm-hover transition-warm overflow-hidden group flex flex-col"
   onMouseEnter={() => setIsHovered(true)}
   onMouseLeave={() => setIsHovered(false)}
 >
   {/* Image Container */}
-  <div className="relative h-44 overflow-hidden">
+  <div className="relative min-h-[300px]">
     <Image
       src={project?.image}
       alt={project?.title}
-      className="w-full h-full object-cover group-hover:scale-105 transition-warm"
+      className="w-full h-full object-cover  transition-warm"
     />
 
     {/* Category Badge */}

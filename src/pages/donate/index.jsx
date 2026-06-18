@@ -196,13 +196,8 @@ const DonatePage = () => {
             </div>
 
             {/* Real-time Impact Counters */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold mb-1">
-                  ₹{formatCurrency(impactCounters?.totalRaised)}
-                </div>
-                <div className="text-sm text-muted-foreground">Total Raised</div>
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+             
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-1">
                   {impactCounters?.childrenHelped}+
@@ -378,21 +373,21 @@ const DonatePage = () => {
                   <h4 className="font-semibold text-foreground mb-4">Why Donate With Us?</h4>
                   <div className="space-y-3">
                     <div className="flex items-start space-x-3">
-                      <Icon name="Shield" size={16} className="text-success mt-0.5" />
+                     
                       <div>
                         <p className="text-sm font-medium text-foreground">100% Secure</p>
                         <p className="text-xs text-muted-foreground">SSL encrypted payments</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <Icon name="Eye" size={16} className="text-primary mt-0.5" />
+                  
                       <div>
                         <p className="text-sm font-medium text-foreground">Full Transparency</p>
                         <p className="text-xs text-muted-foreground">Track your impact</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <Icon name="Award" size={16} className="text-secondary mt-0.5" />
+                
                       <div>
                         <p className="text-sm font-medium text-foreground">Tax Benefits</p>
                         <p className="text-xs text-muted-foreground">80G tax exemption</p>

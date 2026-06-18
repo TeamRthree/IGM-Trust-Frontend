@@ -232,8 +232,8 @@ if (donationData) setLiveDonation(donationData);
                 <div className="relative">
                   <div className="relative rounded-2xl overflow-hidden shadow-warm-hover">
                     <img
-                      src={featuredProject?.image}
-                      alt={featuredProject?.title}
+                      src="/assets/Gallery/20250426_125241.jpg"
+                      alt=""
                       className="w-full h-96 lg:h-[500px] object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
