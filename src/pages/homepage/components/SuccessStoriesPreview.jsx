@@ -14,7 +14,7 @@ const SuccessStoriesPreview = () => {
       age: "27 Years old",
       profession: "Nurse at Hindu mission hospital ",
       story: "Swetha was abandoned at just 3 years old and cared for by her loving grandmother. At age 6, she joined IGM Children Home, where guidance and support shaped her future. With encouragement, she completed her studies and pursued her dreams. Today, Swetha serves as a nurse in a reputed hospital, living the life she always hoped for. ",
-      image: "/assets/Gallery/Dress Giving.jpg",
+      image: "/assets/Gallery/Grp photo 2.jpg",
       beforeImage: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=400",
       achievement: "Professional Nurse ",
       yearsAtIGM: "24 years",

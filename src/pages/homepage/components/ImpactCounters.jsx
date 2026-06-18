@@ -123,8 +123,8 @@ const ImpactCounters = () => {
             Measuring Our Impact
           </h2>
           
-          <p className="font-body text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Every number tells a story of transformation. These aren't just statistics—they represent real children whose lives have been forever changed through compassion and dedicated care.
+          <p className="font-body text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            Every number tells a story of transformation. These aren't just statistics they represent real children whose lives have been forever changed through compassion and dedicated care.
           </p>
         </div>
 
@@ -190,7 +190,7 @@ const ImpactCounters = () => {
           </button>
         </Link>
 
-        <Link to="/donate" className="w-full sm:w-auto">
+        <Link to="/contact#volunteer" className="w-full sm:w-auto">
           <button className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-transparent hover:bg-muted text-foreground border border-border px-6 py-3 sm:py-3.5 rounded-lg font-medium transition-colors text-sm sm:text-base">
           
             <span>Volunteer</span>

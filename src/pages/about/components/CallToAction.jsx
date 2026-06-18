@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 import { Link } from 'react-router-dom';
 
 const CallToAction = () => {
+
+  const [isVisible, setIsVisible] = useState(false);
+
+const [animatedStats, setAnimatedStats] = useState({
+  activeDonors: 0,
+  monthlySupporters: 0,
+  activeVolunteers: 0,
+  volunteerHours: 0,
+  corporatePartners: 0,
+  csrProjects: 0,
+});
+
+const sectionRef = useRef(null);
+
+
   const actionCards = [
     {
       title: "Support Our Mission",
@@ -20,10 +35,10 @@ const CallToAction = () => {
         link: "/donate",
         variant: "outline"
       },
-      stats: [
-        { label: "Active Donors", value: "2,500+" },
-        { label: "Monthly Supporters", value: "850+" }
-      ]
+    stats: [
+  { label: "Active Donors", value: animatedStats.activeDonors },
+  { label: "Monthly Supporters", value: animatedStats.monthlySupporters }
+]
     },
     {
       title: "Volunteer With Us",
@@ -40,10 +55,10 @@ const CallToAction = () => {
         link: "/contact",
         variant: "outline"
       },
-      stats: [
-        { label: "Active Volunteers", value: "450+" },
-        { label: "Volunteer Hours", value: "12,000+" }
-      ]
+     stats: [
+  { label: "Active Volunteers", value: animatedStats.activeVolunteers },
+  { label: "Volunteer Hours", value: animatedStats.volunteerHours }
+]
     },
     {
       title: "Partner With Us",
@@ -60,15 +75,72 @@ const CallToAction = () => {
         link: "/projects",
         variant: "outline"
       },
-      stats: [
-        { label: "Corporate Partners", value: "75+" },
-        { label: "CSR Projects", value: "120+" }
-      ]
+    stats: [
+  { label: "Corporate Partners", value: animatedStats.corporatePartners },
+  { label: "CSR Projects", value: animatedStats.csrProjects }
+]
     }
   ];
 
+  useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting && !isVisible) {
+        setIsVisible(true);
+      }
+    },
+    { threshold: 0.3 }
+  );
+
+  if (sectionRef.current) {
+    observer.observe(sectionRef.current);
+  }
+
+  return () => observer.disconnect();
+}, [isVisible]);
+
+useEffect(() => {
+  if (!isVisible) return;
+
+  const duration = 2000;
+  const steps = 60;
+  const stepDuration = duration / steps;
+
+  let currentStep = 0;
+
+  const interval = setInterval(() => {
+    currentStep++;
+
+    const progress = currentStep / steps;
+
+    setAnimatedStats({
+      activeDonors: Math.floor(2500 * progress),
+      monthlySupporters: Math.floor(850 * progress),
+      activeVolunteers: Math.floor(450 * progress),
+      volunteerHours: Math.floor(12000 * progress),
+      corporatePartners: Math.floor(75 * progress),
+      csrProjects: Math.floor(120 * progress),
+    });
+
+    if (currentStep >= steps) {
+      clearInterval(interval);
+
+      setAnimatedStats({
+        activeDonors: 2500,
+        monthlySupporters: 850,
+        activeVolunteers: 450,
+        volunteerHours: 12000,
+        corporatePartners: 75,
+        csrProjects: 120,
+      });
+    }
+  }, stepDuration);
+
+  return () => clearInterval(interval);
+}, [isVisible]);
+
   return (
-    <section id='corporate' className="py-20 bg-muted text-white relative overflow-hidden">
+    <section   ref={sectionRef} id='corporate' className="py-20 bg-muted text-white relative overflow-hidden">
       <div className="absolute inset-0 "></div>
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
@@ -96,7 +168,11 @@ const CallToAction = () => {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {card?.stats?.map((stat, idx) => (
                   <div key={idx} className="text-center">
-                    <div className="text-2xl font-bold text-muted-foreground">{stat?.value}</div>
+                  <div className="text-2xl font-bold text-muted-foreground">
+  {typeof stat.value === "number"
+    ? stat.value.toLocaleString() + "+"
+    : stat.value}
+</div>
                     <div className="text-sm text-muted-foreground">{stat?.label}</div>
                   </div>
                 ))}

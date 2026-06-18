@@ -14,7 +14,7 @@ const HeroSection = () => {
       title: "Swetha\'s Journey to Success",
       subtitle: "An abandoned Child to Professional Nurse",
       description: "Swetha an abandoned child left by her father and mother at the age of 3 years and then she was taken care of her grandma later on she came to IGM at the age of 6 years…",
-      image: "/assets/Gallery/Dress Giving.jpg",
+      image: "/assets/Gallery/Grp photo 2.jpg",
       cta: "Read Her Story",
       link: "#success-stories"
     },

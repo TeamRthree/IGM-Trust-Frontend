@@ -69,7 +69,7 @@ const WhyJoinVolunteerSquad = () => {
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-5">
               <Icon
                 name={item.icon}
-                size={22}
+                size={42}
                 color="var(--color-primary)"
               />
             </div>

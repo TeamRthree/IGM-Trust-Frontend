@@ -199,49 +199,58 @@ if (donationData) setLiveDonation(donationData);
           <meta name="keywords" content="children projects, education support, healthcare initiatives, emergency relief, child welfare, NGO projects, donation projects" />
         </Helmet>
 
-        <div className="min-h-screen bg-background pt-16">
+        <div className="min-h-screen bg-background ">
           <Header />
 
           {/* Hero Section */}
-          <section className="relative bg-gradient-to-br from-background via-warm-foundation to-background text-white overflow-hidden pt-24 pb-12 py-24 lg:py-32">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8">
-                  <div className="space-y-4">
-                    
-                    <h2 className="font-heading font-bold text-4xl text-foreground lg:text-5xl !leading-snug">
-                      Impact Showcase Universe
-                    </h2>
-                    <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl leading-relaxed">
-                      Discover how your compassion transforms lives through our comprehensive child welfare programs. Each project represents hope, potential, and the journey from broken to beautiful.
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap gap-4">
-                                <Button
-                                  variant="default"
-                                  size="lg"
-                                  
-                                  className="bg-primary hover:bg-primary/90 text-white shadow-warm"
-                                >
-                                  See our Impact
-                                </Button>
-                                
-                              </div>
-                </div>
+<section className="relative overflow-hidden pt-20">
 
-                <div className="relative">
-                  <div className="relative rounded-2xl overflow-hidden shadow-warm-hover">
-                    <img
-                      src="/assets/Gallery/20250426_125241.jpg"
-                      alt=""
-                      className="w-full h-96 lg:h-[500px] object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+  <div className="relative h-[80vh] min-h-[600px] max-h-[900px]">
+
+    {/* Background Image */}
+    <img
+      src="/assets/Gallery/20250426_125241.jpg"
+      alt="Impact Showcase Universe"
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+
+    {/* Dark Overlay */}
+    <div className="absolute inset-0 bg-black/55" />
+
+    {/* Gradient Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/20" />
+
+    {/* Content */}
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center">
+
+        <h1 className="font-heading font-bold text-white text-4xl sm:text-5xl lg:text-7xl leading-tight mb-6">
+          Impact Showcase
+          <br />
+          Universe
+        </h1>
+
+        <p className="text-white/90 text-lg sm:text-xl lg:text-2xl leading-relaxed max-w-4xl mx-auto mb-10">
+          Discover how your compassion transforms lives through our
+          comprehensive child welfare programs. Every initiative represents
+          hope, opportunity, and the journey from vulnerability to a brighter
+          future.
+        </p>
+
+        <Button
+          variant="default"
+          size="lg"
+          className="bg-primary hover:bg-primary/90 text-white shadow-warm px-8 py-6"
+        >
+          See Our Impact
+        </Button>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
 
           {/* Featured Project */}
           {featuredProject && (

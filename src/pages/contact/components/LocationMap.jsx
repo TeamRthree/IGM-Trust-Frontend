@@ -41,7 +41,7 @@ const LocationMap = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
 
           {/* Timing Card */}
-          <div className="bg-card rounded-xl shadow-warm p-6 sm:p-8">
+          <div className="bg-background rounded-xl shadow-warm p-6 sm:p-8">
             <div className="flex items-center gap-3 mb-6">
               
 
@@ -52,7 +52,9 @@ const LocationMap = () => {
 
             <div className="flex flex-col gap-4">
 
-              <div className="bg-muted rounded-lg p-5">
+        
+
+              <div className="bg-[#E0E7FF]/60 rounded-lg p-5">
                 <div className="flex items-center mb-3">
                   <Icon
                     name="Clock"
@@ -70,7 +72,7 @@ const LocationMap = () => {
                 </p>
               </div>
 
-              <div className="bg-muted rounded-lg p-5">
+              <div className="bg-[#E0E7FF]/60 rounded-lg p-5">
                 <div className="flex items-center mb-3">
                   <Icon
                     name="Calendar"
@@ -92,34 +94,74 @@ const LocationMap = () => {
           </div>
 
           {/* Address Card */}
-          <div className="bg-card rounded-xl shadow-warm p-6 sm:p-8">
-            <div className="flex items-center gap-3 mb-6">
-             
+          {/* Address Card */}
+<div className="bg-background rounded-xl shadow-warm p-6 sm:p-8">
+  <div className="flex items-center gap-3 mb-6">
+    <h3 className="font-heading font-bold text-xl sm:text-2xl text-foreground">
+      Address
+    </h3>
+  </div>
 
-              <h3 className="font-heading font-bold text-xl sm:text-2xl text-foreground">
-                Address
-              </h3>
-            </div>
+  <div className="bg-[#E0E7FF]/60 rounded-lg p-5">
+    <p className="font-body text-base text-foreground leading-relaxed mb-6">
+      No.9, Karthick Nagar,
+      <br />
+      IGM Campus Veerabaghu Nagar,
+      <br />
+        Guduvancheri 603202, South India.
+     
 
-            <div className="bg-muted rounded-lg p-5">
-              <p className="font-body text-base text-foreground leading-relaxed">
-                IGM Children's Home
-                <br />
-                No. 123, Hope Street,
-                <br />
-                Gandhi Nagar,
-                <br />
-                Chennai - 600020,
-                <br />
-                Tamil Nadu, India
-              </p>
-            </div>
-          </div>
+      
+    </p>
+
+    <div className="border-t border-border pt-5 space-y-4">
+
+      <div className="flex items-start gap-3">
+        <Icon
+          name="Phone"
+          size={18}
+          color="var(--color-primary)"
+          className="mt-0.5 flex-shrink-0"
+        />
+
+        <div>
+          <p className="text-xs text-muted-foreground mb-1">
+            Phone Number
+          </p>
+
+          <p className="font-medium text-foreground">
+            +91 98765 43210
+          </p>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-3">
+        <Icon
+          name="Mail"
+          size={18}
+          color="var(--color-primary)"
+          className="mt-0.5 flex-shrink-0"
+        />
+
+        <div>
+          <p className="text-xs text-muted-foreground mb-1">
+            Email Address
+          </p>
+
+          <p className="font-medium text-foreground break-all">
+            info@igmchildrenhomes.org
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
         </div>
 
         {/* Planning Visit */}
-        <div className="bg-secondary/10 border border-secondary/20 rounded-xl p-6 sm:p-8">
+        <div className="bg-background border border-secondary/20 rounded-xl p-6 sm:p-8">
           <div className="flex items-center gap-3 mb-6">
             <div className="flex items-center justify-center w-12 h-12 bg-secondary/20 rounded-full">
               <Icon

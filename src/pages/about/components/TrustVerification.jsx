@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Icon from '../../../components/AppIcon';
-
 import Button from '../../../components/ui/Button';
 
 const TrustVerification = () => {
   const [activeReport, setActiveReport] = useState('annual');
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  const [metrics, setMetrics] = useState({
+    transparency: 0,
+    retention: 0,
+    expense: 0,
+    efficiency: 0,
+  });
+
+  const sectionRef = useRef(null);
 
   const certifications = [
     {
@@ -88,48 +98,126 @@ const TrustVerification = () => {
     { category: "Fundraising", percentage: 3, amount: "₹7,50,000", color: "bg-warning" }
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const duration = 2000;
+    const steps = 60;
+    const stepDuration = duration / steps;
+
+    let currentStep = 0;
+
+    const interval = setInterval(() => {
+      currentStep++;
+
+      const progress = currentStep / steps;
+
+      setMetrics({
+        transparency: Math.floor(98 * progress),
+        retention: Math.floor(87 * progress),
+        expense: Math.floor(89 * progress),
+        efficiency: Math.floor(11 * progress),
+      });
+
+      if (currentStep >= steps) {
+        clearInterval(interval);
+
+        setMetrics({
+          transparency: 98,
+          retention: 87,
+          expense: 89,
+          efficiency: 11,
+        });
+      }
+    }, stepDuration);
+
+    return () => clearInterval(interval);
+  }, [isVisible]);
+
   const transparencyMetrics = [
-    { label: "Financial Transparency Score", value: "98%", icon: "TrendingUp" },
-    { label: "Donor Retention Rate", value: "87%", icon: "Users" },
-    { label: "Program Expense Ratio", value: "89%", icon: "PieChart" },
-    { label: "Administrative Efficiency", value: "11%", icon: "Settings" }
+    {
+      label: "Financial Transparency Score",
+      value: metrics.transparency,
+      icon: "TrendingUp"
+    },
+    {
+      label: "Donor Retention Rate",
+      value: metrics.retention,
+      icon: "Users"
+    },
+    {
+      label: "Program Expense Ratio",
+      value: metrics.expense,
+      icon: "PieChart"
+    },
+    {
+      label: "Administrative Efficiency",
+      value: metrics.efficiency,
+      icon: "Settings"
+    }
   ];
 
   return (
-    <section id='transparency-metrics' className="py-20 bg-gradient-to-br from-background via-warm-foundation to-background">
+    <section
+      ref={sectionRef}
+      id="transparency-metrics"
+      className="py-20 bg-gradient-to-br from-background via-warm-foundation to-background"
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
         <div className="text-center mb-16">
           <h2 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-4">
             Transparency Metrics
           </h2>
+
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Our commitment to transparency and accountability is validated by independent certifications, regular audits, and comprehensive reporting.
+            Our commitment to transparency and accountability is validated by
+            independent certifications, regular audits, and comprehensive reporting.
           </p>
         </div>
 
-        {/* Financial Transparency */}
         <div className="mx-auto">
-        
 
-          {/* Transparency Metrics */}
           <div className="flex flex-col items-center">
-            
-            
-            <div className="flex gap-4">
-              {transparencyMetrics?.map((metric, index) => (
-                <div key={index} className="bg-white rounded-xl p-8 shadow-warm text-center">
-                  
-                  <div className="text-5xl font-bold text-primary mb-1">{metric?.value}</div>
-                  <div className="text-sm text-muted-foreground">{metric?.label}</div>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              {transparencyMetrics.map((metric, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-8 shadow-warm text-center min-w-[220px]"
+                >
+                  <div className="text-5xl font-bold text-primary mb-1">
+                    {metric.value}%
+                  </div>
+
+                  <div className="text-sm text-muted-foreground">
+                    {metric.label}
+                  </div>
                 </div>
               ))}
             </div>
 
-           
           </div>
+
         </div>
 
-       
       </div>
     </section>
   );

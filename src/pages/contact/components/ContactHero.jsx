@@ -4,45 +4,66 @@ import Button from '../../../components/ui/Button';
 
 const ContactHero = () => {
   return (
-    <section className="relative bg-white  py-20 lg:py-32 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-20 h-20 border-2 border-white rounded-full"></div>
-        <div className="absolute top-32 right-20 w-16 h-16 border-2 border-white rounded-lg rotate-45"></div>
-        <div className="absolute bottom-20 left-1/4 w-12 h-12 border-2 border-white rounded-full"></div>
-        <div className="absolute bottom-32 right-1/3 w-24 h-24 border-2 border-white rounded-lg rotate-12"></div>
-      </div>
+    <section className="relative overflow-hidden">
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center max-w-4xl mx-auto">
-          <div className="flex items-center justify-center mb-6">
-            <div className="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full backdrop-blur-sm">
-              <Icon name="Users" size={32} color="white" strokeWidth={2} />
-            </div>
-          </div>
-          
-          <h1 className="font-heading text-foreground font-bold text-4xl lg:text-6xl mb-6 text-balance">
-            Join Our Community of
-            <span className="block text-foreground"> Hope Builders</span>
-          </h1>
-          
-          <p className="font-body text-lg lg:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Whether you want to volunteer, partner with us, or visit our facilities, we're here to help you make a meaningful difference in children's lives. Every connection starts with a conversation.
-          </p>
+      {/* Background Image */}
+      <div className="relative h-[75vh] min-h-[550px] max-h-[850px]">
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              variant="default"
-              size="lg"
-             
-              className="bg-secondary hover:bg-conversion-orange/90 text-white shadow-warm"
-            >
-              Start Volunteering
-            </Button>
-           
+        <img
+          src="/assets/Gallery/feeding during flood.jpg"
+          alt="IGM Children Homes Contact"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/60" />
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-black/10" />
+
+        {/* Content */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center">
+
+          
+
+            <h1 className="font-heading font-bold text-white text-4xl sm:text-5xl lg:text-7xl leading-tight mb-6">
+              Join Our Community
+              <br />
+              <span className="text-white">
+                of Hope Builders
+              </span>
+            </h1>
+
+            <p className="text-white/90 text-lg sm:text-xl lg:text-2xl leading-relaxed max-w-4xl mx-auto mb-10">
+              Whether you want to volunteer, partner with us, or visit our
+              facilities, we're here to help you make a meaningful difference
+              in children's lives. Every connection starts with a conversation.
+            </p>
+
+            <div className="flex justify-center">
+  <Button
+    variant="default"
+    size="lg"
+    className="bg-primary hover:bg-primary/90 text-white px-8 py-6 shadow-warm"
+    onClick={() => {
+      document
+        .getElementById("volunteer")
+        ?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+    }}
+  >
+    Start Volunteering
+  </Button>
+</div>
+
           </div>
         </div>
+
       </div>
+
     </section>
   );
 };

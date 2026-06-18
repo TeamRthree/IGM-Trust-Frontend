@@ -1,5 +1,7 @@
 import React from "react";
 import Icon from "../../../components/AppIcon";
+import { Link } from "react-router-dom";
+  import Button from '../../../components/ui/Button';
 
 const WhyVolunteer = () => {
   const opportunities = [
@@ -142,10 +144,28 @@ const WhyVolunteer = () => {
             Together, we can build brighter futures.
           </p>
 
-          <p className="font-body text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+          <p className="font-body text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto mb-8">
             Join our community of dedicated volunteers and make a meaningful
             impact in the lives of children through compassion and service.
           </p>
+
+         <div className="flex justify-center">
+  <Button
+    variant="default"
+    size="lg"
+    className="bg-primary hover:bg-primary/90"
+    onClick={() => {
+      document
+        .getElementById("contact")
+        ?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+    }}
+  >
+    Contact Our Team
+  </Button>
+</div>
         </div>
       </div>
     </div>

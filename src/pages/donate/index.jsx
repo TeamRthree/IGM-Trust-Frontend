@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
 import Icon from '../../components/AppIcon';
@@ -54,6 +54,67 @@ const DonatePage = () => {
     monthlyGoal: 500000,
     currentMonthRaised: 342180
   });
+
+  const [heroVisible, setHeroVisible] = useState(false);
+
+const [heroCounters, setHeroCounters] = useState({
+  childrenHelped: 0,
+  yearsOfService: 0,
+  livesTransformed: 0,
+});
+
+const heroRef = useRef(null);
+
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting && !heroVisible) {
+        setHeroVisible(true);
+      }
+    },
+    { threshold: 0.3 }
+  );
+
+  if (heroRef.current) {
+    observer.observe(heroRef.current);
+  }
+
+  return () => observer.disconnect();
+}, [heroVisible]);
+
+useEffect(() => {
+  if (!heroVisible) return;
+
+  const duration = 2000;
+  const steps = 60;
+  const stepDuration = duration / steps;
+
+  let currentStep = 0;
+
+  const interval = setInterval(() => {
+    currentStep++;
+
+    const progress = currentStep / steps;
+
+    setHeroCounters({
+      childrenHelped: Math.floor(1247 * progress),
+      yearsOfService: Math.floor(48 * progress),
+      livesTransformed: Math.floor(500 * progress),
+    });
+
+    if (currentStep >= steps) {
+      clearInterval(interval);
+
+      setHeroCounters({
+        childrenHelped: 1247,
+        yearsOfService: 48,
+        livesTransformed: 500,
+      });
+    }
+  }, stepDuration);
+
+  return () => clearInterval(interval);
+}, [heroVisible]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -184,39 +245,80 @@ const DonatePage = () => {
         <Header />
         
         {/* Hero Section with Impact Counters */}
-        <section className="pt-24 pb-12 bg-muted ">
-          <div className="max-w-7xl mx-auto py-32 px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Transform Lives Through Giving
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Your compassion creates lasting change. Join thousands of supporters in restoring hope and building futures for children in need.
-              </p>
+<section
+  ref={heroRef}
+  className="relative overflow-hidden pt-20"
+>
+  <div className="relative h-[80vh] min-h-[600px] max-h-[900px]">
+
+    {/* Background Image */}
+    <img
+      src="/assets/Gallery/20250426_125241.jpg"
+      alt="Donate to IGM Children Homes"
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+
+    {/* Dark Overlay */}
+    <div className="absolute inset-0 bg-black/60" />
+
+    {/* Gradient Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10" />
+
+    {/* Content */}
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center">
+
+        <h1 className="font-heading font-bold text-white text-4xl sm:text-5xl lg:text-7xl leading-tight mb-6">
+          Transform Lives
+          <br />
+          Through Giving
+        </h1>
+
+        <p className="text-white/90 text-lg sm:text-xl lg:text-2xl leading-relaxed max-w-4xl mx-auto mb-12">
+          Your compassion creates lasting change. Join thousands of supporters
+          in restoring hope and building brighter futures for children in need.
+        </p>
+
+        {/* Impact Counters */}
+        <div className="grid grid-cols-3 gap-6 sm:gap-10 max-w-3xl mx-auto">
+
+          <div className="text-center">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
+              {heroCounters.childrenHelped.toLocaleString()}+
             </div>
 
-            {/* Real-time Impact Counters */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
-             
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold mb-1">
-                  {impactCounters?.childrenHelped}+
-                </div>
-                <div className="text-sm text-muted-foreground">Children Helped</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold mb-1">48</div>
-                <div className="text-sm text-muted-foreground">Years of Service</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold mb-1">500+</div>
-                <div className="text-sm text-muted-foreground">Lives Transformed</div>
-              </div>
+            <div className="text-white/80 text-sm sm:text-base">
+              Children Helped
             </div>
-
-            
           </div>
-        </section>
+
+          <div className="text-center">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
+              {heroCounters.yearsOfService}
+            </div>
+
+            <div className="text-white/80 text-sm sm:text-base">
+              Years of Service
+            </div>
+          </div>
+
+          <div className="text-center">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
+              {heroCounters.livesTransformed.toLocaleString()}+
+            </div>
+
+            <div className="text-white/80 text-sm sm:text-base">
+              Lives Transformed
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
 
         {/* Main Donation Form */}
         <section id='donate-now' className="py-12">

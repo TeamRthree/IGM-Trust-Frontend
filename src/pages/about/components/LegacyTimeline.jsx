@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
+import React, { useState, useEffect } from 'react';
 
 const LegacyTimeline = () => {
+
+  
   const [activeYear, setActiveYear] = useState(1975);
+
+  const [animatedStats, setAnimatedStats] = useState({
+  children: 0,
+  staff: 0,
+  facilities: 0,
+});
 
   const timelineData = [
     {
@@ -58,6 +67,44 @@ const LegacyTimeline = () => {
 
   const activeData = timelineData?.find(item => item?.year === activeYear);
 
+  useEffect(() => {
+  if (!activeData?.stats) return;
+
+  const finalChildren = parseInt(activeData.stats.children);
+  const finalStaff = parseInt(activeData.stats.staff);
+  const finalFacilities = parseInt(activeData.stats.facilities);
+
+  const duration = 1200;
+  const steps = 40;
+  const stepDuration = duration / steps;
+
+  let currentStep = 0;
+
+  const interval = setInterval(() => {
+    currentStep++;
+
+    const progress = currentStep / steps;
+
+    setAnimatedStats({
+      children: Math.floor(finalChildren * progress),
+      staff: Math.floor(finalStaff * progress),
+      facilities: Math.floor(finalFacilities * progress),
+    });
+
+    if (currentStep >= steps) {
+      clearInterval(interval);
+
+      setAnimatedStats({
+        children: finalChildren,
+        staff: finalStaff,
+        facilities: finalFacilities,
+      });
+    }
+  }, stepDuration);
+
+  return () => clearInterval(interval);
+}, [activeYear]);
+
   return (
     <section className="py-16 lg:py-20 bg-muted">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -79,7 +126,7 @@ const LegacyTimeline = () => {
         <div className="relative">
 
           {/* Timeline Line */}
-          <div className="absolute left-8 sm:left-10 top-0 bottom-0 w-0.5 bg-border"></div>
+          <div className="absolute left-2 sm:left-6 top-0 bottom-0 w-0.5 bg-border"></div>
 
           {timelineData?.map((item) => (
             <div
@@ -149,7 +196,7 @@ const LegacyTimeline = () => {
         <div className="grid grid-cols-3 gap-3 sm:gap-4">
           <div className="bg-white rounded-xl p-4 sm:p-6 text-center shadow-warm">
             <div className="text-xl sm:text-2xl font-bold text-primary mb-1">
-              {activeData?.stats?.children}
+              {animatedStats.children}
             </div>
             <div className="text-xs sm:text-sm text-muted-foreground">
               Children Served
@@ -158,7 +205,7 @@ const LegacyTimeline = () => {
 
           <div className="bg-white rounded-xl p-4 sm:p-6 text-center shadow-warm">
             <div className="text-xl sm:text-2xl font-bold text-secondary mb-1">
-              {activeData?.stats?.staff}
+             {animatedStats.staff}
             </div>
             <div className="text-xs sm:text-sm text-muted-foreground">
               Staff Members
@@ -167,7 +214,7 @@ const LegacyTimeline = () => {
 
           <div className="bg-white rounded-xl p-4 sm:p-6 text-center shadow-warm">
             <div className="text-xl sm:text-2xl font-bold text-accent mb-1">
-              {activeData?.stats?.facilities}
+             {animatedStats.facilities}
             </div>
             <div className="text-xs sm:text-sm text-muted-foreground">
               Facilities

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
+import { useState, useEffect, useRef } from 'react';
 
 const FeaturedPrograms = () => {
 const programs = [
@@ -83,6 +84,64 @@ const programs = [
     };
     return colorMap?.[color] || colorMap?.primary;
   };
+
+  const [statsVisible, setStatsVisible] = useState(false);
+const [stats, setStats] = useState({
+  successRate: 0,
+  activePrograms: 0,
+});
+
+const statsRef = useRef(null);
+
+const finalStats = {
+  successRate: 95,
+  activePrograms: 5,
+};
+
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting && !statsVisible) {
+        setStatsVisible(true);
+      }
+    },
+    { threshold: 0.3 }
+  );
+
+  if (statsRef.current) {
+    observer.observe(statsRef.current);
+  }
+
+  return () => observer.disconnect();
+}, [statsVisible]);
+
+useEffect(() => {
+  if (!statsVisible) return;
+
+  const duration = 1500;
+  const steps = 50;
+  const stepDuration = duration / steps;
+
+  let currentStep = 0;
+
+  const interval = setInterval(() => {
+    currentStep++;
+
+    const progress = currentStep / steps;
+
+    setStats({
+      successRate: Math.floor(finalStats.successRate * progress),
+      activePrograms: Math.floor(finalStats.activePrograms * progress),
+    });
+
+    if (currentStep >= steps) {
+      clearInterval(interval);
+      setStats(finalStats);
+    }
+  }, stepDuration);
+
+  return () => clearInterval(interval);
+}, [statsVisible]);
 
   return (
     <section className="py-16 lg:py-24 bg-muted">
@@ -171,7 +230,7 @@ hope and creating a life filled with love, purpose and possibility.
         </div>
 
        {/* Bottom Section */}
-<div className="bg-gradient-to-r from-primary/5 via-warm-foundation to-secondary/5 rounded-2xl p-6 sm:p-8 lg:p-12 mt-12 sm:mt-16">
+<div className="bg-gradient-to-r from-primary/5 via-warm-foundation to-secondary/5 rounded-2xl  mt-12 sm:mt-16">
   
   <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
     
@@ -190,19 +249,11 @@ hope and creating a life filled with love, purpose and possibility.
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start">
         
-        <Link to="/success-stories" className="w-full sm:w-auto">
-          <Button
-            variant="default"
-           
-            className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto text-sm sm:text-base py-3"
-          >
-            Read Success Stories
-          </Button>
-        </Link>
+        
 
         <Link to="/projects" className="w-full sm:w-auto">
           <Button
-            variant="outline"
+            variant="default"
             
             className="w-full sm:w-auto text-sm sm:text-base py-3"
           >
@@ -214,27 +265,25 @@ hope and creating a life filled with love, purpose and possibility.
     </div>
 
     {/* Right Stats */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div ref={statsRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
       
       <div className="bg-card rounded-xl p-5 sm:p-6 shadow-warm text-center">
-        
-        <div className="font-heading font-bold text-xl sm:text-4xl text-foreground mb-1">
-          95%
-        </div>
-        <div className="font-body text-xs sm:text-sm text-muted-foreground">
-          Program Success Rate
-        </div>
-      </div>
+  <div className="font-heading font-bold text-xl sm:text-4xl text-foreground mb-1">
+    {stats.successRate}%
+  </div>
+  <div className="font-body text-xs sm:text-sm text-muted-foreground">
+    Program Success Rate
+  </div>
+</div>
 
-      <div className="bg-card rounded-xl p-5 sm:p-6 shadow-warm text-center">
-        
-        <div className="font-heading font-bold text-xl sm:text-4xl text-foreground mb-1">
-          5
-        </div>
-        <div className="font-body text-xs sm:text-sm text-muted-foreground">
-          Active Programs
-        </div>
-      </div>
+<div className="bg-card rounded-xl p-5 sm:p-6 shadow-warm text-center">
+  <div className="font-heading font-bold text-xl sm:text-4xl text-foreground mb-1">
+    {stats.activePrograms}
+  </div>
+  <div className="font-body text-xs sm:text-sm text-muted-foreground">
+    Active Programs
+  </div>
+</div>
 
     </div>
   </div>
