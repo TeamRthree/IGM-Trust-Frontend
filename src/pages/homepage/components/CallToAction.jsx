@@ -249,7 +249,7 @@ const CallToAction = () => {
             {/* Image Side */}
           <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[660px] max-h-[760px]">
               <Image
-                src="/public/assets/Gallery/_DSC6414.jpg"
+                src="/assets/Gallery/_DSC6414.jpg"
                 alt="Children at IGM Homes"
                 className="w-full h-full object-cover"
               />
