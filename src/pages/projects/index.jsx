@@ -13,10 +13,15 @@
   import DonationPopup from '../../components/DonationPopup';
     import ProjectDetailsModal from './components/ProjectDetailModal';
 
+    import mockProjects from "../../mock/projects";
+import mockProjectStats from "../../mock/projectStats";
+
   const Projects = () => {
     const location = useLocation();
     const query = new URLSearchParams(location.search);
     const projectSectionRef = useRef(null);
+
+    const USE_LOCAL_DATA = true;
 
     const [filters, setFilters] = useState({
       search: '',
@@ -48,15 +53,37 @@
   totalDonors: 0
 });
 
+// useEffect(() => {
+//   const fetchStats = async () => {
+//     try {
+//       const res = await api.get('/project-stats');
+//       if (res.data?.success) {
+//         setProjectStats(res.data.data);
+//       }
+//     } catch (err) {
+//       console.error('Failed to fetch project stats:', err);
+//     }
+//   };
+
+//   fetchStats();
+// }, []);
+
+
 useEffect(() => {
+  if (USE_LOCAL_DATA) {
+    setProjectStats(mockProjectStats);
+    return;
+  }
+
   const fetchStats = async () => {
     try {
-      const res = await api.get('/project-stats');
+      const res = await api.get("/project-stats");
+
       if (res.data?.success) {
         setProjectStats(res.data.data);
       }
     } catch (err) {
-      console.error('Failed to fetch project stats:', err);
+      console.error("Failed to fetch project stats:", err);
     }
   };
 
@@ -68,29 +95,69 @@ useEffect(() => {
     const locations = [...new Set(allProjects.map(p => p.location))];
 
     // ✅ Fetch projects from backend
-    useEffect(() => {
-      const fetchProjects = async () => {
-        setLoading(true);
-        try {
-          const res = await api.get('/projects'); // GET /api/projects
-          if (res.data?.success) {
-            const projects = res.data.data;
+    // useEffect(() => {
+    //   const fetchProjects = async () => {
+    //     setLoading(true);
+    //     try {
+    //       const res = await api.get('/projects'); // GET /api/projects
+    //       if (res.data?.success) {
+    //         const projects = res.data.data;
 
-            setAllProjects(projects);
+    //         setAllProjects(projects);
 
-            // Featured project: first urgent or first project
-            const featured = projects.find(p => p.urgent) || projects[0];
-            setFeaturedProject(featured);
-          }
-        } catch (err) {
-          console.error('Failed to fetch projects:', err);
-        } finally {
-          setLoading(false);
-        }
-      };
+    //         // Featured project: first urgent or first project
+    //         const featured = projects.find(p => p.urgent) || projects[0];
+    //         setFeaturedProject(featured);
+    //       }
+    //     } catch (err) {
+    //       console.error('Failed to fetch projects:', err);
+    //     } finally {
+    //       setLoading(false);
+    //     }
+    //   };
 
-      fetchProjects();
-    }, []);
+    //   fetchProjects();
+    // }, []);
+
+
+useEffect(() => {
+  if (USE_LOCAL_DATA) {
+    setAllProjects(mockProjects);
+
+    const featured =
+      mockProjects.find((p) => p.urgent) || mockProjects[0];
+
+    setFeaturedProject(featured);
+
+    return;
+  }
+
+  const fetchProjects = async () => {
+    setLoading(true);
+
+    try {
+      const res = await api.get("/projects");
+
+      if (res.data?.success) {
+        const projects = res.data.data;
+
+        setAllProjects(projects);
+
+        const featured =
+          projects.find((p) => p.urgent) || projects[0];
+
+        setFeaturedProject(featured);
+      }
+    } catch (err) {
+      console.error("Failed to fetch projects:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchProjects();
+}, []);
+
 
     // ✅ Set category from URL on mount
     useEffect(() => {

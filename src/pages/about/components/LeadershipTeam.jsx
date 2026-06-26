@@ -184,7 +184,7 @@ potential.`,
                 <Image
                   src={selectedMember?.image}
                   alt={selectedMember?.name}
-                  className="w-full h-64 object-cover"
+                  className="w-full h-84 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <button
